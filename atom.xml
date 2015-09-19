@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-19T17:16:14.000Z</updated>
+  <updated>2015-09-19T17:22:10.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2015/09/20/10-steps-to-learn-SQL/"/>
     <id>http://yoursite.com/2015/09/20/10-steps-to-learn-SQL/</id>
     <published>2015-09-19T16:47:18.000Z</published>
-    <updated>2015-09-19T17:16:14.000Z</updated>
+    <updated>2015-09-19T17:22:10.000Z</updated>
     <content type="html"><![CDATA[<h1 id="1-SQL_一种声明式语言">1.SQL 一种声明式语言</h1><p>SQL是一种声“明式”语言。SQL语言是为计算机声明了一个你想从数据库中获得结果的范例（可以理解为SQL语句），而不是告诉计算机如何得到SQL查询的结果。</p>
 <p>如果SQL语言这么简单，那么人么为什么“闻SQL色变”？主要原因是：潜意识中是按照编程命令式编程思维方式思考问题。就好比这样：程序执行顺训，从上到下，第一个函数执行完后在执行下一个。这种命令式编程的思维惯式。</p>
 <h1 id="2-SQL_语法的执行顺序">2.SQL 语法的执行顺序</h1><p>SQL语句有一个非常困惑大家的特性：SQL语句的执行顺训跟SQL语句的语法顺训并不一致。SQL语句的执行顺序是：</p>
@@ -212,7 +212,7 @@ GROUP BY A<span class="class">.x</span>, A.y
 <p>如果SQL语言这么简单]]>
     </summary>
     
-      <category term="语法" scheme="http://yoursite.com/tags/%E8%AF%AD%E6%B3%95/"/>
+      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
     
       <category term="SQL" scheme="http://yoursite.com/categories/SQL/"/>
     
