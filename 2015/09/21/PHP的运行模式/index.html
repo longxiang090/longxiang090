@@ -47,7 +47,7 @@
 <meta property="og:site_name" content="WooLong's Notes">
 <meta property="og:description" content="本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。
 1. CGI 通用网关接口 (Common Gateway Interface)CGI是一段程序，就像桥梁一样连接着 HTML 和 WEB 服务器，它把 HTML 接">
-<meta property="og:updated_time" content="2015-09-21T10:22:55.000Z">
+<meta property="og:updated_time" content="2015-09-22T09:30:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP的运行模式（理论）">
 <meta name="twitter:description" content="本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。
@@ -287,7 +287,7 @@
 <li>从实际使用来看，用 FastCGI 模式更适合生产环境的服务器。但对于开发用机器来说就不太合适。因为当使用 Zend Studio 调试程序时，由于 FastCGI 会认为 PHP 进程超时，从而在页面返回 500错误。</li>
 <li>目前的 FastCGI 和 Server 沟通还不够智能，一个 FastCGI 进程如果执行时间过长会被当成是死进程杀掉重起，这样在处理长时间任务的时候很麻烦，这样做也使得 FastCGI 无法允许联机调试。因为是多进程，所以比 CGI 多线程消耗更多的服务器内存，PHP-CGI 解释器每进程消耗 7 至 25 兆内存，将这个数字乘以 50 或 100 就是很大的内存数。</li>
 </ul>
-<h3 id="CLI_命令行运行(Command_Line_Interface)">CLI 命令行运行(Command Line Interface)</h3><p>它是 PHP 的命令行运行模式，大家经常使用它，但是可能并没有注意到（命令行中使用 php -v 等，有兴趣的可以输入 php -h 深入研究）</p>
+<h3 id="3-_CLI_命令行运行(Command_Line_Interface)">3. CLI 命令行运行(Command Line Interface)</h3><p>它是 PHP 的命令行运行模式，大家经常使用它，但是可能并没有注意到（命令行中使用 php -v 等，有兴趣的可以输入 php -h 深入研究）</p>
 <p>优点：</p>
 <ol>
 <li><p>使用多进程，子进程结束以后，内核会负责回收资源。</p>
@@ -453,7 +453,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_CGI_通用网关接口_(Common_Gateway_Interface)"><span class="nav-number">1.</span> <span class="nav-text">1. CGI 通用网关接口 (Common Gateway Interface)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_FAST-CGI_常驻性_CGI(long-live_CGI)"><span class="nav-number">2.</span> <span class="nav-text">2. FAST-CGI 常驻性 CGI(long-live CGI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLI_命令行运行(Command_Line_Interface)"><span class="nav-number">3.</span> <span class="nav-text">CLI 命令行运行(Command Line Interface)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_CGI_通用网关接口_(Common_Gateway_Interface)"><span class="nav-number">1.</span> <span class="nav-text">1. CGI 通用网关接口 (Common Gateway Interface)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_FAST-CGI_常驻性_CGI(long-live_CGI)"><span class="nav-number">2.</span> <span class="nav-text">2. FAST-CGI 常驻性 CGI(long-live CGI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_CLI_命令行运行(Command_Line_Interface)"><span class="nav-number">3.</span> <span class="nav-text">3. CLI 命令行运行(Command Line Interface)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
