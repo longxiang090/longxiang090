@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-22T09:30:51.000Z</updated>
+  <updated>2015-09-22T16:12:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[PHP 缓存技术]]></title>
+    <link href="http://yoursite.com/2015/09/22/PHP-%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/"/>
+    <id>http://yoursite.com/2015/09/22/PHP-缓存技术/</id>
+    <published>2015-09-22T09:23:35.000Z</published>
+    <updated>2015-09-22T16:12:25.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="1-_数据缓存">1. 数据缓存</h3><p>主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。</p>
+<h3 id="2-_内存缓存">2. 内存缓存</h3><p>Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。</p>
+<p>它是将需要缓存的信息，缓存到系统内存中，需要获取信息中，直接到内存中取，比较常用的方式是 key-&gt;value 方式。</p>
+<h3 id="3-_页面缓存">3. 页面缓存</h3><p>访问 WEB 页面时，先检测相应的缓存页面文件是否存在，如果不存在，则连接数据库，查询数据，显示页面并同时生成缓存页面文件，下次访问的时候缓存的页面文件就发挥作用了。页面缓存有一下几种方式。</p>
+<h6 id="时间触发缓存">时间触发缓存</h6><p>检查文件是否存在并且缓存时间是否过期,如果文件修改的时间没有过期时间，那么就用缓存，否则更新缓存。</p>
+<h6 id="内容出发缓存">内容出发缓存</h6><p>当页面数据有更新时，更改数据库的同时也强制更新缓存。</p>
+<h6 id="页面部分缓存">页面部分缓存</h6><p>将一个页面中不经常变的部分进行静态缓存，而经常变化的块不缓存，最后组装在一起显示；可以使用类似于 ob_get_contents 的方式实现，也可以利用类似 ESI 之类的页面片段缓存策略，使其用来做动态页面中相对静态的片段部分的缓存。该种方式可以用于如商城中的商品页；</p>
+<h6 id="全页面静态化缓存">全页面静态化缓存</h6><p>直接生成HTML或XML等文本文件，有更新的时候重生成一次，而不会去走php服务器解析的流程，适合于不太变化的页面。</p>
+<h3 id="4-_PHP_的OPCode（缓冲器、加速器）缓存">4. PHP 的OPCode（缓冲器、加速器）缓存</h3><p>有eAccelerator， APC， PHPA，XCache，这个没有太深的研究，暂不多说。</p>
+<h3 id="5-_Apache_缓存模块">5.  Apache 缓存模块</h3><p>Apache 安装完以后，是不允许被 cache 的。如果外接了cache 或 squid 服务器要求进行 web 加速的话，就需要在 htttpd.conf 里进行设置，当然前提是在安装 Apache 的时候要激活 mod_cache 的模块。<br>安装 Apache 时：./configure –enable-cache –enable-disk-cache –enable-mem-cache</p>
+<h3 id="6-_基于反向代理的_WEB_缓存">6.  基于反向代理的 WEB 缓存</h3><p>如 Nginx ，SQUID ，mod_proxy ( apache2 以上又分为 mod_proxy 和 mod_cache )</p>
+<h3 id="7-_DNS_轮询">7. DNS 轮询</h3><p>大多域名注册商都支持多条A记录的解析，其实这就是DNS轮询，DNS服务器将解析请求按照A记录的顺序，逐一分配到不同的IP上，这样就完成了简单的负载均衡。更深层次的暂未研究。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="1-_数据缓存">1. 数据缓存</h3><p>主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。</p>
+]]>
+    </summary>
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="缓存" scheme="http://yoursite.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[PHP的运行模式（理论）]]></title>

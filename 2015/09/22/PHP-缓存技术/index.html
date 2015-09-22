@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="php,运行模式," />
+  <meta name="keywords" content="php,缓存," />
 
 
 
@@ -39,19 +39,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。
-1. CGI 通用网关接口 (Common Gateway Interface)CGI是一段程序，就像桥梁一样连接着 HTML 和 WEB 服务器，它把 HTML 接">
+<meta name="description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
+2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
+它">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP的运行模式（理论）">
-<meta property="og:url" content="http://yoursite.com/2015/09/21/PHP的运行模式/index.html">
+<meta property="og:title" content="PHP 缓存技术">
+<meta property="og:url" content="http://yoursite.com/2015/09/22/PHP-缓存技术/index.html">
 <meta property="og:site_name" content="WooLong's Notes">
-<meta property="og:description" content="本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。
-1. CGI 通用网关接口 (Common Gateway Interface)CGI是一段程序，就像桥梁一样连接着 HTML 和 WEB 服务器，它把 HTML 接">
-<meta property="og:updated_time" content="2015-09-22T09:30:51.000Z">
+<meta property="og:description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
+2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
+它">
+<meta property="og:updated_time" content="2015-09-22T16:12:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP的运行模式（理论）">
-<meta name="twitter:description" content="本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。
-1. CGI 通用网关接口 (Common Gateway Interface)CGI是一段程序，就像桥梁一样连接着 HTML 和 WEB 服务器，它把 HTML 接">
+<meta name="twitter:title" content="PHP 缓存技术">
+<meta name="twitter:description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
+2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
+它">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +64,7 @@
   };
 </script>
 
-  <title> PHP的运行模式（理论） | WooLong's Notes </title>
+  <title> PHP 缓存技术 | WooLong's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +210,7 @@
           
           
             
-              PHP的运行模式（理论）
+              PHP 缓存技术
             
           
         </h1>
@@ -216,8 +219,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-21T16:52:19+08:00" content="2015-09-21">
-            2015-09-21
+          <time itemprop="dateCreated" datetime="2015-09-22T17:23:35+08:00" content="2015-09-22">
+            2015-09-22
           </time>
         </span>
 
@@ -242,8 +245,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/21/PHP的运行模式/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/21/PHP的运行模式/" itemprop="commentsCount"></span>
+              <a href="/2015/09/22/PHP-缓存技术/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/22/PHP-缓存技术/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -257,47 +260,18 @@
       
 
       
-        <span itemprop="articleBody"><p>本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。</p>
-<h3 id="1-_CGI_通用网关接口_(Common_Gateway_Interface)">1. CGI 通用网关接口 (Common Gateway Interface)</h3><p>CGI是一段程序，就像桥梁一样连接着 HTML 和 WEB 服务器，它把 HTML 接收到的指令传递给服务器的执行程序，在把服务器的运行结果返回给 HTML 。CGI 的跨平台性能非常的好，几乎可以在所有的操作系统上实现。但是 CGI 已经是比较老的模式了，最近几年很少用，被FAST－CGI替代。</p>
-<p>当有一个请求时，首先要创建一个CGI子进程，然后处理请求，处理完后在结束该子进程，这就是 fork－and－execute 模式。如果用户的请iu数量非常多时，会产生大量的CGI子进程，有多少个请求就会产生多少个子进程，这样会大量挤占系统的资源如 CPU、内存等，这是造成 CGI 性能低下的主要原因。</p>
-<h3 id="2-_FAST-CGI_常驻性_CGI(long-live_CGI)">2. FAST-CGI 常驻性 CGI(long-live CGI)</h3><p>fast-cgi 是cgi的升级版本，FastCGI 像是一个常驻 (long-live) 型的 CGI，它可以一直执行着，只要激活后，不会每次都要花费时间去 fork 一 次 (这是 CGI 最为人诟病的 fork-and-execute 模式)。PHP使用PHP-FPM(FastCGI Process Manager)，全称PHP FastCGI进程管理器进行管理。</p>
-<p>FastCGI的工作原理：</p>
-<ol>
-<li><p>Web Server启动时载入FastCGI进程管理器(IIS ISAPI或Apache Module)</p>
-</li>
-<li><p>FastCGI进程管理器自身初始化，启动多个CGI解释器进程 (在任务管理器中可见多个php-cgi.exe)并等待来自Web Server的连接。</p>
-</li>
-<li><p>当客户端请求到达 Web Server 时，FastCGI 进程管理器选择并连接到一个 CGI 解释器。Web server 将 CGI 环境变量和标准输入发送到 FastCGI 子进程 php-cgi 。</p>
-</li>
-<li><p>FastCGI 子进程完成处理后将标准输出和错误信息从同一连接返回 Web Server 。当 FastCGI 子进程关闭连接时，请求便告处理完成。FastCGI 子进程接着等待并处理来自 FastCGI 进程管理器 (运行在Web Server中)的下一个连接。 在 CGI 模式中，php-cgi 在此便退出了。</p>
-</li>
-</ol>
-<p>在上述情况中，你可以想象 CGI 通常有多慢。每一个 Web 请求 PHP 都必须重新解析 php.ini、重新载入全部扩展并重初始化全部数据结构。使用 FastCGI ，所有这些都只在进程启动时发生一次。一个额外的好处是，持续数据库连接 (Persistent database connection) 可以工作。</p>
-<p>Fastcgi的优点：</p>
-<ol>
-<li><p>从稳定性上看, FastCGI 是以独立的进程池来运行 CGI ,单独一个进程死掉,系统可以很轻易的丢弃该进程,然后重新分配新的进程来运行逻辑。</p>
-</li>
-<li><p>从安全性上看, FastCGI 支持分布式运算。FastCGI 和宿主的 server 完全独立, FastCGI 挂掉的话不会影响宿主 server。</p>
-</li>
-<li><p>从性能上看, FastCGI 把动态逻辑的处理从 server 中分离出来, 大负荷的 IO 处理还是留给宿主 server, 宿主 server 只进行 IO 处理。对于一个普通的动态网页来说, 逻辑处理可能只有一小部分,FastCGI 进程暂用的系统资源会非常少，配合静态缓存页面，性能会得到很大的提升。</p>
-</li>
-</ol>
-<p>Fastcgi的优点：</p>
-<ul>
-<li>从实际使用来看，用 FastCGI 模式更适合生产环境的服务器。但对于开发用机器来说就不太合适。因为当使用 Zend Studio 调试程序时，由于 FastCGI 会认为 PHP 进程超时，从而在页面返回 500错误。</li>
-<li>目前的 FastCGI 和 Server 沟通还不够智能，一个 FastCGI 进程如果执行时间过长会被当成是死进程杀掉重起，这样在处理长时间任务的时候很麻烦，这样做也使得 FastCGI 无法允许联机调试。因为是多进程，所以比 CGI 多线程消耗更多的服务器内存，PHP-CGI 解释器每进程消耗 7 至 25 兆内存，将这个数字乘以 50 或 100 就是很大的内存数。</li>
-</ul>
-<h3 id="3-_CLI_命令行运行(Command_Line_Interface)">3. CLI 命令行运行(Command Line Interface)</h3><p>它是 PHP 的命令行运行模式，大家经常使用它，但是可能并没有注意到（命令行中使用 php -v 等，有兴趣的可以输入 php -h 深入研究）</p>
-<p>优点：</p>
-<ol>
-<li><p>使用多进程，子进程结束以后，内核会负责回收资源。</p>
-</li>
-<li><p>使用多进程，子进程异常退出不会导致整个进程 Thread 退出，父进程还有机会重建流程；</p>
-</li>
-<li><p>一个常驻主进程，只负责任务分发，逻辑更清楚。</p>
-</li>
-</ol>
-<h3 id="总结">总结</h3><p>每种运行模式都有自己的优缺点，没有绝对的好与坏，主要是看运行的环境。</p>
+        <span itemprop="articleBody"><h3 id="1-_数据缓存">1. 数据缓存</h3><p>主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。</p>
+<h3 id="2-_内存缓存">2. 内存缓存</h3><p>Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。</p>
+<p>它是将需要缓存的信息，缓存到系统内存中，需要获取信息中，直接到内存中取，比较常用的方式是 key-&gt;value 方式。</p>
+<h3 id="3-_页面缓存">3. 页面缓存</h3><p>访问 WEB 页面时，先检测相应的缓存页面文件是否存在，如果不存在，则连接数据库，查询数据，显示页面并同时生成缓存页面文件，下次访问的时候缓存的页面文件就发挥作用了。页面缓存有一下几种方式。</p>
+<h6 id="时间触发缓存">时间触发缓存</h6><p>检查文件是否存在并且缓存时间是否过期,如果文件修改的时间没有过期时间，那么就用缓存，否则更新缓存。</p>
+<h6 id="内容出发缓存">内容出发缓存</h6><p>当页面数据有更新时，更改数据库的同时也强制更新缓存。</p>
+<h6 id="页面部分缓存">页面部分缓存</h6><p>将一个页面中不经常变的部分进行静态缓存，而经常变化的块不缓存，最后组装在一起显示；可以使用类似于 ob_get_contents 的方式实现，也可以利用类似 ESI 之类的页面片段缓存策略，使其用来做动态页面中相对静态的片段部分的缓存。该种方式可以用于如商城中的商品页；</p>
+<h6 id="全页面静态化缓存">全页面静态化缓存</h6><p>直接生成HTML或XML等文本文件，有更新的时候重生成一次，而不会去走php服务器解析的流程，适合于不太变化的页面。</p>
+<h3 id="4-_PHP_的OPCode（缓冲器、加速器）缓存">4. PHP 的OPCode（缓冲器、加速器）缓存</h3><p>有eAccelerator， APC， PHPA，XCache，这个没有太深的研究，暂不多说。</p>
+<h3 id="5-_Apache_缓存模块">5.  Apache 缓存模块</h3><p>Apache 安装完以后，是不允许被 cache 的。如果外接了cache 或 squid 服务器要求进行 web 加速的话，就需要在 htttpd.conf 里进行设置，当然前提是在安装 Apache 的时候要激活 mod_cache 的模块。<br>安装 Apache 时：./configure –enable-cache –enable-disk-cache –enable-mem-cache</p>
+<h3 id="6-_基于反向代理的_WEB_缓存">6.  基于反向代理的 WEB 缓存</h3><p>如 Nginx ，SQUID ，mod_proxy ( apache2 以上又分为 mod_proxy 和 mod_cache )</p>
+<h3 id="7-_DNS_轮询">7. DNS 轮询</h3><p>大多域名注册商都支持多条A记录的解析，其实这就是DNS轮询，DNS服务器将解析请求按照A记录的顺序，逐一分配到不同的IP上，这样就完成了简单的负载均衡。更深层次的暂未研究。</p>
 </span>
       
     </div>
@@ -308,7 +282,7 @@
           
             <a href="/tags/php/" rel="tag">#php</a>
           
-            <a href="/tags/运行模式/" rel="tag">#运行模式</a>
+            <a href="/tags/缓存/" rel="tag">#缓存</a>
           
         </div>
       
@@ -317,13 +291,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/22/PHP-缓存技术/" rel="prev">PHP 缓存技术</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/20/10-steps-to-learn-SQL/" rel="next">完全理解 SQL 之 SELECT 句式</a>
+              <a href="/2015/09/21/PHP的运行模式/" rel="next">PHP的运行模式（理论）</a>
             
           </div>
         </div>
@@ -348,8 +320,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/21/PHP的运行模式/"
-                   data-title="PHP的运行模式（理论）" data-url="http://yoursite.com/2015/09/21/PHP的运行模式/">
+              <div class="ds-thread" data-thread-key="2015/09/22/PHP-缓存技术/"
+                   data-title="PHP 缓存技术" data-url="http://yoursite.com/2015/09/22/PHP-缓存技术/">
               </div>
             
           </div>
@@ -455,7 +427,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_CGI_通用网关接口_(Common_Gateway_Interface)"><span class="nav-number">1.</span> <span class="nav-text">1. CGI 通用网关接口 (Common Gateway Interface)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_FAST-CGI_常驻性_CGI(long-live_CGI)"><span class="nav-number">2.</span> <span class="nav-text">2. FAST-CGI 常驻性 CGI(long-live CGI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_CLI_命令行运行(Command_Line_Interface)"><span class="nav-number">3.</span> <span class="nav-text">3. CLI 命令行运行(Command Line Interface)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_数据缓存"><span class="nav-number">1.</span> <span class="nav-text">1. 数据缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_内存缓存"><span class="nav-number">2.</span> <span class="nav-text">2. 内存缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_页面缓存"><span class="nav-number">3.</span> <span class="nav-text">3. 页面缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#时间触发缓存"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">时间触发缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内容出发缓存"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">内容出发缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#页面部分缓存"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">页面部分缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#全页面静态化缓存"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">全页面静态化缓存</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_PHP_的OPCode（缓冲器、加速器）缓存"><span class="nav-number">4.</span> <span class="nav-text">4. PHP 的OPCode（缓冲器、加速器）缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-_Apache_缓存模块"><span class="nav-number">5.</span> <span class="nav-text">5.  Apache 缓存模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-_基于反向代理的_WEB_缓存"><span class="nav-number">6.</span> <span class="nav-text">6.  基于反向代理的 WEB 缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-_DNS_轮询"><span class="nav-number">7.</span> <span class="nav-text">7. DNS 轮询</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
