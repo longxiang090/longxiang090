@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="php,缓存," />
+  <meta name="keywords" content="git,工具," />
 
 
 
@@ -39,22 +39,34 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
-2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
-它">
+<meta name="description" content="使用 Git 本地创建分支
+1. 查看分支git branch
+/** 这里会列出所有本地的分支，查看原称分支 git branch -a **/
+2. 创建本地分支git checkout -b test1
+/** git checktout 也是切换分支**/
+3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
+备注下来，以便查阅，后续会有改动。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP 缓存技术">
-<meta property="og:url" content="http://yoursite.com/2015/09/22/PHP-缓存技术/index.html">
+<meta property="og:title" content="Git 创建分支">
+<meta property="og:url" content="http://yoursite.com/2015/09/25/Git-创建分支/index.html">
 <meta property="og:site_name" content="WooLong's Notes">
-<meta property="og:description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
-2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
-它">
-<meta property="og:updated_time" content="2015-09-22T16:12:25.000Z">
+<meta property="og:description" content="使用 Git 本地创建分支
+1. 查看分支git branch
+/** 这里会列出所有本地的分支，查看原称分支 git branch -a **/
+2. 创建本地分支git checkout -b test1
+/** git checktout 也是切换分支**/
+3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
+备注下来，以便查阅，后续会有改动。">
+<meta property="og:updated_time" content="2015-09-25T13:45:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP 缓存技术">
-<meta name="twitter:description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
-2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
-它">
+<meta name="twitter:title" content="Git 创建分支">
+<meta name="twitter:description" content="使用 Git 本地创建分支
+1. 查看分支git branch
+/** 这里会列出所有本地的分支，查看原称分支 git branch -a **/
+2. 创建本地分支git checkout -b test1
+/** git checktout 也是切换分支**/
+3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
+备注下来，以便查阅，后续会有改动。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +76,7 @@
   };
 </script>
 
-  <title> PHP 缓存技术 | WooLong's Notes </title>
+  <title> Git 创建分支 | WooLong's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -210,7 +222,7 @@
           
           
             
-              PHP 缓存技术
+              Git 创建分支
             
           
         </h1>
@@ -219,8 +231,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-22T17:23:35+08:00" content="2015-09-22">
-            2015-09-22
+          <time itemprop="dateCreated" datetime="2015-09-25T16:12:20+08:00" content="2015-09-25">
+            2015-09-25
           </time>
         </span>
 
@@ -229,8 +241,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/PHP/" itemprop="url" rel="index">
-                  <span itemprop="name">PHP</span>
+                <a href="/categories/其他/" itemprop="url" rel="index">
+                  <span itemprop="name">其他</span>
                 </a>
               </span>
 
@@ -245,8 +257,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/22/PHP-缓存技术/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/22/PHP-缓存技术/" itemprop="commentsCount"></span>
+              <a href="/2015/09/25/Git-创建分支/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/Git-创建分支/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -260,18 +272,13 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="1-_数据缓存">1. 数据缓存</h3><p>主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。</p>
-<h3 id="2-_内存缓存">2. 内存缓存</h3><p>Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。</p>
-<p>它是将需要缓存的信息，缓存到系统内存中，需要获取信息中，直接到内存中取，比较常用的方式是 key-&gt;value 方式。</p>
-<h3 id="3-_页面缓存">3. 页面缓存</h3><p>访问 WEB 页面时，先检测相应的缓存页面文件是否存在，如果不存在，则连接数据库，查询数据，显示页面并同时生成缓存页面文件，下次访问的时候缓存的页面文件就发挥作用了。页面缓存有一下几种方式。</p>
-<h6 id="时间触发缓存">时间触发缓存</h6><p>检查文件是否存在并且缓存时间是否过期,如果文件修改的时间没有过期时间，那么就用缓存，否则更新缓存。</p>
-<h6 id="内容出发缓存">内容出发缓存</h6><p>当页面数据有更新时，更改数据库的同时也强制更新缓存。</p>
-<h6 id="页面部分缓存">页面部分缓存</h6><p>将一个页面中不经常变的部分进行静态缓存，而经常变化的块不缓存，最后组装在一起显示；可以使用类似于 ob_get_contents 的方式实现，也可以利用类似 ESI 之类的页面片段缓存策略，使其用来做动态页面中相对静态的片段部分的缓存。该种方式可以用于如商城中的商品页；</p>
-<h6 id="全页面静态化缓存">全页面静态化缓存</h6><p>直接生成HTML或XML等文本文件，有更新的时候重生成一次，而不会去走php服务器解析的流程，适合于不太变化的页面。</p>
-<h3 id="4-_PHP_的OPCode（缓冲器、加速器）缓存">4. PHP 的OPCode（缓冲器、加速器）缓存</h3><p>有eAccelerator， APC， PHPA，XCache，这个没有太深的研究，暂不多说。</p>
-<h3 id="5-_Apache_缓存模块">5.  Apache 缓存模块</h3><p>Apache 安装完以后，是不允许被 cache 的。如果外接了cache 或 squid 服务器要求进行 web 加速的话，就需要在 htttpd.conf 里进行设置，当然前提是在安装 Apache 的时候要激活 mod_cache 的模块。<br>安装 Apache 时：./configure –enable-cache –enable-disk-cache –enable-mem-cache</p>
-<h3 id="6-_基于反向代理的_WEB_缓存">6.  基于反向代理的 WEB 缓存</h3><p>如 Nginx ，SQUID ，mod_proxy ( apache2 以上又分为 mod_proxy 和 mod_cache )</p>
-<h3 id="7-_DNS_轮询">7. DNS 轮询</h3><p>大多域名注册商都支持多条A记录的解析，其实这就是DNS轮询，DNS服务器将解析请求按照A记录的顺序，逐一分配到不同的IP上，这样就完成了简单的负载均衡。更深层次的暂未研究。</p>
+        <span itemprop="articleBody"><p>使用 Git 本地创建分支</p>
+<h5 id="1-_查看分支">1. 查看分支</h5><pre><code>git branch
+/<span class="keyword">*</span><span class="keyword">*</span> 这里会列出所有本地的分支，查看原称分支 git branch -a <span class="keyword">*</span><span class="keyword">*</span>/
+</code></pre><h5 id="2-_创建本地分支">2. 创建本地分支</h5><pre><code>git checkout -b test1
+/<span class="keyword">*</span><span class="keyword">*</span> git checktout 也是切换分支<span class="keyword">*</span><span class="keyword">*</span>/
+</code></pre><h5 id="3-_提交到远程">3. 提交到远程</h5><pre><code>上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
+</code></pre><p>备注下来，以便查阅，后续会有改动。</p>
 </span>
       
     </div>
@@ -280,9 +287,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag">#php</a>
+            <a href="/tags/git/" rel="tag">#git</a>
           
-            <a href="/tags/缓存/" rel="tag">#缓存</a>
+            <a href="/tags/工具/" rel="tag">#工具</a>
           
         </div>
       
@@ -291,13 +298,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/25/Git-创建分支/" rel="prev">Git 创建分支</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/21/PHP的运行模式/" rel="next">PHP的运行模式（理论）</a>
+              <a href="/2015/09/22/PHP-缓存技术/" rel="next">PHP 缓存技术</a>
             
           </div>
         </div>
@@ -322,8 +327,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/22/PHP-缓存技术/"
-                   data-title="PHP 缓存技术" data-url="http://yoursite.com/2015/09/22/PHP-缓存技术/">
+              <div class="ds-thread" data-thread-key="2015/09/25/Git-创建分支/"
+                   data-title="Git 创建分支" data-url="http://yoursite.com/2015/09/25/Git-创建分支/">
               </div>
             
           </div>
@@ -433,7 +438,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_数据缓存"><span class="nav-number">1.</span> <span class="nav-text">1. 数据缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_内存缓存"><span class="nav-number">2.</span> <span class="nav-text">2. 内存缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_页面缓存"><span class="nav-number">3.</span> <span class="nav-text">3. 页面缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#时间触发缓存"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">时间触发缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内容出发缓存"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">内容出发缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#页面部分缓存"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">页面部分缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#全页面静态化缓存"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">全页面静态化缓存</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_PHP_的OPCode（缓冲器、加速器）缓存"><span class="nav-number">4.</span> <span class="nav-text">4. PHP 的OPCode（缓冲器、加速器）缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-_Apache_缓存模块"><span class="nav-number">5.</span> <span class="nav-text">5.  Apache 缓存模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-_基于反向代理的_WEB_缓存"><span class="nav-number">6.</span> <span class="nav-text">6.  基于反向代理的 WEB 缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-_DNS_轮询"><span class="nav-number">7.</span> <span class="nav-text">7. DNS 轮询</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_查看分支"><span class="nav-number">1.</span> <span class="nav-text">1. 查看分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_创建本地分支"><span class="nav-number">2.</span> <span class="nav-text">2. 创建本地分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-_提交到远程"><span class="nav-number">3.</span> <span class="nav-text">3. 提交到远程</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
