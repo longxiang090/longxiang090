@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="git,工具," />
+  <meta name="keywords" content="mysql,sql,索引," />
 
 
 
@@ -39,34 +39,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="使用 Git 本地创建分支
-1. 查看分支git branch
-/** 这里会列出所有本地的分支，查看原称分支 git branch -a **/
-2. 创建本地分支git checkout -b test1
-/** git checktout 也是切换分支**/
-3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-备注下来，以便查阅，后续会有改动。">
+<meta name="description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：
+B-Tree类型的索引
+普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。
+唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git 创建分支">
-<meta property="og:url" content="http://yoursite.com/2015/09/25/Git-创建分支/index.html">
+<meta property="og:title" content="MySQL 索引简介">
+<meta property="og:url" content="http://yoursite.com/2015/09/29/MySQL-索引简介/index.html">
 <meta property="og:site_name" content="WooLong's Notes">
-<meta property="og:description" content="使用 Git 本地创建分支
-1. 查看分支git branch
-/** 这里会列出所有本地的分支，查看原称分支 git branch -a **/
-2. 创建本地分支git checkout -b test1
-/** git checktout 也是切换分支**/
-3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-备注下来，以便查阅，后续会有改动。">
-<meta property="og:updated_time" content="2015-09-25T13:45:14.000Z">
+<meta property="og:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：
+B-Tree类型的索引
+普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。
+唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯">
+<meta property="og:updated_time" content="2015-09-28T18:33:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git 创建分支">
-<meta name="twitter:description" content="使用 Git 本地创建分支
-1. 查看分支git branch
-/** 这里会列出所有本地的分支，查看原称分支 git branch -a **/
-2. 创建本地分支git checkout -b test1
-/** git checktout 也是切换分支**/
-3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-备注下来，以便查阅，后续会有改动。">
+<meta name="twitter:title" content="MySQL 索引简介">
+<meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：
+B-Tree类型的索引
+普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。
+唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -76,7 +67,7 @@
   };
 </script>
 
-  <title> Git 创建分支 | WooLong's Notes </title>
+  <title> MySQL 索引简介 | WooLong's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +213,7 @@
           
           
             
-              Git 创建分支
+              MySQL 索引简介
             
           
         </h1>
@@ -231,8 +222,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-25T16:12:20+08:00" content="2015-09-25">
-            2015-09-25
+          <time itemprop="dateCreated" datetime="2015-09-29T02:02:31+08:00" content="2015-09-29">
+            2015-09-29
           </time>
         </span>
 
@@ -241,8 +232,8 @@
             &nbsp; | &nbsp; 分类于
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/其他/" itemprop="url" rel="index">
-                  <span itemprop="name">其他</span>
+                <a href="/categories/SQL/" itemprop="url" rel="index">
+                  <span itemprop="name">SQL</span>
                 </a>
               </span>
 
@@ -257,8 +248,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/25/Git-创建分支/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/Git-创建分支/" itemprop="commentsCount"></span>
+              <a href="/2015/09/29/MySQL-索引简介/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/29/MySQL-索引简介/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -272,13 +263,17 @@
       
 
       
-        <span itemprop="articleBody"><p>使用 Git 本地创建分支</p>
-<h5 id="1-_查看分支">1. 查看分支</h5><pre><code>git branch
-/<span class="keyword">*</span><span class="keyword">*</span> 这里会列出所有本地的分支，查看原称分支 git branch -a <span class="keyword">*</span><span class="keyword">*</span>/
-</code></pre><h5 id="2-_创建本地分支">2. 创建本地分支</h5><pre><code>git checkout -b test1
-/<span class="keyword">*</span><span class="keyword">*</span> git checktout 也是切换分支<span class="keyword">*</span><span class="keyword">*</span>/
-</code></pre><h5 id="3-_提交到远程">3. 提交到远程</h5><pre><code>上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-</code></pre><p>备注下来，以便查阅，后续会有改动。</p>
+        <span itemprop="articleBody"><p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：</p>
+<h3 id="B-Tree类型的索引">B-Tree类型的索引</h3><ul>
+<li>普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。</li>
+<li>唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯一索引的索引的列的所有值必须是唯一的，在该列中不能使用重复的值，但可以使用null。如果是组合索引，则列值的组合必须唯一。</li>
+<li>主键索引(Primary keys)—它是一种特殊的唯一索引，不允许有空值。主键索引相当于“唯一索引+not null”。所有使用主键索引的列必须唯一并且不能为空。通常我们使用”auto_increment”来设置主键。 </li>
+<li>全文索引(Full-text Indexes)—全文索引用在MySQL的全文搜索中。通常这种索引被用在搜索引擎类的应用中，用来从某个字段中检索特别的关键字。目前只有MyISAM引擎支持。</li>
+</ul>
+<p>B-Tree类型的索引可以用于表达式中列的比较，如&gt;、&gt;=、&lt;、&lt;=或BETWEEN运算符。这种类型的索引也可以用在LIKE、IN、IS NULL等的比较中。当然，在某些场景下，MySQL并不会使用索引，如NOT IN、IS NOT NULL,、LIKE ‘%sql%’ 等。</p>
+<h3 id="空间索引(Spacial_Indexes)(R-tree)">空间索引(Spacial Indexes)(R-tree)</h3><p>只有MyISAM存储引擎才支持空间索引。它就像B-Tree索引一样，但是它并不仅仅遵循从做到右的顺序。空间索引仅仅被用在某些特殊的场景中，如MySQL GIS functions。</p>
+<h3 id="哈希索引(Hash_Indexes)">哈希索引(Hash Indexes)</h3><p>hash就是一种（key=&gt;value）形式的键值对，哈希索引完全不同于B-Tree索引。哈希索引只能被用在相等比较中，如”=”和”!=”操作，而且速度非常快。目前只有Memory 存储引擎支持哈希索引。</p>
+<h3 id="引用">引用</h3><p>［<a href="http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/］" target="_blank" rel="external">http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/］</a><br>［<a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html］" target="_blank" rel="external">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html］</a><br>［<a href="http://blog.csdn.net/dyllove98/article/details/9631303］" target="_blank" rel="external">http://blog.csdn.net/dyllove98/article/details/9631303］</a></p>
 </span>
       
     </div>
@@ -287,9 +282,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
           
-            <a href="/tags/工具/" rel="tag">#工具</a>
+            <a href="/tags/sql/" rel="tag">#sql</a>
+          
+            <a href="/tags/索引/" rel="tag">#索引</a>
           
         </div>
       
@@ -298,13 +295,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/28/javascript-对象与-JOSON/" rel="prev">javascript 对象与 JOSON</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/22/PHP-缓存技术/" rel="next">PHP 缓存技术</a>
+              <a href="/2015/09/28/javascript-对象与-JOSON/" rel="next">javascript 对象与 JOSON</a>
             
           </div>
         </div>
@@ -329,8 +324,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/25/Git-创建分支/"
-                   data-title="Git 创建分支" data-url="http://yoursite.com/2015/09/25/Git-创建分支/">
+              <div class="ds-thread" data-thread-key="2015/09/29/MySQL-索引简介/"
+                   data-title="MySQL 索引简介" data-url="http://yoursite.com/2015/09/29/MySQL-索引简介/">
               </div>
             
           </div>
@@ -440,7 +435,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_查看分支"><span class="nav-number">1.</span> <span class="nav-text">1. 查看分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_创建本地分支"><span class="nav-number">2.</span> <span class="nav-text">2. 创建本地分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-_提交到远程"><span class="nav-number">3.</span> <span class="nav-text">3. 提交到远程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree类型的索引"><span class="nav-number">1.</span> <span class="nav-text">B-Tree类型的索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间索引(Spacial_Indexes)(R-tree)"><span class="nav-number">2.</span> <span class="nav-text">空间索引(Spacial Indexes)(R-tree)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希索引(Hash_Indexes)"><span class="nav-number">3.</span> <span class="nav-text">哈希索引(Hash Indexes)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

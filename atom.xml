@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-28T08:55:45.000Z</updated>
+  <updated>2015-09-28T18:33:17.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[MySQL 索引简介]]></title>
+    <link href="http://yoursite.com/2015/09/29/MySQL-%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2015/09/29/MySQL-索引简介/</id>
+    <published>2015-09-28T18:02:31.000Z</published>
+    <updated>2015-09-28T18:33:17.000Z</updated>
+    <content type="html"><![CDATA[<p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：</p>
+<h3 id="B-Tree类型的索引">B-Tree类型的索引</h3><ul>
+<li>普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。</li>
+<li>唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯一索引的索引的列的所有值必须是唯一的，在该列中不能使用重复的值，但可以使用null。如果是组合索引，则列值的组合必须唯一。</li>
+<li>主键索引(Primary keys)—它是一种特殊的唯一索引，不允许有空值。主键索引相当于“唯一索引+not null”。所有使用主键索引的列必须唯一并且不能为空。通常我们使用”auto_increment”来设置主键。 </li>
+<li>全文索引(Full-text Indexes)—全文索引用在MySQL的全文搜索中。通常这种索引被用在搜索引擎类的应用中，用来从某个字段中检索特别的关键字。目前只有MyISAM引擎支持。</li>
+</ul>
+<p>B-Tree类型的索引可以用于表达式中列的比较，如&gt;、&gt;=、&lt;、&lt;=或BETWEEN运算符。这种类型的索引也可以用在LIKE、IN、IS NULL等的比较中。当然，在某些场景下，MySQL并不会使用索引，如NOT IN、IS NOT NULL,、LIKE ‘%sql%’ 等。</p>
+<h3 id="空间索引(Spacial_Indexes)(R-tree)">空间索引(Spacial Indexes)(R-tree)</h3><p>只有MyISAM存储引擎才支持空间索引。它就像B-Tree索引一样，但是它并不仅仅遵循从做到右的顺序。空间索引仅仅被用在某些特殊的场景中，如MySQL GIS functions。</p>
+<h3 id="哈希索引(Hash_Indexes)">哈希索引(Hash Indexes)</h3><p>hash就是一种（key=&gt;value）形式的键值对，哈希索引完全不同于B-Tree索引。哈希索引只能被用在相等比较中，如”=”和”!=”操作，而且速度非常快。目前只有Memory 存储引擎支持哈希索引。</p>
+<h3 id="引用">引用</h3><p>［<a href="http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/］" target="_blank" rel="external">http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/］</a><br>［<a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html］" target="_blank" rel="external">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html］</a><br>［<a href="http://blog.csdn.net/dyllove98/article/details/9631303］" target="_blank" rel="external">http://blog.csdn.net/dyllove98/article/details/9631303］</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：</p>
+<h3 id="B-Tree类型的索引">B-Tree类型的索引</h3><ul>
+<li>普通索引(Normal I]]>
+    </summary>
+    
+      <category term="mysql" scheme="http://yoursite.com/tags/mysql/"/>
+    
+      <category term="sql" scheme="http://yoursite.com/tags/sql/"/>
+    
+      <category term="索引" scheme="http://yoursite.com/tags/%E7%B4%A2%E5%BC%95/"/>
+    
+      <category term="SQL" scheme="http://yoursite.com/categories/SQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[javascript 对象与 JOSON]]></title>
     <link href="http://yoursite.com/2015/09/28/javascript-%E5%AF%B9%E8%B1%A1%E4%B8%8E-JOSON/"/>
     <id>http://yoursite.com/2015/09/28/javascript-对象与-JOSON/</id>
     <published>2015-09-27T17:41:41.000Z</published>
-    <updated>2015-09-28T08:55:45.000Z</updated>
+    <updated>2015-09-28T09:28:51.000Z</updated>
     <content type="html"><![CDATA[<h3 id="简介">简介</h3><p>JavaScript 对象与传统的面向对象中的对象几乎没有相似之处，传统的面向对象语言中，创建一个对象必须先有对象的模板：类，类中定义了对象的属性和操作这些属性的方法。通过实例化来构筑一个对象，然后使用对象间的协作来完成一项功能，通过功能的集合来完成整个工程。而Javascript中是没有类的概念的，借助JavaScript的动态性，我们完全可以创建一个空的对象(而不是类)，通过像对象动态的添加属性来完善对象的功能。 </p>
 <p>JSON 即 JavaScript Object Notation 是一种轻量级数据交换格式，采用完全独立于语言的文本格式，非常适合于服务器与 JavaScript 的交互，当两个应用程序、或者两台服务器、或者两种语言之间进行“交流”时，他们都趋向于采用字符串。</p>
 <p>JSON 是一种数据交换格式，像 XML 和 YAML 一样是一种在各种不同语言间传递结构化信息的方式。从另一方面来说，JavaScript 对象是 JavaScript 语言中的一种数据类型，就像 PHP 中的数组、C++ 中类和结构体。</p>
