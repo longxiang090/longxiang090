@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-30T07:02:43.000Z</updated>
+  <updated>2015-10-07T15:37:48.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[json.stringify() 和 json.parse()]]></title>
+    <link href="http://yoursite.com/2015/10/07/json-stringify-%E5%92%8C-json-parse/"/>
+    <id>http://yoursite.com/2015/10/07/json-stringify-和-json-parse/</id>
+    <published>2015-10-07T15:24:43.000Z</published>
+    <updated>2015-10-07T15:37:48.000Z</updated>
+    <content type="html"><![CDATA[<h4 id="stringify()_把一个对象、数组等解析成字符串格式">stringify() 把一个对象、数组等解析成字符串格式</h4><pre><code><span class="variable"><span class="keyword">var</span> obj</span> = {a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>};
+json.stringify(obj);
+
+结果：
+'{<span class="string">"a"</span>:<span class="number">1</span>,<span class="string">"b"</span>:<span class="number">2</span>,<span class="string">"c"</span>:<span class="number">3</span>}'
+</code></pre><h4 id="parse()_把一个字符串解析成_json_对象">parse() 把一个字符串解析成 json 对象</h4><pre><code><span class="variable"><span class="keyword">var</span> str</span> = '{<span class="string">"a"</span>:<span class="number">1</span>,<span class="string">"b"</span>:<span class="number">2</span>,<span class="string">"c"</span>:<span class="number">3</span>}';
+json.parse(str);
+
+结果：
+{a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>}
+</code></pre><p>未作更深的研究，以后有时间在补充。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h4 id="stringify()_把一个对象、数组等解析成字符串格式">stringify() 把一个对象、数组等解析成字符串格式</h4><pre><code><span class="variable"><span class="keyword">var</span> ]]>
+    </summary>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+    
+      <category term="json" scheme="http://yoursite.com/tags/json/"/>
+    
+      <category term="parse" scheme="http://yoursite.com/tags/parse/"/>
+    
+      <category term="stringify" scheme="http://yoursite.com/tags/stringify/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/categories/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[渗透测试必备－Firefox全套渗透装]]></title>
