@@ -51,7 +51,7 @@ B-Tree类型的索引
 B-Tree类型的索引
 普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。
 唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯">
-<meta property="og:updated_time" content="2015-09-28T18:33:17.000Z">
+<meta property="og:updated_time" content="2015-10-10T09:12:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 索引简介">
 <meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：
@@ -273,7 +273,7 @@ B-Tree类型的索引
 <p>B-Tree类型的索引可以用于表达式中列的比较，如&gt;、&gt;=、&lt;、&lt;=或BETWEEN运算符。这种类型的索引也可以用在LIKE、IN、IS NULL等的比较中。当然，在某些场景下，MySQL并不会使用索引，如NOT IN、IS NOT NULL,、LIKE ‘%sql%’ 等。</p>
 <h3 id="空间索引(Spacial_Indexes)(R-tree)">空间索引(Spacial Indexes)(R-tree)</h3><p>只有MyISAM存储引擎才支持空间索引。它就像B-Tree索引一样，但是它并不仅仅遵循从做到右的顺序。空间索引仅仅被用在某些特殊的场景中，如MySQL GIS functions。</p>
 <h3 id="哈希索引(Hash_Indexes)">哈希索引(Hash Indexes)</h3><p>hash就是一种（key=&gt;value）形式的键值对，哈希索引完全不同于B-Tree索引。哈希索引只能被用在相等比较中，如”=”和”!=”操作，而且速度非常快。目前只有Memory 存储引擎支持哈希索引。</p>
-<h3 id="引用">引用</h3><p>［<a href="http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/］" target="_blank" rel="external">http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/］</a><br>［<a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html］" target="_blank" rel="external">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html］</a><br>［<a href="http://blog.csdn.net/dyllove98/article/details/9631303］" target="_blank" rel="external">http://blog.csdn.net/dyllove98/article/details/9631303］</a></p>
+<h3 id="引用">引用</h3><p><a href="http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/" target="_blank" rel="external">http://www.php101.cn/2014/08/14/MySQl%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/</a><br><a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html" target="_blank" rel="external">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html</a><br><a href="http://blog.csdn.net/dyllove98/article/details/9631303" target="_blank" rel="external">http://blog.csdn.net/dyllove98/article/details/9631303</a></p>
 </span>
       
     </div>
@@ -367,7 +367,7 @@ B-Tree类型的索引
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -381,7 +381,7 @@ B-Tree类型的索引
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
