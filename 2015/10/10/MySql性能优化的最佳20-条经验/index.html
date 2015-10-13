@@ -47,11 +47,11 @@
 <meta property="og:site_name" content="WooLong's Notes">
 <meta property="og:description" content="今天，数据库的操作越来越成为整个应用的性能瓶颈了，这点对于Web应用尤其明显。关于数据库的性能，这并不只是DBA才需要担心的事，而这更是我们程序员需要去关注的事情。当我们去设计数据库表结构，对操作数据库时（尤其是查表时的SQL语句），我们都需要注意数据操作的性能。这里，我们不会讲过多的SQL语句的优化，而只是针对MySQL这一Web应用最多的数据库。希望下面的这些优化技巧对你有用。
 1. 为查询缓">
-<meta property="og:image" content="http://yoursite.com/images/unoptimized_explain.jpg">
-<meta property="og:image" content="http://yoursite.com/images/optimized_explain.jpg">
-<meta property="og:image" content="http://yoursite.com/images/search_index.jpg">
-<meta property="og:image" content="http://yoursite.com/images/suggestions.jpg">
-<meta property="og:updated_time" content="2015-10-10T09:11:47.000Z">
+<meta property="og:image" content="http://yoursite.com/images/201509/unoptimized_explain.jpg">
+<meta property="og:image" content="http://yoursite.com/images/201509/optimized_explain.jpg">
+<meta property="og:image" content="http://yoursite.com/images/201509/search_index.jpg">
+<meta property="og:image" content="http://yoursite.com/images/201509/suggestions.jpg">
+<meta property="og:updated_time" content="2015-10-13T03:24:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySql性能优化的最佳20+条经验">
 <meta name="twitter:description" content="今天，数据库的操作越来越成为整个应用的性能瓶颈了，这点对于Web应用尤其明显。关于数据库的性能，这并不只是DBA才需要担心的事，而这更是我们程序员需要去关注的事情。当我们去设计数据库表结构，对操作数据库时（尤其是查表时的SQL语句），我们都需要注意数据操作的性能。这里，我们不会讲过多的SQL语句的优化，而只是针对MySQL这一Web应用最多的数据库。希望下面的这些优化技巧对你有用。
@@ -273,9 +273,9 @@
 </code></pre><h3 id="2-_EXPLAIN_你的_SELECT_查询">2. EXPLAIN 你的 SELECT 查询</h3><p>使用 <a href="http://dev.mysql.com/doc/refman/5.0/en/explain.html" target="_blank" rel="external">EXPLAIN</a> 关键字可以让你知道 MySQL 是如何处理你的 SQL 语句的。这可以帮你i分析你的查询语句或是表结构的性能瓶颈。</p>
 <p>EXPLAIN 的查询结果还会告诉你你的索引主键被如何利用的，你的数据表是如何被搜索和排序的…等等。</p>
 <p>挑一个你的 SELECT 语句（推荐选最复杂的，有多表连接的），把关键字 EXPLAIN 加到前面。你可以使用 phpmyadmin 来做这个事。然后，你会看到一张表格。下面的这个示例中，我们忘记加上了 group_id 索引，并且有表连接：</p>
-<p><img src="/images/unoptimized_explain.jpg" alt="explain"></p>
+<p><img src="/images/201509/unoptimized_explain.jpg" alt="explain"></p>
 <p>当我们为 group_id 字段加上索引后：</p>
-<p><img src="/images/optimized_explain.jpg" alt="explain"></p>
+<p><img src="/images/201509/optimized_explain.jpg" alt="explain"></p>
 <p>我们可以看到，前一个结果显示了 7883 行，而后一个只是搜索了两个表的 9 和 16 行。查看 rows 列可以让我们找到潜在的性能问题。</p>
 <h3 id="3-_当只要一行数据时使用_LIMIT_1">3. 当只要一行数据时使用 LIMIT 1</h3><p>当你查询表的时候，你已经知道结果智慧有一条结果，但因为你可能需要去 fetch 游标，或是你也许会去检查返回的记录数。</p>
 <p>在这种情况下，加上 LIMIT 1 可以增加性能。这样 MySQL 数据库引擎会在找到一条数据后停止搜索，而不是继续往后查下一条符合记录的数据。</p>
@@ -292,7 +292,7 @@
     // ...
 }
 </code></pre><h3 id="4-_为搜索字段建索引">4. 为搜索字段建索引</h3><p>索引并不一定就是给主键或是唯一的字段。如果在你的表中有某个字段你总经常用来做搜索，那么请为它建立索引吧。</p>
-<p><img src="/images/search_index.jpg" alt="search"></p>
+<p><img src="/images/201509/search_index.jpg" alt="search"></p>
 <p>从上图你可以看到那个搜索字串 “last_name_LIKE ‘a%’”，一个是建了索引，一个是没有建索引，性能差了 4 倍左右。</p>
 <p>另外，你应该也知道什么样的搜索是不能使用正常索引的。例如，当你需要在一篇大的文章中搜索一个词时，如：“WHERE post_content LIKE ‘%apple%’”，索引可能是没有意义的。你可能需要使用 <a href="http://dev.mysql.com/doc/refman/5.1/en/fulltext-search.html" target="_blank" rel="external">MySQL 全文索引</a> 或是自己做一个索引（比如说：搜索关键词或是 Tag 什么的）。</p>
 <h3 id="5-_在_JOIN_表的时候使用同样类型的例，并将其索引">5. 在 JOIN 表的时候使用同样类型的例，并将其索引</h3><p>如果你的应用程序有很多 JOIN 查询，你应该确认两个表中 JOIN 的字段是被建过索引的。这样 MySQL 内部会启动为你优化 JOIN 的 SQL 语句的机制。</p>
@@ -332,7 +332,7 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
 <h3 id="10-_从_PROCEDURE_ANALYSE()_取得建议">10. 从 PROCEDURE ANALYSE() 取得建议</h3><p><a href="http://dev.mysql.com/doc/refman/5.0/en/procedure-analyse.html" target="_blank" rel="external">PROCEDURE ANALYSE()</a> 会让 MySQL 帮你去分析你的字段和其实际的数据，并会给你一些有用的建议。只有表中有实际的数据，这些建议才会变得有用，因为要做一些大的决定是需要有数据作为基础的。</p>
 <p>例如，如果你创建了一个 INT 字段作为你的主键，然而并没有太多的数据，那么，PROCEDURE ANALYSE() 会建议你把这个字段的类型改成 MEDIUMINT 。或是你使用了一个 VARCHAR 字段，因为数据不多，你可能会得到一个让你把它改成 ENUM 的建议。这些建议，都是可能因为数据不够多，所以决策做得就不够准。</p>
 <p>在 phpmyadmin 里，你可以在查看表时，点击 “ Propose table structure ” 来查看这些建议</p>
-<p><img src="/images/suggestions.jpg" alt="procedure"></p>
+<p><img src="/images/201509/suggestions.jpg" alt="procedure"></p>
 <p>一定要注意，这些只是建议，只有当你的表里的数据越来越多时，这些建议才会变得准确。一定要记住，你才是最终做决定的人。</p>
 <h3 id="11-_尽可能的使用_NOT_NULL">11. 尽可能的使用 NOT NULL</h3><p>除非你有一个很特别的原因去使用 NULL 值，否则你应该总是让你的字段保持 NOT NULL。这看起来好像有点争议，请往下看。</p>
 <p>首先，问问你自己“ Empty ”和“ NULL ”有多大的区别（如果是 INT，那就是 0 和 NULL ）？如果你觉得它们之间没有什么区别，那么你就不要使用 NULL。（你知道吗？在 Oracle 里，NULL 和 Empty 的字符串是一样的！)</p>
@@ -433,6 +433,8 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2015/10/13/Git显示漂亮日志的小技巧/" rel="prev">Git显示漂亮日志的小技巧</a>
+            
           </div>
 
           <div class="post-nav-next post-nav-item">
@@ -503,7 +505,7 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -517,7 +519,7 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
