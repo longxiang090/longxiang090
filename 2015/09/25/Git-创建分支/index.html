@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="git,工具," />
+  <meta name="keywords" content="git,工具，diff," />
 
 
 
@@ -45,7 +45,8 @@
 2. 创建本地分支git checkout -b test1
 /** git checktout 也是切换分支**/
 3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-备注下来，以便查阅，后续会有改动。">
+4.本地分支与云端库比较// 获取远端库最新信息
+git f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 创建分支">
 <meta property="og:url" content="http://yoursite.com/2015/09/25/Git-创建分支/index.html">
@@ -56,8 +57,9 @@
 2. 创建本地分支git checkout -b test1
 /** git checktout 也是切换分支**/
 3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-备注下来，以便查阅，后续会有改动。">
-<meta property="og:updated_time" content="2015-09-25T13:45:14.000Z">
+4.本地分支与云端库比较// 获取远端库最新信息
+git f">
+<meta property="og:updated_time" content="2015-10-14T09:52:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 创建分支">
 <meta name="twitter:description" content="使用 Git 本地创建分支
@@ -66,7 +68,8 @@
 2. 创建本地分支git checkout -b test1
 /** git checktout 也是切换分支**/
 3. 提交到远程上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
-备注下来，以便查阅，后续会有改动。">
+4.本地分支与云端库比较// 获取远端库最新信息
+git f">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -278,6 +281,12 @@
 </code></pre><h5 id="2-_创建本地分支">2. 创建本地分支</h5><pre><code>git checkout -b test1
 /<span class="keyword">*</span><span class="keyword">*</span> git checktout 也是切换分支<span class="keyword">*</span><span class="keyword">*</span>/
 </code></pre><h5 id="3-_提交到远程">3. 提交到远程</h5><pre><code>上一步虽然创建了分支，但是远程还没有该分支，需要提交一次
+</code></pre><h5 id="4-本地分支与云端库比较">4.本地分支与云端库比较</h5><pre><code><span class="comment">// 获取远端库最新信息</span>
+git fetch origin
+<span class="comment">// 做比较</span>
+git diff 本地分支名 origin 远端分支名
+<span class="comment">// 有时间改动文件比较多，只想显示文件</span>
+git diff 本地分支名 origin 远端分支名 --state
 </code></pre><p>备注下来，以便查阅，后续会有改动。</p>
 </span>
       
@@ -289,7 +298,7 @@
           
             <a href="/tags/git/" rel="tag">#git</a>
           
-            <a href="/tags/工具/" rel="tag">#工具</a>
+            <a href="/tags/工具，diff/" rel="tag">#工具，diff</a>
           
         </div>
       
@@ -444,7 +453,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_查看分支"><span class="nav-number">1.</span> <span class="nav-text">1. 查看分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_创建本地分支"><span class="nav-number">2.</span> <span class="nav-text">2. 创建本地分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-_提交到远程"><span class="nav-number">3.</span> <span class="nav-text">3. 提交到远程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-_查看分支"><span class="nav-number">1.</span> <span class="nav-text">1. 查看分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-_创建本地分支"><span class="nav-number">2.</span> <span class="nav-text">2. 创建本地分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-_提交到远程"><span class="nav-number">3.</span> <span class="nav-text">3. 提交到远程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-本地分支与云端库比较"><span class="nav-number">4.</span> <span class="nav-text">4.本地分支与云端库比较</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
