@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-10-27T16:29:02.000Z</updated>
+  <updated>2015-10-27T16:32:13.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2015/10/22/PHP%E4%B8%AD%E5%87%A0%E7%A7%8D%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/"/>
     <id>http://yoursite.com/2015/10/22/PHP中几种加密算法/</id>
     <published>2015-10-22T03:33:46.000Z</published>
-    <updated>2015-10-27T16:29:02.000Z</updated>
+    <updated>2015-10-27T16:32:13.000Z</updated>
     <content type="html"><![CDATA[<p>对于网站的登录验证 token 以及 app 的传输的，加密是其安全不可或缺的部分。下面是对 PHP 的几种常见加密方式作下简介。</p>
 <h3 id="MD5()_加密">MD5() 加密</h3><p>函数使用 RSA 数据安全，算法为单向加密不可逆不能解密，网上的 MD5 解密是一定几率撞碰出来的。MD5() 生成16位报文摘要（乱码没搞明白）和32位的算法如下：</p>
 <pre><code><span class="comment">// 生成 32 位</span>
@@ -57,6 +57,8 @@ base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77
     
       <category term="加密" scheme="http://yoursite.com/tags/%E5%8A%A0%E5%AF%86/"/>
     
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
   </entry>
   
   <entry>
@@ -64,7 +66,7 @@ base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77
     <link href="http://yoursite.com/2015/10/13/Git%E6%98%BE%E7%A4%BA%E6%BC%82%E4%BA%AE%E6%97%A5%E5%BF%97%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
     <id>http://yoursite.com/2015/10/13/Git显示漂亮日志的小技巧/</id>
     <published>2015-10-13T02:54:06.000Z</published>
-    <updated>2015-10-13T03:21:25.000Z</updated>
+    <updated>2015-10-27T17:05:21.000Z</updated>
     <content type="html"><![CDATA[<p>Git的传统log如下所示，你喜欢吗？</p>
 <p><img src="/images/201510/git.log01.png" alt="git_log01"></p>
 <p>看看下面这个你喜欢不喜欢？</p>
@@ -73,7 +75,7 @@ base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77
 <pre><code>git <span class="keyword">log</span> --<span class="keyword">graph</span> --pretty=<span class="keyword">format</span>:'%Cred%<span class="keyword">h</span>%Creset -%C(yellow)%<span class="keyword">d</span>%Creset %s <span class="label">$Cgreen</span>(%cr) %C(bold blue)&lt;%<span class="keyword">an</span>&gt;%Creset' --abbrev-commit --
 </code></pre><p>这样有点长了，我们可以这样：</p>
 <pre><code>git config --global alias.lg <span class="string">"log --color --graph --pretty=format:'<span class="variable">%Cred</span><span class="variable">%h</span><span class="variable">%Creset</span> -<span class="variable">%C</span>(yellow)<span class="variable">%d</span><span class="variable">%Creset</span> <span class="variable">%s</span> <span class="variable">%Cgreen</span>(<span class="variable">%cr</span>) <span class="variable">%C</span>(bold blue)&lt;<span class="variable">%an</span>&gt;<span class="variable">%Creset</span>' --abbrev-commit --"</span>
-</code></pre><p>然后，我们以后就可以使用这样的短命令了：</p>
+</code></pre><p>然后，我们以后就可以使用这样的短命令了： </p>
 <pre><code><span class="title">git</span> lg
 </code></pre><p>如果你想看看 git log -pretty=format 的参数，你可以看看<a href="http://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2" target="_blank" rel="external">这篇文章</a></p>
 <blockquote>
@@ -87,7 +89,11 @@ base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77
 <p><img src="/images/201510/]]>
     </summary>
     
-      <category term="［git,工具,log］" scheme="http://yoursite.com/tags/%EF%BC%BBgit-%E5%B7%A5%E5%85%B7-log%EF%BC%BD/"/>
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="log" scheme="http://yoursite.com/tags/log/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
       <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
     
@@ -98,7 +104,7 @@ base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77
     <link href="http://yoursite.com/2015/10/10/MySql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%9C%80%E4%BD%B320-%E6%9D%A1%E7%BB%8F%E9%AA%8C/"/>
     <id>http://yoursite.com/2015/10/10/MySql性能优化的最佳20-条经验/</id>
     <published>2015-10-09T17:53:26.000Z</published>
-    <updated>2015-10-13T03:24:43.000Z</updated>
+    <updated>2015-10-27T17:05:12.000Z</updated>
     <content type="html"><![CDATA[<p>今天，数据库的操作越来越成为整个应用的性能瓶颈了，这点对于Web应用尤其明显。关于数据库的性能，这并不只是DBA才需要担心的事，而这更是我们程序员需要去关注的事情。当我们去设计数据库表结构，对操作数据库时（尤其是查表时的SQL语句），我们都需要注意数据操作的性能。这里，我们不会讲过多的SQL语句的优化，而只是针对MySQL这一Web应用最多的数据库。希望下面的这些优化技巧对你有用。</p>
 <h3 id="1-_为查询缓存优化你的查询">1. 为查询缓存优化你的查询</h3><p>大多数的 MySQL 服务器都开启了查询缓存。这是提高性能最有效的方法之一，而且这是被 MySQL 的数据库引擎处理的。当有很多相同的查询被执行了多次的时候，这些查询结果会被放到一个缓存中，这样，后续的相同的查询就不用操作表而直接访问缓存结果了。</p>
 <p>这里最主要的问题是，对于程序员来说，这个事情是很容易被忽略的。因为，我们某些查询语句会让 MySQL 不使用缓存。请看下面的例子：</p>
@@ -131,7 +137,7 @@ base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77
 }
 </code></pre><h3 id="4-_为搜索字段建索引">4. 为搜索字段建索引</h3><p>索引并不一定就是给主键或是唯一的字段。如果在你的表中有某个字段你总经常用来做搜索，那么请为它建立索引吧。</p>
 <p><img src="/images/201509/search_index.jpg" alt="search"></p>
-<p>从上图你可以看到那个搜索字串 “last_name_LIKE ‘a%’”，一个是建了索引，一个是没有建索引，性能差了 4 倍左右。</p>
+<p>从上图你可以看到那个搜索字串 “last_name_LIKE ‘a%’”，一个是建了索引，一个是没有建索引，性能差了 4 倍左右。 </p>
 <p>另外，你应该也知道什么样的搜索是不能使用正常索引的。例如，当你需要在一篇大的文章中搜索一个词时，如：“WHERE post_content LIKE ‘%apple%’”，索引可能是没有意义的。你可能需要使用 <a href="http://dev.mysql.com/doc/refman/5.1/en/fulltext-search.html" target="_blank" rel="external">MySQL 全文索引</a> 或是自己做一个索引（比如说：搜索关键词或是 Tag 什么的）。</p>
 <h3 id="5-_在_JOIN_表的时候使用同样类型的例，并将其索引">5. 在 JOIN 表的时候使用同样类型的例，并将其索引</h3><p>如果你的应用程序有很多 JOIN 查询，你应该确认两个表中 JOIN 的字段是被建过索引的。这样 MySQL 内部会启动为你优化 JOIN 的 SQL 语句的机制。</p>
 <p>而且，这些被用来 JOIN 的字段，应该是相同类型的。例如：如果你要把 DECIMAL 字段和一个 INT 字段 JOIN 在一起，MySQL 就无法使用它们的索引。对于那些 STRING 类型，还需要有相同的字符集才行。（两个表的字符集有可能不一样）</p>
@@ -270,9 +276,9 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
     <link href="http://yoursite.com/2015/10/09/PHP%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%8A%80%E6%9C%AF%E6%88%90%E9%95%BF%E8%A7%84%E5%88%92/"/>
     <id>http://yoursite.com/2015/10/09/PHP程序员的技术成长规划/</id>
     <published>2015-10-08T17:29:02.000Z</published>
-    <updated>2015-10-08T17:37:45.000Z</updated>
+    <updated>2015-10-27T17:04:41.000Z</updated>
     <content type="html"><![CDATA[<h3 id="概述">概述</h3><p>按照了解的很多PHP/LNMP程序员的发展轨迹，结合个人经验体会，抽象出很多程序员对未来的迷漫，特别对技术学习的盲目和慌乱，简单梳理了这个每个阶段PHP程序员的技术要求，来帮助很多PHP程序做对照设定学习成长目标。<br>本文按照目前主流技术做了一个基本的梳理，整个是假设PHP程序员不是基础非常扎实的情况进行的设定，并且所有设定都非常具体明确清晰，可能会让人觉得不适，请理解仅代表一家之言。（未来技术变化不在讨论范围）</p>
-<h3 id="第一阶段：基础阶段">第一阶段：基础阶段</h3><p>重点：把LNMP搞熟练（核心是安装配置基本操作）<br>目标：能够完成基本的LNMP系统安装，简单配置维护；能够做基本的简单系统的PHP开发；能够在PHP中型系统中支持某个PHP功能模块的开发。<br>时间：完成本阶段的时间因人而异，有的成长快半年一年就过了，成长慢的两三年也有。</p>
+<h3 id="第一阶段：基础阶段">第一阶段：基础阶段</h3><p>重点：把LNMP搞熟练（核心是安装配置基本操作）<br>目标：能够完成基本的LNMP系统安装，简单配置维护；能够做基本的简单系统的 PHP 开发；能够在PHP中型系统中支持某个PHP功能模块的开发。<br>时间：完成本阶段的时间因人而异，有的成长快半年一年就过了，成长慢的两三年也有。</p>
 <h4 id="Linux">Linux</h4><p>基本命令、操作、启动、基本服务配置（包括rpm安装文件，各种服务配置等）；会写简单的shell脚本和awk/sed 脚本命令等。</p>
 <h4 id="Nginx">Nginx</h4><p>做到能够安装配置nginx+php，知道基本的nginx核心配置选项，知道 server/fastcgi_pass/access_log 等基础配置，目标是能够让nginx+php_fpm顺利工作。</p>
 <h4 id="MySQL">MySQL</h4><p>会自己搭建mysql，知道基本的mysql配置选项；知道innodb和myisam的区别，知道针对InnoDB和MyISAM两个引擎的不同配置选项；知道基本的两个引擎的差异和选择上面的区别；能够纯手工编译搭建一个MySQL数据库并且配置好编码等正常稳定运行；核心主旨是能够搭建一个可运行的MySQL数据库。</p>
@@ -305,7 +311,9 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
     <![CDATA[<h3 id="概述">概述</h3><p>按照了解的很多PHP/LNMP程序员的发展轨迹，结合个人经验体会，抽象出很多程序员对未来的迷漫，特别对技术学习的盲目和慌乱，简单梳理了这个每个阶段PHP程序员的技术要求，来帮助很多PHP程序做对照设定学习成长目标。<br>本文按照目前主]]>
     </summary>
     
-      <category term="［php,其他］" scheme="http://yoursite.com/tags/%EF%BC%BBphp-%E5%85%B6%E4%BB%96%EF%BC%BD/"/>
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="其他" scheme="http://yoursite.com/tags/%E5%85%B6%E4%BB%96/"/>
     
       <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
     
@@ -316,7 +324,7 @@ echo <span class="string">"Welcome {$d['username']}"</span>;
     <link href="http://yoursite.com/2015/10/07/json-stringify-%E5%92%8C-json-parse/"/>
     <id>http://yoursite.com/2015/10/07/json-stringify-和-json-parse/</id>
     <published>2015-10-07T15:24:43.000Z</published>
-    <updated>2015-10-07T15:37:48.000Z</updated>
+    <updated>2015-10-27T17:04:21.000Z</updated>
     <content type="html"><![CDATA[<h4 id="stringify()_把一个对象、数组等解析成字符串格式">stringify() 把一个对象、数组等解析成字符串格式</h4><pre><code><span class="variable"><span class="keyword">var</span> obj</span> = {a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>};
 json.stringify(obj);
 
@@ -348,11 +356,11 @@ json.parse(str);
   </entry>
   
   <entry>
-    <title><![CDATA[渗透测试必备－Firefox全套渗透装]]></title>
+    <title><![CDATA[渗透测试必备－Firefox 全套渗透装]]></title>
     <link href="http://yoursite.com/2015/09/30/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%BF%85%E5%A4%87%EF%BC%8DFirefox%E5%85%A8%E5%A5%97%E6%B8%97%E9%80%8F%E8%A3%85/"/>
     <id>http://yoursite.com/2015/09/30/渗透测试必备－Firefox全套渗透装/</id>
     <published>2015-09-30T03:11:02.000Z</published>
-    <updated>2015-10-10T09:13:18.000Z</updated>
+    <updated>2015-10-27T17:04:03.000Z</updated>
     <content type="html"><![CDATA[<p>工欲善必先利其器，firefox一直是各位渗透师必备的利器，小编这里推荐34款firefox渗透测试辅助插件，其中包含渗透测试、信息收集、代理、加密解密等功能。</p>
 <h3 id="1-_Firebug">1. <a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/" target="_blank" rel="external">Firebug</a></h3><p>Firefox的 五星级强力推荐插件之一，不需要多解释 </p>
 <h3 id="2-_User_Agent_Switcher">2. <a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/" target="_blank" rel="external">User Agent Switcher</a></h3><p>改变客户端的User Agent的一款插件</p>
@@ -400,7 +408,11 @@ json.parse(str);
 <h3 id="1-_Firebug">1. <a href="https://addons.mozil]]>
     </summary>
     
-      <category term="［安全,渗透,工具］" scheme="http://yoursite.com/tags/%EF%BC%BB%E5%AE%89%E5%85%A8-%E6%B8%97%E9%80%8F-%E5%B7%A5%E5%85%B7%EF%BC%BD/"/>
+      <category term="安全" scheme="http://yoursite.com/tags/%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="渗透" scheme="http://yoursite.com/tags/%E6%B8%97%E9%80%8F/"/>
     
       <category term="安全" scheme="http://yoursite.com/categories/%E5%AE%89%E5%85%A8/"/>
     
@@ -411,13 +423,13 @@ json.parse(str);
     <link href="http://yoursite.com/2015/09/29/MySQL-%E7%B4%A2%E5%BC%95%E7%AE%80%E4%BB%8B/"/>
     <id>http://yoursite.com/2015/09/29/MySQL-索引简介/</id>
     <published>2015-09-28T18:02:31.000Z</published>
-    <updated>2015-10-10T09:12:07.000Z</updated>
+    <updated>2015-10-27T17:03:44.000Z</updated>
     <content type="html"><![CDATA[<p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：</p>
 <h3 id="B-Tree类型的索引">B-Tree类型的索引</h3><ul>
 <li>普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。</li>
-<li>唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯一索引的索引的列的所有值必须是唯一的，在该列中不能使用重复的值，但可以使用null。如果是组合索引，则列值的组合必须唯一。</li>
+<li>唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯一索引的索引的列的所有值必须是唯一的，在该列中不能使用重复的值，但可以使用 null。如果是组合索引，则列值的组合必须唯一。</li>
 <li>主键索引(Primary keys)—它是一种特殊的唯一索引，不允许有空值。主键索引相当于“唯一索引+not null”。所有使用主键索引的列必须唯一并且不能为空。通常我们使用”auto_increment”来设置主键。 </li>
-<li>全文索引(Full-text Indexes)—全文索引用在MySQL的全文搜索中。通常这种索引被用在搜索引擎类的应用中，用来从某个字段中检索特别的关键字。目前只有MyISAM引擎支持。</li>
+<li>全文索引(Full-text Indexes)—全文索引用在 MySQL 的全文搜索中。通常这种索引被用在搜索引擎类的应用中，用来从某个字段中检索特别的关键字。目前只有MyISAM引擎支持。</li>
 </ul>
 <p>B-Tree类型的索引可以用于表达式中列的比较，如&gt;、&gt;=、&lt;、&lt;=或BETWEEN运算符。这种类型的索引也可以用在LIKE、IN、IS NULL等的比较中。当然，在某些场景下，MySQL并不会使用索引，如NOT IN、IS NOT NULL,、LIKE ‘%sql%’ 等。</p>
 <h3 id="空间索引(Spacial_Indexes)(R-tree)">空间索引(Spacial Indexes)(R-tree)</h3><p>只有MyISAM存储引擎才支持空间索引。它就像B-Tree索引一样，但是它并不仅仅遵循从做到右的顺序。空间索引仅仅被用在某些特殊的场景中，如MySQL GIS functions。</p>
@@ -445,11 +457,11 @@ json.parse(str);
     <link href="http://yoursite.com/2015/09/28/javascript-%E5%AF%B9%E8%B1%A1%E4%B8%8E-JOSON/"/>
     <id>http://yoursite.com/2015/09/28/javascript-对象与-JOSON/</id>
     <published>2015-09-27T17:41:41.000Z</published>
-    <updated>2015-10-10T09:13:03.000Z</updated>
+    <updated>2015-10-27T17:03:19.000Z</updated>
     <content type="html"><![CDATA[<h3 id="简介">简介</h3><p>JavaScript 对象与传统的面向对象中的对象几乎没有相似之处，传统的面向对象语言中，创建一个对象必须先有对象的模板：类，类中定义了对象的属性和操作这些属性的方法。通过实例化来构筑一个对象，然后使用对象间的协作来完成一项功能，通过功能的集合来完成整个工程。而Javascript中是没有类的概念的，借助JavaScript的动态性，我们完全可以创建一个空的对象(而不是类)，通过像对象动态的添加属性来完善对象的功能。 </p>
 <p>JSON 即 JavaScript Object Notation 是一种轻量级数据交换格式，采用完全独立于语言的文本格式，非常适合于服务器与 JavaScript 的交互，当两个应用程序、或者两台服务器、或者两种语言之间进行“交流”时，他们都趋向于采用字符串。</p>
 <p>JSON 是一种数据交换格式，像 XML 和 YAML 一样是一种在各种不同语言间传递结构化信息的方式。从另一方面来说，JavaScript 对象是 JavaScript 语言中的一种数据类型，就像 PHP 中的数组、C++ 中类和结构体。</p>
-<h3 id="定义_JSON_与_JavaScript">定义 JSON 与 JavaScript</h3><p>在 JavaScript 程序中定义对象的时候，对象的属性名可以加双引号也可以不加双引号。如果属性名包含特殊字符(如!、if等)的时候，就必须加双引号。<br>在定义 JSON 的时候，属性名必须加双引号。</p>
+<h3 id="定义_JSON_与_JavaScript">定义 JSON 与 JavaScript</h3><p>在 JavaScript 程序中定义对象的时候，对象的属性名可以加双引号也可以不加双引号。如果属性名包含特殊字符(如!、if 等)的时候，就必须加双引号。<br>在定义 JSON 的时候，属性名必须加双引号。</p>
 <p>代码示例：</p>
 <p>1.定义 JavaScript 对象</p>
 <pre><code><span class="number">1.</span> var obj = {name: <span class="string">"woolong"</span>, <span class="string">"gender"</span>: <span class="string">"man"</span>}; <span class="preprocessor"># 两个属性可以加双引号也可以不加</span>
@@ -492,7 +504,7 @@ json.parse(str);
     <link href="http://yoursite.com/2015/09/25/Git-%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF/"/>
     <id>http://yoursite.com/2015/09/25/Git-创建分支/</id>
     <published>2015-09-25T08:12:20.000Z</published>
-    <updated>2015-10-14T09:52:26.000Z</updated>
+    <updated>2015-10-27T17:02:57.000Z</updated>
     <content type="html"><![CDATA[<p>使用 Git 本地创建分支</p>
 <h5 id="1-_查看分支">1. 查看分支</h5><pre><code>git branch
 /<span class="keyword">*</span><span class="keyword">*</span> 这里会列出所有本地的分支，查看原称分支 git branch -a <span class="keyword">*</span><span class="keyword">*</span>/
@@ -505,7 +517,7 @@ git fetch origin
 git diff 本地分支名 origin 远端分支名
 <span class="comment">// 有时间改动文件比较多，只想显示文件</span>
 git diff 本地分支名 origin 远端分支名 --state
-</code></pre><p>备注下来，以便查阅，后续会有改动。</p>
+</code></pre><p>备注下来，以便查阅，后续会有改动 。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>使用 Git 本地创建分支</p>
@@ -513,9 +525,11 @@ git diff 本地分支名 origin 远端分支名 --state
 /<span class="keyword">*</span><span class="keyword">*</span> 这里会列出所]]>
     </summary>
     
+      <category term="diff" scheme="http://yoursite.com/tags/diff/"/>
+    
       <category term="git" scheme="http://yoursite.com/tags/git/"/>
     
-      <category term="工具，diff" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7%EF%BC%8Cdiff/"/>
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
     
       <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
     
@@ -526,7 +540,7 @@ git diff 本地分支名 origin 远端分支名 --state
     <link href="http://yoursite.com/2015/09/22/PHP-%E7%BC%93%E5%AD%98%E6%8A%80%E6%9C%AF/"/>
     <id>http://yoursite.com/2015/09/22/PHP-缓存技术/</id>
     <published>2015-09-22T09:23:35.000Z</published>
-    <updated>2015-09-22T16:12:25.000Z</updated>
+    <updated>2015-10-27T17:02:32.000Z</updated>
     <content type="html"><![CDATA[<h3 id="1-_数据缓存">1. 数据缓存</h3><p>主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。</p>
 <h3 id="2-_内存缓存">2. 内存缓存</h3><p>Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。</p>
 <p>它是将需要缓存的信息，缓存到系统内存中，需要获取信息中，直接到内存中取，比较常用的方式是 key-&gt;value 方式。</p>
@@ -534,7 +548,7 @@ git diff 本地分支名 origin 远端分支名 --state
 <h6 id="时间触发缓存">时间触发缓存</h6><p>检查文件是否存在并且缓存时间是否过期,如果文件修改的时间没有过期时间，那么就用缓存，否则更新缓存。</p>
 <h6 id="内容出发缓存">内容出发缓存</h6><p>当页面数据有更新时，更改数据库的同时也强制更新缓存。</p>
 <h6 id="页面部分缓存">页面部分缓存</h6><p>将一个页面中不经常变的部分进行静态缓存，而经常变化的块不缓存，最后组装在一起显示；可以使用类似于 ob_get_contents 的方式实现，也可以利用类似 ESI 之类的页面片段缓存策略，使其用来做动态页面中相对静态的片段部分的缓存。该种方式可以用于如商城中的商品页；</p>
-<h6 id="全页面静态化缓存">全页面静态化缓存</h6><p>直接生成HTML或XML等文本文件，有更新的时候重生成一次，而不会去走php服务器解析的流程，适合于不太变化的页面。</p>
+<h6 id="全页面静态化缓存">全页面静态化缓存</h6><p>直接生成 HTML 或 XML 等文本文件，有更新的时候重生成一次，而不会去走php服务器解析的流程，适合于不太变化的页面。</p>
 <h3 id="4-_PHP_的OPCode（缓冲器、加速器）缓存">4. PHP 的OPCode（缓冲器、加速器）缓存</h3><p>有eAccelerator， APC， PHPA，XCache，这个没有太深的研究，暂不多说。</p>
 <h3 id="5-_Apache_缓存模块">5.  Apache 缓存模块</h3><p>Apache 安装完以后，是不允许被 cache 的。如果外接了cache 或 squid 服务器要求进行 web 加速的话，就需要在 htttpd.conf 里进行设置，当然前提是在安装 Apache 的时候要激活 mod_cache 的模块。<br>安装 Apache 时：./configure –enable-cache –enable-disk-cache –enable-mem-cache</p>
 <h3 id="6-_基于反向代理的_WEB_缓存">6.  基于反向代理的 WEB 缓存</h3><p>如 Nginx ，SQUID ，mod_proxy ( apache2 以上又分为 mod_proxy 和 mod_cache )</p>
@@ -558,7 +572,7 @@ git diff 本地分支名 origin 远端分支名 --state
     <link href="http://yoursite.com/2015/09/21/PHP%E7%9A%84%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F/"/>
     <id>http://yoursite.com/2015/09/21/PHP的运行模式/</id>
     <published>2015-09-21T08:52:19.000Z</published>
-    <updated>2015-09-22T09:30:51.000Z</updated>
+    <updated>2015-10-27T17:01:07.000Z</updated>
     <content type="html"><![CDATA[<p>本文主要介绍几种运行模式：CGI 通用网关接口(Common Gateway Interface)、FAST-CGI 常驻性 CGI(long-live CGI)、CLI 命令行运行(Command Line Interface)。</p>
 <h3 id="1-_CGI_通用网关接口_(Common_Gateway_Interface)">1. CGI 通用网关接口 (Common Gateway Interface)</h3><p>CGI是一段程序，就像桥梁一样连接着 HTML 和 WEB 服务器，它把 HTML 接收到的指令传递给服务器的执行程序，在把服务器的运行结果返回给 HTML 。CGI 的跨平台性能非常的好，几乎可以在所有的操作系统上实现。但是 CGI 已经是比较老的模式了，最近几年很少用，被FAST－CGI替代。</p>
 <p>当有一个请求时，首先要创建一个CGI子进程，然后处理请求，处理完后在结束该子进程，这就是 fork－and－execute 模式。如果用户的请iu数量非常多时，会产生大量的CGI子进程，有多少个请求就会产生多少个子进程，这样会大量挤占系统的资源如 CPU、内存等，这是造成 CGI 性能低下的主要原因。</p>
@@ -619,7 +633,7 @@ git diff 本地分支名 origin 远端分支名 --state
     <link href="http://yoursite.com/2015/09/20/10-steps-to-learn-SQL/"/>
     <id>http://yoursite.com/2015/09/20/10-steps-to-learn-SQL/</id>
     <published>2015-09-19T16:47:18.000Z</published>
-    <updated>2015-09-19T17:28:22.000Z</updated>
+    <updated>2015-10-27T17:00:25.000Z</updated>
     <content type="html"><![CDATA[<h1 id="1-SQL_一种声明式语言">1.SQL 一种声明式语言</h1><p>SQL是一种声“明式”语言。SQL语言是为计算机声明了一个你想从数据库中获得结果的范例（可以理解为SQL语句），而不是告诉计算机如何得到SQL查询的结果。</p>
 <p>如果SQL语言这么简单，那么人么为什么“闻SQL色变”？主要原因是：潜意识中是按照编程命令式编程思维方式思考问题。就好比这样：程序执行顺训，从上到下，第一个函数执行完后在执行下一个。这种命令式编程的思维惯式。</p>
 <h1 id="2-SQL_语法的执行顺序">2.SQL 语法的执行顺序</h1><p>SQL语句有一个非常困惑大家的特性：SQL语句的执行顺训跟SQL语句的语法顺训并不一致。SQL语句的执行顺序是：</p>
@@ -822,10 +836,10 @@ GROUP BY A<span class="class">.x</span>, A.y
   
   <entry>
     <title><![CDATA[第一篇文章]]></title>
-    <link href="http://yoursite.com/2015/09/12/hello-world/"/>
-    <id>http://yoursite.com/2015/09/12/hello-world/</id>
-    <published>2015-09-12T15:55:08.000Z</published>
-    <updated>2015-09-12T15:55:08.000Z</updated>
+    <link href="http://yoursite.com/2015/09/19/hello-world/"/>
+    <id>http://yoursite.com/2015/09/19/hello-world/</id>
+    <published>2015-09-18T17:29:02.000Z</published>
+    <updated>2015-10-27T16:59:33.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to My Notes! This is my very first post. 开始写博客了，一直以来想把自己的学习的东西记录下来，可能比较懒吧，最近才开始有了真实的行动来完成。</p>
 <h2 id="构建博客的框架">构建博客的框架</h2><pre><code>结构采用比较流行的 hexo，之所以选择他是因为他方便、快。
 博客主题采用的是当前星最高的也是我比较喜欢的主题 <span class="keyword">next</span>。

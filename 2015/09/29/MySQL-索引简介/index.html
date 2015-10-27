@@ -51,7 +51,7 @@ B-Tree类型的索引
 B-Tree类型的索引
 普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。
 唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯">
-<meta property="og:updated_time" content="2015-10-10T09:12:07.000Z">
+<meta property="og:updated_time" content="2015-10-27T17:03:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL 索引简介">
 <meta name="twitter:description" content="索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：
@@ -266,9 +266,9 @@ B-Tree类型的索引
         <span itemprop="articleBody"><p>索引对查询的速度有着至关重要的影响，理解索引也是进行数据库性能调优的起点。索引是在存储引擎中实现的，而不是在服务器层中实现的。几种常见的索引类型：</p>
 <h3 id="B-Tree类型的索引">B-Tree类型的索引</h3><ul>
 <li>普通索引(Normal Indexes)—普通索引是最基本的索引而且没有任何限制(比如唯一性等限制)。普通索引可以包含重复的值。</li>
-<li>唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯一索引的索引的列的所有值必须是唯一的，在该列中不能使用重复的值，但可以使用null。如果是组合索引，则列值的组合必须唯一。</li>
+<li>唯一索引(Unique Indexes)—唯一索引和普通索引基本上是相同的。有一点不同的是：使用唯一索引的索引的列的所有值必须是唯一的，在该列中不能使用重复的值，但可以使用 null。如果是组合索引，则列值的组合必须唯一。</li>
 <li>主键索引(Primary keys)—它是一种特殊的唯一索引，不允许有空值。主键索引相当于“唯一索引+not null”。所有使用主键索引的列必须唯一并且不能为空。通常我们使用”auto_increment”来设置主键。 </li>
-<li>全文索引(Full-text Indexes)—全文索引用在MySQL的全文搜索中。通常这种索引被用在搜索引擎类的应用中，用来从某个字段中检索特别的关键字。目前只有MyISAM引擎支持。</li>
+<li>全文索引(Full-text Indexes)—全文索引用在 MySQL 的全文搜索中。通常这种索引被用在搜索引擎类的应用中，用来从某个字段中检索特别的关键字。目前只有MyISAM引擎支持。</li>
 </ul>
 <p>B-Tree类型的索引可以用于表达式中列的比较，如&gt;、&gt;=、&lt;、&lt;=或BETWEEN运算符。这种类型的索引也可以用在LIKE、IN、IS NULL等的比较中。当然，在某些场景下，MySQL并不会使用索引，如NOT IN、IS NOT NULL,、LIKE ‘%sql%’ 等。</p>
 <h3 id="空间索引(Spacial_Indexes)(R-tree)">空间索引(Spacial Indexes)(R-tree)</h3><p>只有MyISAM存储引擎才支持空间索引。它就像B-Tree索引一样，但是它并不仅仅遵循从做到右的顺序。空间索引仅仅被用在某些特殊的场景中，如MySQL GIS functions。</p>
@@ -295,7 +295,7 @@ B-Tree类型的索引
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/30/渗透测试必备－Firefox全套渗透装/" rel="prev">渗透测试必备－Firefox全套渗透装</a>
+              <a href="/2015/09/30/渗透测试必备－Firefox全套渗透装/" rel="prev">渗透测试必备－Firefox 全套渗透装</a>
             
           </div>
 
@@ -381,7 +381,7 @@ B-Tree类型的索引
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">25</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
