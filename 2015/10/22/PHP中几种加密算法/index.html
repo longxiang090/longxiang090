@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="javascript,js,json,parse,stringify," />
+  <meta name="keywords" content="php,加密," />
 
 
 
@@ -39,46 +39,25 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="stringify() 把一个对象、数组等解析成字符串格式var obj = {a:1,b:2,c:3};
-json.stringify(obj);
-
-结果：
-&apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&apos;
-parse() 把一个字符串解析成 json 对象var str = &apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&apos;;
-json.parse(str);
-
-结果：
-{a:1,b:2,c:3}
-未作更深">
+<meta name="description" content="对于网站的登录验证 token 以及 app 的传输的，加密是其安全不可或缺的部分。下面是对 PHP 的几种常见加密方式作下简介。
+MD5() 加密函数使用 RSA 数据安全，算法为单向加密不可逆不能解密，网上的 MD5 解密是一定几率撞碰出来的。MD5() 生成16位报文摘要（乱码没搞明白）和32位的算法如下：
+// 生成 32 位
+echo md5(&apos;woolong&apos;, false); //">
 <meta property="og:type" content="article">
-<meta property="og:title" content="json.stringify() 和 json.parse()">
-<meta property="og:url" content="http://yoursite.com/2015/10/07/json-stringify-和-json-parse/index.html">
+<meta property="og:title" content="PHP中几种加密算法">
+<meta property="og:url" content="http://yoursite.com/2015/10/22/PHP中几种加密算法/index.html">
 <meta property="og:site_name" content="WooLong's Notes">
-<meta property="og:description" content="stringify() 把一个对象、数组等解析成字符串格式var obj = {a:1,b:2,c:3};
-json.stringify(obj);
-
-结果：
-&apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&apos;
-parse() 把一个字符串解析成 json 对象var str = &apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&apos;;
-json.parse(str);
-
-结果：
-{a:1,b:2,c:3}
-未作更深">
-<meta property="og:updated_time" content="2015-10-07T15:37:48.000Z">
+<meta property="og:description" content="对于网站的登录验证 token 以及 app 的传输的，加密是其安全不可或缺的部分。下面是对 PHP 的几种常见加密方式作下简介。
+MD5() 加密函数使用 RSA 数据安全，算法为单向加密不可逆不能解密，网上的 MD5 解密是一定几率撞碰出来的。MD5() 生成16位报文摘要（乱码没搞明白）和32位的算法如下：
+// 生成 32 位
+echo md5(&apos;woolong&apos;, false); //">
+<meta property="og:updated_time" content="2015-10-27T16:29:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="json.stringify() 和 json.parse()">
-<meta name="twitter:description" content="stringify() 把一个对象、数组等解析成字符串格式var obj = {a:1,b:2,c:3};
-json.stringify(obj);
-
-结果：
-&apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&apos;
-parse() 把一个字符串解析成 json 对象var str = &apos;{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}&apos;;
-json.parse(str);
-
-结果：
-{a:1,b:2,c:3}
-未作更深">
+<meta name="twitter:title" content="PHP中几种加密算法">
+<meta name="twitter:description" content="对于网站的登录验证 token 以及 app 的传输的，加密是其安全不可或缺的部分。下面是对 PHP 的几种常见加密方式作下简介。
+MD5() 加密函数使用 RSA 数据安全，算法为单向加密不可逆不能解密，网上的 MD5 解密是一定几率撞碰出来的。MD5() 生成16位报文摘要（乱码没搞明白）和32位的算法如下：
+// 生成 32 位
+echo md5(&apos;woolong&apos;, false); //">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -88,7 +67,7 @@ json.parse(str);
   };
 </script>
 
-  <title> json.stringify() 和 json.parse() | WooLong's Notes </title>
+  <title> PHP中几种加密算法 | WooLong's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -234,7 +213,7 @@ json.parse(str);
           
           
             
-              json.stringify() 和 json.parse()
+              PHP中几种加密算法
             
           
         </h1>
@@ -243,34 +222,19 @@ json.parse(str);
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-07T23:24:43+08:00" content="2015-10-07">
-            2015-10-07
+          <time itemprop="dateCreated" datetime="2015-10-22T11:33:46+08:00" content="2015-10-22">
+            2015-10-22
           </time>
         </span>
 
-        
-          <span class="post-category" >
-            &nbsp; | &nbsp; 分类于
-            
-              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/javascript/" itemprop="url" rel="index">
-                  <span itemprop="name">javascript</span>
-                </a>
-              </span>
-
-              
-              
-
-            
-          </span>
         
 
         
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/07/json-stringify-和-json-parse/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/07/json-stringify-和-json-parse/" itemprop="commentsCount"></span>
+              <a href="/2015/10/22/PHP中几种加密算法/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/22/PHP中几种加密算法/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -284,18 +248,34 @@ json.parse(str);
       
 
       
-        <span itemprop="articleBody"><h4 id="stringify()_把一个对象、数组等解析成字符串格式">stringify() 把一个对象、数组等解析成字符串格式</h4><pre><code><span class="variable"><span class="keyword">var</span> obj</span> = {a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>};
-json.stringify(obj);
-
-结果：
-'{<span class="string">"a"</span>:<span class="number">1</span>,<span class="string">"b"</span>:<span class="number">2</span>,<span class="string">"c"</span>:<span class="number">3</span>}'
-</code></pre><h4 id="parse()_把一个字符串解析成_json_对象">parse() 把一个字符串解析成 json 对象</h4><pre><code><span class="variable"><span class="keyword">var</span> str</span> = '{<span class="string">"a"</span>:<span class="number">1</span>,<span class="string">"b"</span>:<span class="number">2</span>,<span class="string">"c"</span>:<span class="number">3</span>}';
-json.parse(str);
-
-结果：
-{a:<span class="number">1</span>,b:<span class="number">2</span>,c:<span class="number">3</span>}
-</code></pre><p>未作更深的研究，以后有时间在补充。</p>
-</span>
+        <span itemprop="articleBody"><p>对于网站的登录验证 token 以及 app 的传输的，加密是其安全不可或缺的部分。下面是对 PHP 的几种常见加密方式作下简介。</p>
+<h3 id="MD5()_加密">MD5() 加密</h3><p>函数使用 RSA 数据安全，算法为单向加密不可逆不能解密，网上的 MD5 解密是一定几率撞碰出来的。MD5() 生成16位报文摘要（乱码没搞明白）和32位的算法如下：</p>
+<pre><code><span class="comment">// 生成 32 位</span>
+<span class="function">echo <span class="title">md5</span><span class="params">(<span class="string">'woolong'</span>, <span class="keyword">false</span>)</span></span>; <span class="comment">// ps: 不加参数 false 也可以，默认为 false </span>
+    ------&gt; <span class="number">82</span>ee8b1f012bc0258c00c13b42ab5452
+<span class="comment">// 生成 16 位</span>
+<span class="function">echo <span class="title">md5</span><span class="params">(<span class="string">'woolong'</span>, <span class="keyword">true</span>)</span></span>; <span class="comment">// ps: 乱码没看明白</span>
+    ------&gt; ゐ�+ﾀ%�ﾁ;BｫTR
+</code></pre><h3 id="Crypt()_加密">Crypt() 加密</h3><p>将字符串用 UNIX 的标准加密 DES 模块加密。这是单向的加密函数，无法解密。语法格式：　crypt(str,salt);</p>
+<pre><code>第一种方式：
+crypt(<span class="string">'woolong'</span>); <span class="regexp">//</span> 不加盐值，每次刷新都会变。
+    -----&gt; <span class="variable">$1</span><span class="variable">$0jvrmTvG</span><span class="variable">$UHwpKRa54q</span>/<span class="constant">CSw2sC25u4.</span> <span class="comment">## ps: 第二个$到第三个$之间的字符是PHP生成的8位盐值，每次刷新都会变。</span>
+crypt(<span class="string">'woolong'</span>, <span class="string">'1234'</span>); <span class="regexp">//</span>加盐值，每次刷新不会变，生成<span class="number">12</span>位加密串
+    -----&gt; <span class="number">12</span>rVj5JueNQcE  <span class="comment">## ps: 这种写法的盐值最多四位，大于四位会截取前四位作为盐值。</span>
+crypt(<span class="string">'woolong'</span>, <span class="string">'$1$12345678$'</span>); <span class="regexp">//</span>加盐值，每次刷新不会变，生成<span class="number">22</span>位加密串
+    -----&gt; <span class="variable">$1</span><span class="variable">$12345678</span><span class="variable">$ELt3kF3kOkIQ2YHEW8JfV0</span> <span class="comment">## ps: 这种写法的盐值最多八位，大于八位会截取前八位作为盐值。</span>
+</code></pre><h3 id="Sha1()_加密">Sha1() 加密</h3><p>跟 MD5 加密算法很像， 但是 sha1() 默认情况下返回40个字符串，用法个 MD5() 一样。</p>
+<pre><code>sha1(<span class="string">'woolong'</span>, <span class="keyword">false</span>); <span class="regexp">//</span> <span class="symbol">ps:</span> 不加参数 <span class="keyword">false</span> 也可以，默认为 <span class="keyword">false</span>
+    -------&gt; <span class="number">1</span>c3100b510f2c82a23b1bfafdf63faa6902eeb3f
+sha1(<span class="string">'woolong'</span>, <span class="keyword">true</span>); <span class="regexp">//</span> ps 乱码没懂
+    -------&gt; <span class="number">1</span>�蛉*<span class="comment">#笨c�.�?</span>
+</code></pre><h3 id="URL_编码加密">URL 编码加密</h3><p>主要是对 URL 加密，这是双向加密，urlencode() 加密， urldecode() 解密。</p>
+<pre><code>urlencode('http<span class="envvar">%3A%</span><span class="number">2</span>F<span class="envvar">%2Fphping.net%</span><span class="number">2</span>F2015<span class="envvar">%2F10%</span><span class="number">2</span>F13<span class="envvar">%2FGit%</span>E6<span class="envvar">%98%</span>BE<span class="envvar">%E7%</span>A4<span class="envvar">%BA%</span>E6<span class="envvar">%BC%</span><span class="number">82</span><span class="envvar">%E4%</span>BA<span class="envvar">%AE%</span>E6<span class="envvar">%97%</span>A5<span class="envvar">%E5%</span>BF<span class="envvar">%97%</span>E7<span class="envvar">%9A%</span><span class="number">84</span><span class="envvar">%E5%</span>B0<span class="envvar">%8F%</span>E6<span class="envvar">%8A%</span><span class="number">80</span><span class="envvar">%E5%</span>B7<span class="envvar">%A7%</span><span class="number">2</span>F');
+urldecode('http://phping.<span class="winutils">net</span>/<span class="number">2015</span>/<span class="number">10</span>/<span class="number">13</span>/Git显示漂亮日志的小技巧/');
+</code></pre><h3 id="Base64_编码加密">Base64 编码加密</h3><p>双向加密，base64_encode() 加密，base64_decode()解密。</p>
+<pre><code>base64_encode<span class="list">('双向加密，base64_encode<span class="list">()</span> 加密，base64_decode<span class="list">()</span>解密。--woolong')</span><span class="comment">;</span>
+base64_decode<span class="list">('<span class="number">5</span>Y+M5ZCR5Yqg5a+G77yMYmFzZTY0X2VuY29kZSgpIOWKoOWvhu+8jGJhc2U2NF9kZWNvZGUoKeino+WvhuOAgi0td29vbG9uZw==')</span><span class="comment">;</span>
+</code></pre></span>
       
     </div>
 
@@ -303,15 +283,9 @@ json.parse(str);
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag">#javascript</a>
+            <a href="/tags/php/" rel="tag">#php</a>
           
-            <a href="/tags/js/" rel="tag">#js</a>
-          
-            <a href="/tags/json/" rel="tag">#json</a>
-          
-            <a href="/tags/parse/" rel="tag">#parse</a>
-          
-            <a href="/tags/stringify/" rel="tag">#stringify</a>
+            <a href="/tags/加密/" rel="tag">#加密</a>
           
         </div>
       
@@ -320,13 +294,11 @@ json.parse(str);
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/09/PHP程序员的技术成长规划/" rel="prev">PHP程序员的技术成长规划（转）</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/30/渗透测试必备－Firefox全套渗透装/" rel="next">渗透测试必备－Firefox全套渗透装</a>
+              <a href="/2015/10/13/Git显示漂亮日志的小技巧/" rel="next">Git显示漂亮日志的小技巧</a>
             
           </div>
         </div>
@@ -351,8 +323,8 @@ json.parse(str);
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/07/json-stringify-和-json-parse/"
-                   data-title="json.stringify() 和 json.parse()" data-url="http://yoursite.com/2015/10/07/json-stringify-和-json-parse/">
+              <div class="ds-thread" data-thread-key="2015/10/22/PHP中几种加密算法/"
+                   data-title="PHP中几种加密算法" data-url="http://yoursite.com/2015/10/22/PHP中几种加密算法/">
               </div>
             
           </div>
@@ -466,7 +438,7 @@ json.parse(str);
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#stringify()_把一个对象、数组等解析成字符串格式"><span class="nav-number">1.</span> <span class="nav-text">stringify() 把一个对象、数组等解析成字符串格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parse()_把一个字符串解析成_json_对象"><span class="nav-number">2.</span> <span class="nav-text">parse() 把一个字符串解析成 json 对象</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MD5()_加密"><span class="nav-number">1.</span> <span class="nav-text">MD5() 加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypt()_加密"><span class="nav-number">2.</span> <span class="nav-text">Crypt() 加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sha1()_加密"><span class="nav-number">3.</span> <span class="nav-text">Sha1() 加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URL_编码加密"><span class="nav-number">4.</span> <span class="nav-text">URL 编码加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Base64_编码加密"><span class="nav-number">5.</span> <span class="nav-text">Base64 编码加密</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
