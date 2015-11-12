@@ -1,0 +1,809 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="安全," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WooLong's Notes" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Information GatheringThere are many places where you can start gathering information about your target. Information could include:
+
+Contact details and personal information for social engineering atta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web Vulnerabilities Explained">
+<meta property="og:url" content="http://yoursite.com/2015/11/03/Web-Vulnerabilities-Explained/index.html">
+<meta property="og:site_name" content="WooLong's Notes">
+<meta property="og:description" content="Information GatheringThere are many places where you can start gathering information about your target. Information could include:
+
+Contact details and personal information for social engineering atta">
+<meta property="og:updated_time" content="2015-11-12T18:07:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web Vulnerabilities Explained">
+<meta name="twitter:description" content="Information GatheringThere are many places where you can start gathering information about your target. Information could include:
+
+Contact details and personal information for social engineering atta">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Web Vulnerabilities Explained | WooLong's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?cb6711aa9bb7ea8122d5f52e37486f37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">WooLong's Notes</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '7gL1sz78h5rpimSPJwdw','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Web Vulnerabilities Explained
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-03T15:25:45+08:00" content="2015-11-03">
+            2015-11-03
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/安全/" itemprop="url" rel="index">
+                  <span itemprop="name">安全</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/03/Web-Vulnerabilities-Explained/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/03/Web-Vulnerabilities-Explained/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="Information_Gathering">Information Gathering</h2><p>There are many places where you can start gathering information about your target. Information could include:</p>
+<ul>
+<li>Contact details and personal information for social engineering attacks</li>
+<li>Metafiles for the web application meant for crawlers and robots which could pinpoint forbidden directories and files in the website, amongst other things</li>
+<li>Examining the application entry/handover points</li>
+<li>Analysis of the application’s error codes which may reveal sensitive or information that is not supposed to be shown which can indicate the technologies and products used by it so you can search for vulnerabilitive online for the exact technology the app uses when commencing an attack</li>
+<li>Search Engine Discovery or Reconnaissance to find existing vulnerabilities of the application that may be published online.</li>
+<li>Mapping the application’s paths can help you identify each area in the website that should be investigated for vulnerabilities</li>
+<li>Getting the fingerprint of the web server to get acquainted of the version and type of web server you are dealing with so you can determine known vulnerabilities and exploit them</li>
+</ul>
+<h3 id="Search_Engine_Discovery">Search Engine Discovery</h3><p>If you are thinking on launching a social engineering attack to gain access you can start with browsing the files that search engines have indexed.</p>
+<p>You are search Google for specific file/extensions located in a particular website. Here are some examples you can try out:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">filetype:</span>txt <span class="string">inurl:</span>infosecinstitute.com</span><br><span class="line"><span class="string">filetype:</span>pdf <span class="string">inurl:</span>infosecinstitute.com</span><br><span class="line"><span class="string">filetype:</span>doc <span class="string">inurl:</span>infosecinstitute.com</span><br></pre></td></tr></table></figure>
+<h3 id="Metafiles">Metafiles</h3><p>You can check the application endpoints that the owners wanted to hide from searh engines in order to determine what they value enough and what they are trying to protect from unwary eyes. One such file is robots.txt, which is usually placed in root of domain or a subdomain.</p>
+<h3 id="Testing_error_codes">Testing error codes</h3><p>Most websites disallow access to entire directories and only allow certain files. In PHP, this can be done through adding Options All -Indexes in your root’s .htaccess file. You can use this to see what kind of 403 Forbidden errors ths server returns.</p>
+<p>Many websites create a custom 404 page and they prohibit directory listing. However, they do not add a custom 403 HTTP status code page that can lead to infomation about the server being revealed.</p>
+<p>An important habit is to check the headers the server returns when you send an HTTP request. In cURL this could be done using ths following command: <code>curl -v websiteURLhere</code></p>
+<h3 id="Things_typically_retrieved_during_the_Information_Gathering_phase">Things typically retrieved during the Information Gathering phase</h3><p>In the first step of the information-gathering process, the attacker would try to get hold of data about the <strong>infrastructure-in-use</strong> and the <strong>people-in-use</strong>. The former could be used for discovering new, easier targets and shared resources while the latter could be used to launch brute-force attacks on the ruuning services and initiate social engineering and spearphishing attacks. It is also possible for the attackers to look for different kinds of information leaks, investigations and analyses.</p>
+<p>Fetching as much data as possible to see what could be retrieved is a necessity in penetration testing, but web developers could also perform this task to see whether their system is not revealing too much data about itself.</p>
+<p>Your website has to be designed usiing good exception handling/coding standards. In case there are flaws in that field, attackers can type malformed queries to the application you are creating or examing and use the displayed errors to learn more about the backend behind the web application (such as table and column names,particular code snippets which could reveal flaws) or the technologies and products that the web application relies on.</p>
+<p>The attacker might also try to get to know the technologies and products behind the web application through examining the headers in order to understand what types of vulnerabilities he could exploit.</p>
+<p>The attacker can also check the mail headers of emails received from the target, which can reveal the application they were sent from, the IP address and the host of the sending entity.</p>
+<p>They can check search engines for subdomains and link them to their respective IP addresses to broaden their attack possibilities with a tool such as <strong><a href="http://www.edge-security.com/theharvester.php" target="_blank" rel="external">theHarvester</a></strong>.</p>
+<p>Email addresses can be automatically collected using tools like theHarvester.</p>
+<p>Once the attackers found emails, names or other information related to people involved with a target they can head over to the social media to find personal information about those people, which can help them in social engineering attacks. Such sites, like LinkedIn, contain data about the person’s current job, his past jobs, education, job description amongst other data, which could make for one highly targeted spear-phishing attack and point of entry.</p>
+<p>Metadat (data about data) could be extracted from publicly available resources from your web application to gain more information about it.</p>
+<p>Metadata in images (EXIF or Exchangeable Image File Format which includes the file extensions .jpg amongst orthers) can reveal the GPS coordinates of the people in the photo at the time when what photo was taken (where and when they were), the type of camera and its serial number with possibly all details about the camera. There are programs that can display that metadata such as Photoshop as well as quick methods available online to access that metadata (such as <strong><a href="http://regex.info/exif.cgi" target="_blank" rel="external">http://regex.info/exif.cgi</a></strong>).</p>
+<p>Documents found online (such as .pdf, .doc, .ppt, .xls) also contain metadata and a tool called <strong>Metagoofil</strong> could be used to view it. It can reveal machine usernames, worker names, server names, paths (by showing the path where the file was located at a given point), software versions and dates. Those bits of infomation could be used for targeted social engineering attacks, finding existing vulnerabilities in the used software, amongst other purposes.</p>
+<p>Cyber-criminals can also run automated software that would check in which popular websites a user is registered to enable even more personal and complicated spear-phishing attacks, attempt credential stuffing/launch brute-force attacks, etc.</p>
+<p>EXIF metadata from images can also be removed, even with online tools such as <strong><a href="http://www.verexif.com/en/index.php" target="_blank" rel="external">http://www.verexif.com/en/index.php</a></strong>.</p>
+<h2 id="Clickjacking">Clickjacking</h2><p>Clickjacking is an attack in which the attacker uses transparent/opaque layers to trick the users that they are clicking on one button whereas they are actually clicking on a different button possibly on a different website.</p>
+<p>To prevent such attacks, you should set in your response headers X-Frame-Options to either deny, SAMEORIGIN or whitelist only particular websites through ALLOW-FROM <urls>.</urls></p>
+<p>This is a form of UI redressing that penetration testers should ensure is not possible and web developers remedy through the use of the X-Frame-Options header.</p>
+<h2 id="Forced_Browsing">Forced Browsing</h2><p>Forced browsing is a vulnerability in which the attacker can access resources that are not linked to by the application but are still accessible if you know how to find them. For example, you can just change the URL in some predicatable manner and see a resource of another person. This technique allows you to brute-force different combinations and come up with resources that you are interested in.</p>
+<p>Sometimes, what you have to change is even easier - there would just be a number that you would have to keep incrementing/decrementing or there would be a name you would have to guess(there are many common names out there).</p>
+<p>Automated directory surfing is possible. The automated program can open different directories and if they exist and are accessible - it can record that so that the attacker can check them out later. The first thing that you need to do is prevent users from browsing directories and having a listing with all files/subdirectories that exist there. In PHP, you can do that by creating an .htaccess file in your web root and add the following line to it:</p>
+<h3 id="Options_All_-Indexes">Options All -Indexes</h3><p>pass……</p>
+<h2 id="Unvalidated_Redirects_and_Forwards">Unvalidated Redirects and Forwards</h2><p>If you have a web application that takes a URL as a parameter and redirects to it without proper validation, then an attacker can give a link to your website. However, that link would actually redirect to another website, which may be malicious in terms of prompting users to install malware or it could be a phishing website looking exactly as yours so the attacker can get the user’s credentials or similar sensitive data.</p>
+<p>Here is an example:<a href="http://www.example.com/out?redirect=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FADD" target="_blank" rel="external">http://www.example.com/out?redirect=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FADD</a></p>
+<p>An unwary user may not see that this will actually take him to <a href="http://www.en.wikipedia.org/wiki/ADD" target="_blank" rel="external">http://www.en.wikipedia.org/wiki/ADD</a> instead of the given website and attackers can exploit this.</p>
+<p>To remedy such a situation avoid redirects and forwards. If they cannot be avoided, do not use user parameters (especially GET parameters which are located in the URL) when determining the destination website. For example, this can be done in PHP simply by adding a location header before a response is sent to the user and you can hardcode the values depending on your app’s logic redirection requirements.</p>
+<p>If both are impossible, then you have to ensure the given value is valid and authorized for that particular user.</p>
+<p>Particular measures you can implement immediately are:</p>
+<ul>
+<li>Create a whitelist of trustworthy websites for which user redirection will be allowed (like an array or database table with hosts).</li>
+<li>Before redirecting, inform the user to which website they are going to be redirected to and allow them to confirm their intention of goning there. If they do not confirm - do not redirect them.</li>
+</ul>
+<h2 id="Credential_Stuffing(撞库)">Credential Stuffing(撞库)</h2><p>This attack occurs when there are already leaked accounts and passwords in the Internet or the attacker has acquired them himself from a website he managed to crack and get account/password combinations from that website’s database. Credential stuffing or accunt takeover is the act of using stolen credentials to try to log in to different websites with them and completely control that account. Usually, the attacker would use an account checker that will promptly test many websites if the credentials are valid there. Web automation toolkits such as PhantomJS could be used to create such account checkers and powerful ones cost as little as 100$. Typically, successful logins are between 0.1% and 0.2% of the total login attempts.</p>
+<p>There is no proper way to prevent such sa attackers can gain credentials from a third-party website and use them to login as users in your website. One thing you can do is provide some sort of UI informing the users that using the same password  in many websites is dangerous when they are in the registration process.</p>
+<p>Another thing you can do to mitigate such an attack is look out for credential leaks of third-party websites, obtain the data that leaked and determine whether the password associated with easy leaked email address in the third-party website is the same as the password in your website. If so, you can lock their account, force them to reset their passwords or undertake any other action that can help users. Facebook has been following this procedure as you can read in <a href="http://www.forves.com/site/erikkani/2015/11/01/the-walking-dead-season-6-episode-4-review" target="_blank" rel="external">Amit Chowedhy’s article for Forbes</a>.</p>
+<h2 id="Path_Traversal">Path Traversal</h2><p>This vulnerability can be seen in websites that receive input from the user and use it in a path to access files in the file system. It allows the attacker to access files and/or directories that are restricted or are designed not to be seen by website visitors.</p>
+<p>You can see the example in the files/path-traversal folder.</p>
+<p>If we have some anchors that load different files on our website:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"?page=about.html"</span>&gt;</span>About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"?securePage=about"</span>&gt;</span>Better About<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Then, a completely insecure way of loading the file would be something like this:<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">'page'</span>])) &#123;</span><br><span class="line">	<span class="keyword">include_once</span>(<span class="variable">$_GET</span>[<span class="string">'page'</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>With this, the user could load a malicious remote file on your website (code injection) and he could traverse all your directories and access their files. This is because the files will be opened by the back-end even if you are not allowing users to open .htaccess, .ini or other files the server will have access to them in most cases.</p>
+<p>A better way to load files through a user-provided parameter is to whitelist particular files that could be accessed by your application. If you are only testing the application, this is a recommendation you ought to give the people-in-charge if they are allowing third-party files. You can even force the files to have a particular file extension by not including the file extension  in the parameter. In such cases, replacing all . and / characters is not really necessary but we are showing you how you can use this vector of protection against path traversal as well.</p>
+<p>Path traversal is a way to get access to every file existing on the system and it is a big security flaw if found by penetration testers.</p>
+<h2 id="Code_Injection">Code Injection</h2><p>If a penetration tester or an attacker has found a code injection vulnerability then he has successfully owned a website so extra caution should be token by developers not to allow this.</p>
+<p>Code injection can happen when it is possible to inject programming code that will be executed by the targeted application as its own. It exploits improper handling of the user input and its validation.</p>
+<p>To fix this, we have to validate the input. It turns out we want to allow the user to write one number and either subtract, add, multiply, divide it by another number or find the modulus. Thus, we only have to use a regular expression that searches for this exact pattern and if it does not match - we should not evaluate the user’s expression. It would be a good idea to check the size of the input before examining the input but we did not do this in this sample scenario.</p>
+<h2 id="OS_Command_Injection">OS Command Injection</h2><p>OS Command Injection is a type of injection that is possible when your web application uses user input to form the string that is going to be executed as a system level command.</p>
+<h2 id="Cross-Site_Request_Forgery">Cross-Site Request Forgery</h2><p>CSRF is an attack vector where the user carries out undesired actions in a web application they are currently logged in. For example, an attacker on some site can add an image linking to a particular URL of another web application with GET parameters that perform som action in that web application only if the user/victim is logged in there. By adding the image, the attacker ensures the user’s browser will make a request to the other web application and if the user is logged in there - he will carry out that action.</p>
+<h2 id="XSS">XSS</h2><p>XSS is a code injection attack in which a malicious user manages to execute malicious JavaScript on the browser of another user. The malicious attacker does not aim to target a specific user but he exploits vulnerability present in a specific website and all potential users of that website could be his victims as the malicious JavaScript code is treated as a legitimate part of that website.</p>
+<h3 id="Persistent_XSS">Persistent XSS</h3><p>Persistent XSS occurs when the attacker manages to persist his malicious JavaScript code in the server. This usually means that he uses one of the website’s forms to add malicious input to the website’s database. Once another user arrives on a page that retrieves the input of the attacker from the database and shows it - the user’s browser executes that code and he potentially becomes a victim. Below is a chart illustrating a sample Persistent XSS attack.</p>
+<p>When the victim is redirected to the attacker’s website, the attacker’s website can save the cookie of the user and use it to gain access to his account with methods such as session hijacking.<br><br></p>
+<h3 id="Reflected_XSS">Reflected XSS</h3><p>Reflected XSS is a type of XSS that does not necessarily involve persistence (database). The attacker sends a specially crafted URL in some website in a social media, other website, email, or in another way and once the user opens that link the vulnerable website executes additional malicious JavaScript along with the legitimate one. Below is a graphic illustrating how Reflected XSS works.</p>
+<p>You can see the difference here is that only users who know about and open the malicious URL will become victims. No person would be able to be targeted by the attacker by just browsing through the website as usual. Reflected XSS can be carried out for XSS vulnerabilities originating when dealing with POST requests as well - in that case the attacker would have to add a form which will make a request to a third-party website and exploit its susceptibility to the vulnerability.</p>
+<p>In persistent XSS, the attacker usually do not know who will catch the bait whereas in Reflected XSS the attacker can both throw baits to the general public (by posting the crafted URL on popular public websites) or target specific people by sending the links just to them so it is good to know with which case you are dealing with to find out the attacker’s goals.<br><br></p>
+<h3 id="DOM-Based_XSS">DOM-Based XSS</h3><p>DOM-based XSS differs from Reflected and Persister XSS because the malicious JavaScript code does not actually come from some persistent storage and it does not execute as the page loads. Rather, the page loads and then vulnerability in the targeted website’s JavaScript logic executes the malicious JavaScript code that opens possibilities for new vectors of attacks.</p>
+<p>This means that not only the back-end of your applications should be controlled for XSS vulnerabilities (unsanitized input) but also your front-end logic, your application’s JavaScript code, if you plan on working with user input there.</p>
+<h2 id="Web_Parameter_Tampering">Web Parameter Tampering</h2><p>This attack takes advantage of the possibility to tamper directly with the DOM in your browser. If you use user input to produce a particular action when you should be getting that data from the back-end/database malicious users can tamper with your business logic.</p>
+<p>You can press F12, click on Inspect Element or open your browser’s developer tools in another way, which would look something similar to the picture below. In it, you can change any element - even inputs and hidden inputs which will be sent to the back-end with the modified value if you change them and submit a form on a wesite.</p>
+<h2 id="SQL_Injection">SQL Injection</h2><p>pass ……</p>
+<h2 id="Denial_of_Service">Denial of Service</h2><h3 id="Programming_Vulnerabilities">Programming Vulnerabilities</h3><p>Denial of Service (known as DoS) is attack in which the attackers are attempting to overload the server so that the resource (website) is no accessible to the legitimate users. There are many ways to do it - you can launch an enormous amount of requests for the website/resource, you can exploit a programming flaw that will eat up the server’s resources amongst other methods.</p>
+<p>One common way to make the website is unavailable is abuse user input used in loop counters. If you know the application is using your input as a counter in a loop to show you some repeated output you can give it a large value and the server will be busy processing your request rather than serving other users.<br><br></p>
+<h3 id="DoS_against_customer_accounts">DoS against customer accounts</h3><p>Another way to cause a denial of service is to launch multiple login attempts for different accounts. Most websites lock the account for a specific period if there are too many login attempts and this can cause DoS for real customers. This problem is exacerbated when the login system does not have a APTCHA to combat automatic requests and when the user accounts are predictable (when the users do not choose their username but are assigned a username from the server). Besides implementing a CAPTCHA and allowing users to name their accounts you can enforce an IP ban address and the user from another - the user would still be able to log in. There is a balance that has to be achieved between security and the ease of doing business when considering which of the 3 security measures to implement that depends on the circumstances surrounding the application.<br><br></p>
+<h3 id="ReDoS_(Regular_Expression_Denial_of_Service)">ReDoS (Regular Expression Denial of Service)</h3><p>Regular expressions help us validate, escape and parse inputs throughout our applications. They are tuned up pretty well in terms of performance but there are certain types of regular expression known as “Evil Regexes” which can eat up the server’s computation times when the input’s length increases which makes them very effective for DoS attacks. Evil regexes make it possible for the application’s logic to be stuck on specially crafted input and that is why they are called evil. A regex is considered evil if it contains a grouping with repetition which itself contains another repetition of/and overlapping alternation.</p>
+<p>Some of the ways to protect against ReDoS attacks are to maintain regex hygience, avoid nesting repetitions within other repetitions and control the user input. If you have an evil regex - add a maximum length for the user input and ensure to check the input with the regex only if it is within a certain allowed length limit. There are some and they end up used against you: <a href="http://stackoverflow.com/questions/12841970/how-can-i-recognize-an-evil-regex" target="_blank" rel="external">http://stackoverflow.com/questions/12841970/how-can-i-recognize-an-evil-regex</a>.</p>
+<h2 id="Man-in-the-middle_attack_(MITM)">Man-in-the-middle attack (MITM)</h2><p>There are many sites out there whose client credentitals are vulnerable when it comes to man-in-the-middle attacks. When connected to a public Wi-Fi, there could easily be someone at that restaurant sniffting the incoming traffic. Here is a sample using Wireshark.</p>
+<p>Thus, you should always protect your users by encrypting their client-server communication (using HTTPS).</p>
+<h2 id="Session_Hijacking">Session Hijacking</h2><p>If an attacker manages to gain access to the cookie containing your session identifier in a particular website through another attack such as XSS or the one we just discussed (MITM) he could log in the sense that it does not apply any of the defense machanisms mentioned below (such as performing secondary checks to establish the user’s identify through his IP address or another secondary identifier), the attacker could just submit a HTTP request to the website with a fake session cookie that has your session identifier in the cookie’s value and appear logged in as yourself.</p>
+<h2 id="Execution_After_Redirect_(EAR)">Execution After Redirect (EAR)</h2><p>If you have a script, which checks if the user is logged in, redirects him to the login page if he is not. It is possible that your application is vulnerable to EAR attacks. This occurs when the attacker ignores your redirects and gets the output that follows the redirect. If you rely on the redirect and execute application logic after it, your users could ignore the redirect with a tool such as Burp Proxy and see the content that is supposed to be only for authorized users - such as sensitive documents.</p>
+<p>To combat this, you would have to stop your application from processing any further code after the redirect has been initiated.</p>
+<h2 id="Content_Spoofing">Content Spoofing</h2><p>Content Spoofing is closely tied to XSS. Attackers use content spooling when they exploit an injection vulnerability to add seemingly legitimate content on the page while the content usually originates from some input like a GET parameter. When the input is being escaped and XSS is prevented, content spoofing is still possible but in the form of text, (attackers could inject malicious text in a parameter and send the URL to unknowing users so that the users can take wrong decisions).</p>
+<p>If your system accepts a GET parameter called error which serves to hold an error message that will be shown in the UI then a malicious person can start sending out links with a crafted value of the error parameter. If your business is a bank, he could change the error message to say that the Bank is bankrupting then this will be shown in the UI so users will possibly believe this and start attempting to withdraw all their cash.</p>
+<p>If you are a penetration tester, you ought to be looking for such GET parameters and if you are developing the website, you should be looking for ways to make them as harmless as possible.</p>
+<h2 id="Information_Leakage">Information Leakage</h2><p>Information Leakage can take place when the application you are examining or creating shows to users’ sensitive data like the technical details of the web application, data about its users or its environment. This data can be utilized by attackers targeting it in order to ease them in compromising the application even further.</p>
+<p>A common mistake here that developers make is to put a web application on a live hosting while their application is essentially in development mode instead of production mode and potentially too much information in that way.</p>
+<h2 id="Authentication_vulnerabilities_and_flaws">Authentication vulnerabilities and flaws</h2><p>It can be detrimental for the application you are examining or developing and its users if you do not enforce some minimum length on your user’s passwords. If you do not take any measures, they could just create accounts with empty passwords and you can obviously spot the problems associated with this action. It makes brute-forcing a piece of cake as usernames are either public or easily guessable.</p>
+<p>There are different implementations as to what the minimum password length should be. This varies per site but 6, 8 or 12 minimum characters are used most commonly.</p>
+<h2 id="Input_Validation_Flaws">Input Validation Flaws</h2><h3 id="Regexes_that_are_too_allowing">Regexes that are too allowing</h3><p>A common mistake when validating input is to produce a regex which matches valid input but also allows invalid one and do not notice it. This would attackers to insert malicious or arbitrary input and make problems within your web application.<br><br></p>
+<h3 id="Client-side_validation">Client-side validation</h3><p>If you are validating the user’s input within the client and not within the back-end, because you expect the input is already valid then you are on a very wrong road. Input validation in the client-side can be easily bypassed. For example, users can just remove HTML5 validation attributes from their browser or remove JavaScript code from the page (Google Chrome). Alternatively, they can disable JavaScript at all or use a user agent that is not a real browser (like the command-line cURL we have been using throughout the book).<br><br></p>
+<h3 id="Buffer_overflows">Buffer overflows</h3><p>You should always check the length of the incoming input and stop processing it if you find a suspicious size for an input. In fact, you would not be expecting megabytes in characters for a single surname, would you? PHP can deal with some vulnerable to buffer overflows external programs or have vulneralbe extensions in the language itself. In fact, such vulnerablities get fixed periodically and new ones are found regularly. A buffer is just a region of the physical memory storage that is utilized to store data temporarily until it is moved from one spot to another. A buffer overflow occurs when there is an anomaly where the application overruns the buffer’s boundary and starts overwriting the adjacent memory locations. If a buffer overflow attack is successful, it could allow the attacker to execute arbitrary code on the machine and possibly take over your server.</p>
+<h2 id="Error_handling_vulnerabilities_and_flaws">Error handling vulnerabilities and flaws</h2><h3 id="Retruning_within_a_finally_block">Retruning within a finally block</h3><p>pass<br><br></p>
+<h3 id="Lack_of_error_handling">Lack of error handling</h3><p>Web application should create default views/pages for 404 (File not found), 500 (Internal server error) and other errors/HTTP status codes. Besides boosting the UX it is good security practice because otherwise the application’s container might reveal the stack trace which could pinpoint sensitive information such as the version for that container, information about the used database and so on. For example, if you are using ASP.NET you must define a custom error page because the default framework that is going to be rendered displays the stack trace and other information that is prone to information leakage. If that information about your server, dependencies and database is leaked then an attacker can simply search online for vulnerabilities known for that version of software and launch a successful attack.</p>
+<h2 id="Cryptographic_vulnerabilities">Cryptographic vulnerabilities</h2><h3 id="Weak_or_home-grown_algorithms">Weak or home-grown algorithms</h3><p>A common mistake developers make is to use weak or flawed encrypion/hashing algorithms. For example, many developers use md5 or sha1 as their hashing algorithm of choice. Using a md5-signed SSL certificate is not a good idea as it is vulnerable to numerous attacks such as collision attack through which attackers can create a rogue CA (certificate authority) that could be trusted by some common browsers. Luckily, md5-signed SSL certificates are disappearing from the horizon.</p>
+<p>If you absolutely want to use md5 for sensitive data such as passwords do not do it without a proper unique salt for each password. There exist many websites offering free lookup of md5 and sha1 hashes in large rainbow tables. Rainbow tables are just that - tables which contain the plaintext string and the hashed variation of that string. Let us take one of the existing websites with rainbow tables: hashkiller.co.uk. The website claims it has 43.745 billion decrypted md5 and sha1 hashes in its database. If you do not use a salt (a random string usually prepended to the password), it is highly likely that many of your user’s passwords are in that database and if someone gets access to your database’s contents - he could get their password’s plaintext variation and log in as any user he wants.<br><br></p>
+<h3 id="Insufficient_randomness">Insufficient randomness</h3><p>Functions exposing random generators in PHP such as rand($min, $max) and mt_rand($min, $max) should not be used for cryptographic purposes such as cryptographic keys as they are just not random enough. However, if you just want to display a random popup, search result, page or something like that which is not related to cryptography you should feel free to go ahead and use those random generators. For cryptographic purposes, it would be better to rely on the OS native random generator (such as the /dev/urandom on a Linux machine and the crypto-api on a Windows machine) or a third-party library.<br><br></p>
+<h3 id="Other_cryptographic_issues">Other cryptographic issues</h3><p>Many of the vulnerabilities we discussed within the context of authentication can also be found when dealing with cryptography. It is not a good idea to hardcode in the code or in a configuration file your cryptographic keys, nor is it a good idea to allow too long key aging, store the key in plaintext or put it unencrypted in transit. As we discussed just a few lines above, it is not a good to use random generators with insufficient randomness or use too short cryptographic keys or use weak algorithms.</p>
+<h2 id="General_Security">General Security</h2><h3 id="HTTPOnly_cookies">HTTPOnly cookies</h3><p>pass</p>
+<h2 id="Further_Reading">Further Reading</h2><ul>
+<li><a href="http://resources.infosecinstitute.com/n00bz-ctf-challenge-2-practical-website-hacking/" target="_blank" rel="external">http://resources.infosecinstitute.com/n00bz-ctf-challenge-2-practical-website-hacking/</a></li>
+<li><a href="resources.infosecinstitute.com/mini-course/security-plus-performance-based-questions/">resources.infosecinstitute.com/mini-course/security-plus-performance-based-questions/</a></li>
+<li><a href="http://resources.infosecinstitute.com/" target="_blank" rel="external">http://resources.infosecinstitute.com/</a></li>
+<li><a href="http://www.infosecinstitute.com/courses/ethical_hacking_training.html" target="_blank" rel="external">http://www.infosecinstitute.com/courses/ethical_hacking_training.html</a></li>
+<li><a href="www.eccouncil.org">www.eccouncil.org</a></li>
+</ul>
+<h2 id="原文地址">原文地址</h2><p>原文地址: <a href="https://github.com/tudouya/blogSource/blob/master/attach/Web-Vulnerabilities-Explained.zip" target="_blank" rel="external">https://github.com/tudouya/blogSource/blob/master/attach/Web-Vulnerabilities-Explained.zip</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安全/" rel="tag">#安全</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/22/PHP中几种加密算法/" rel="next">PHP中几种加密算法</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/11/03/Web-Vulnerabilities-Explained/"
+                   data-title="Web Vulnerabilities Explained" data-url="http://yoursite.com/2015/11/03/Web-Vulnerabilities-Explained/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/avatar.jpg" alt="WooLong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">WooLong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/longxiang090" target="_blank">weibo</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.php101.cn" target="_blank">php101</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.phptherightway.com" target="_blank">php之道</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.allitebooks.com" target="_blank">All IT eBooks</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://hungichao.me" target="_blank">hungichao</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Information_Gathering"><span class="nav-number">1.</span> <span class="nav-text">Information Gathering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Search_Engine_Discovery"><span class="nav-number">1.1.</span> <span class="nav-text">Search Engine Discovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metafiles"><span class="nav-number">1.2.</span> <span class="nav-text">Metafiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Testing_error_codes"><span class="nav-number">1.3.</span> <span class="nav-text">Testing error codes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Things_typically_retrieved_during_the_Information_Gathering_phase"><span class="nav-number">1.4.</span> <span class="nav-text">Things typically retrieved during the Information Gathering phase</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clickjacking"><span class="nav-number">2.</span> <span class="nav-text">Clickjacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forced_Browsing"><span class="nav-number">3.</span> <span class="nav-text">Forced Browsing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Options_All_-Indexes"><span class="nav-number">3.1.</span> <span class="nav-text">Options All -Indexes</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unvalidated_Redirects_and_Forwards"><span class="nav-number">4.</span> <span class="nav-text">Unvalidated Redirects and Forwards</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Credential_Stuffing(撞库)"><span class="nav-number">5.</span> <span class="nav-text">Credential Stuffing(撞库)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Path_Traversal"><span class="nav-number">6.</span> <span class="nav-text">Path Traversal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code_Injection"><span class="nav-number">7.</span> <span class="nav-text">Code Injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS_Command_Injection"><span class="nav-number">8.</span> <span class="nav-text">OS Command Injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-Site_Request_Forgery"><span class="nav-number">9.</span> <span class="nav-text">Cross-Site Request Forgery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS"><span class="nav-number">10.</span> <span class="nav-text">XSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Persistent_XSS"><span class="nav-number">10.1.</span> <span class="nav-text">Persistent XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reflected_XSS"><span class="nav-number">10.2.</span> <span class="nav-text">Reflected XSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-Based_XSS"><span class="nav-number">10.3.</span> <span class="nav-text">DOM-Based XSS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web_Parameter_Tampering"><span class="nav-number">11.</span> <span class="nav-text">Web Parameter Tampering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL_Injection"><span class="nav-number">12.</span> <span class="nav-text">SQL Injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Denial_of_Service"><span class="nav-number">13.</span> <span class="nav-text">Denial of Service</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Programming_Vulnerabilities"><span class="nav-number">13.1.</span> <span class="nav-text">Programming Vulnerabilities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DoS_against_customer_accounts"><span class="nav-number">13.2.</span> <span class="nav-text">DoS against customer accounts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReDoS_(Regular_Expression_Denial_of_Service)"><span class="nav-number">13.3.</span> <span class="nav-text">ReDoS (Regular Expression Denial of Service)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Man-in-the-middle_attack_(MITM)"><span class="nav-number">14.</span> <span class="nav-text">Man-in-the-middle attack (MITM)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Session_Hijacking"><span class="nav-number">15.</span> <span class="nav-text">Session Hijacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Execution_After_Redirect_(EAR)"><span class="nav-number">16.</span> <span class="nav-text">Execution After Redirect (EAR)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content_Spoofing"><span class="nav-number">17.</span> <span class="nav-text">Content Spoofing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Information_Leakage"><span class="nav-number">18.</span> <span class="nav-text">Information Leakage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Authentication_vulnerabilities_and_flaws"><span class="nav-number">19.</span> <span class="nav-text">Authentication vulnerabilities and flaws</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input_Validation_Flaws"><span class="nav-number">20.</span> <span class="nav-text">Input Validation Flaws</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Regexes_that_are_too_allowing"><span class="nav-number">20.1.</span> <span class="nav-text">Regexes that are too allowing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Client-side_validation"><span class="nav-number">20.2.</span> <span class="nav-text">Client-side validation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer_overflows"><span class="nav-number">20.3.</span> <span class="nav-text">Buffer overflows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error_handling_vulnerabilities_and_flaws"><span class="nav-number">21.</span> <span class="nav-text">Error handling vulnerabilities and flaws</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Retruning_within_a_finally_block"><span class="nav-number">21.1.</span> <span class="nav-text">Retruning within a finally block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lack_of_error_handling"><span class="nav-number">21.2.</span> <span class="nav-text">Lack of error handling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptographic_vulnerabilities"><span class="nav-number">22.</span> <span class="nav-text">Cryptographic vulnerabilities</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Weak_or_home-grown_algorithms"><span class="nav-number">22.1.</span> <span class="nav-text">Weak or home-grown algorithms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Insufficient_randomness"><span class="nav-number">22.2.</span> <span class="nav-text">Insufficient randomness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other_cryptographic_issues"><span class="nav-number">22.3.</span> <span class="nav-text">Other cryptographic issues</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#General_Security"><span class="nav-number">23.</span> <span class="nav-text">General Security</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPOnly_cookies"><span class="nav-number">23.1.</span> <span class="nav-text">HTTPOnly cookies</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Further_Reading"><span class="nav-number">24.</span> <span class="nav-text">Further Reading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原文地址"><span class="nav-number">25.</span> <span class="nav-text">原文地址</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WooLong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"longxiang090"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
