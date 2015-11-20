@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-12T18:16:15.000Z</updated>
+  <updated>2015-11-20T15:50:15.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,11 +15,80 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[curl 和 libcurl 简介]]></title>
+    <link href="http://yoursite.com/2015/11/17/curl-%E5%92%8C-libcurl-%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2015/11/17/curl-和-libcurl-简介/</id>
+    <published>2015-11-16T18:43:36.000Z</published>
+    <updated>2015-11-20T15:50:15.000Z</updated>
+    <content type="html"><![CDATA[<h2 id="CURL">CURL</h2><p>curl 是<b>利用 URL 语法在命令行方式下</b>工作的开源文件传输工具。</p>
+<p>它支持很多协议：DICT, FILE, FTP, FTPS,Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP。</p>
+<p>curl 同样支持证书: HTTP POST, HTTP PUT, FTP上传，基于表单的 HTTP 上传，代理（proxies）、cookies、用户名／密码认证（Basic，Digest，NTLM等）、下载文件断点续传，上载文件断点续传（file transfer resume），http 代理服务器管道（proxy tunneling）以及其他特性。</p>
+<p>curl 是瑞典 curl 组织开发的，官网是 <a href="http://curl.haxx.se" target="_blank" rel="external">http://curl.haxx.se</a>，可以从官网获取他的源代码和相关说明。</p>
+<h2 id="LibCURL">LibCURL</h2><p>libcurl 为一个免费开源的，客户端 url 传输库，支持 DICT, FILE, FTP, FTPS, Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP 等协议。</p>
+<p>同 curl 一样，libcurl 也支持 SSL 证书，HTTP POST, HTTP PUT, FTP 上传，基于表单的 HTTP 上传，代理（proxies）、cookies、用户名／密码认证（Basic，Digest，NTLM等）、下载文件断点续传、上载文件断点续传（file transfer resume）、http 代理服务器管道（proxy tunneling）等。</p>
+<p>libcurl 是高度可移植的，可以工作在不同的平台上，支持 Windows、Unix、Linux 等。</p>
+<p>libcurl 是免费的、线程安全的、IPV6 兼容的，同时它还有很多其他非常丰富的特性。libcurl 已经被很多知名的大企业以及应用程序所采用。</p>
+<p>可以在<a href="http://curl.haxx.se/libcurl/" target="_blank" rel="external">这里</a>获取 libcurl 的源码及相关文档。</p>
+<h2 id="CURL_和_libCURL_的区别">CURL 和 libCURL 的区别</h2><h3 id="相同点">相同点</h3><p>curl 和 libcurl 都可以利用多种多样的协议来传输文件，包括 HTTP, HTTPS, FTP, FTPS, GOHPER, LDAP, DICT, TELNET ADN FILE 等。</p>
+<h3 id="不同点">不同点</h3><p>curl 是命令行工具，可以通过 shell 或脚本来运行 curl。curl 底层所使用的库是 libcurl。<br>libcurl 是一个库，通常与别的程序绑定在一起使用，如命令工具 curl 就是封装了 libcurl 库。所以我们也可以在你自己的程序或项目中使用 libcurl 以获得类似 CURL 的强大功能。接下来将要介绍的 PHP 扩展就是对 curl 的一个封装。</p>
+<h2 id="几个名词">几个名词</h2><h3 id="“curl”的不同意思">“curl”的不同意思</h3><ul>
+<li>命令行工具，可以从 shell 或者脚本中或者批处理文件中运行 curl。curl 创建于 1988 年，并且提供了 100 多个选项去控制它。</li>
+<li>cURL 是一个软件项目的名字。该软件项目包含了上面所说的 curl 和 libcurl ，并且都是开源的。</li>
+<li>CURL 通常用作 PHP 中 libcurl 扩展的名字。这个扩展确保了 PHP 程序猿在程序中可以访问 libcurl 库所提供的功能。</li>
+</ul>
+<h3 id="curl_–_命令行工具">curl – 命令行工具</h3><ul>
+<li>命令行工具，可以从 shell 或者脚本中运行该工具。</li>
+<li>提供了 130 多种不同的 “flags”。</li>
+<li>通常被用来模拟浏览器的行为。</li>
+<li>跨平台。</li>
+</ul>
+<h3 id="libcurl_–_库">libcurl – 库</h3><ul>
+<li>用作其他程序的开发库。</li>
+<li>可以与许多语言相结合，如：PHP、C++</li>
+<li>跨平台。</li>
+<li>提供了多种不同的使用它的APIs。</li>
+</ul>
+<h2 id="PHP_中使用_curl_和_libcurl">PHP 中使用 curl 和 libcurl</h2><h3 id="PHP中使用_curl">PHP中使用 curl</h3><p>在 PHP 中使用 curl 非常简单，只要调用 PHP 中几个执行系统命令的相关函数即可。</p>
+<p>代码示例：</p>
+<pre><code><span class="variable">$baidu</span> = shell_exec(<span class="string">"/usr/bin/curl -L http://www.baidu.com"</span>);
+var_dump(<span class="variable">$baidu</span>);
+</code></pre><h3 id="PHP_中使用_libcurl">PHP 中使用 libcurl</h3><p>在 PHP 中使用 libcurl ，也就是我们通常所说的 PHP 中的 “curl”。这部分的内容会在以后的文章中给出，这里只写出一个示例代码：</p>
+<pre><code>// FTP this script <span class="keyword">to</span> a server
+<span class="variable">$fp</span> = fopen(__FILE_<span class="number">_</span>, <span class="string">"r"</span>);
+<span class="variable">$url</span> = <span class="string">"ftp://username:password@mydomain.com:21/path/to/newfile.php"</span>;
+<span class="variable">$ch</span> = curl_init();
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_URL, <span class="variable">$url</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_UPLOAD, <span class="number">1</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_INFILE, <span class="variable">$fp</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_FTPASCII, <span class="number">1</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_INFILESIZE, filesize(__FILE_<span class="number">_</span>));
+<span class="variable">$result</span> = curl_exec(<span class="variable">$ch</span>);
+curl_close(<span class="variable">$ch</span>);
+</code></pre><h3 id="使用_curl_还是_libcurl_？">使用 curl 还是 libcurl ？</h3><p>使用 curl 还是 libcurl 这个需要根据具体的情况而定。例如，当有一个定时脚本在远程服务器的文件改变时发送邮件或者当前 PHP 环境不支持 libcurl 时，我们应该使用 curl。否则，我们使用 libcurl 即可。</p>
+<h2 id="引用">引用</h2><p><a href="http://www.php101.cn" target="_blank" rel="external">php101.cn</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="CURL">CURL</h2><p>curl 是<b>利用 URL 语法在命令行方式下</b>工作的开源文件传输工具。</p>
+<p>它支持很多协议：DICT, FILE, FTP, FTPS,Gopher, HTTP, HTTPS, IMAP, IMAPS, L]]>
+    </summary>
+    
+      <category term="curl" scheme="http://yoursite.com/tags/curl/"/>
+    
+      <category term="libcurl" scheme="http://yoursite.com/tags/libcurl/"/>
+    
+      <category term="php" scheme="http://yoursite.com/tags/php/"/>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Web Vulnerabilities Explained]]></title>
     <link href="http://yoursite.com/2015/11/03/Web-Vulnerabilities-Explained/"/>
     <id>http://yoursite.com/2015/11/03/Web-Vulnerabilities-Explained/</id>
     <published>2015-11-03T07:25:45.000Z</published>
-    <updated>2015-11-12T18:16:15.000Z</updated>
+    <updated>2015-11-12T18:16:16.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Information_Gathering">Information Gathering</h2><p>There are many places where you can start gathering information about your target. Information could include:</p>
 <ul>
 <li>Contact details and personal information for social engineering attacks</li>

@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="php,缓存," />
+  <meta name="keywords" content="curl,libcurl,php," />
 
 
 
@@ -39,22 +39,22 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
-2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
-它">
+<meta name="description" content="CURLcurl 是利用 URL 语法在命令行方式下工作的开源文件传输工具。
+它支持很多协议：DICT, FILE, FTP, FTPS,Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP。
+curl 同样支持证书: HTTP POST,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP 缓存技术">
-<meta property="og:url" content="http://yoursite.com/2015/09/22/PHP-缓存技术/index.html">
+<meta property="og:title" content="curl 和 libcurl 简介">
+<meta property="og:url" content="http://yoursite.com/2015/11/17/curl-和-libcurl-简介/index.html">
 <meta property="og:site_name" content="WooLong's Notes">
-<meta property="og:description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
-2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
-它">
-<meta property="og:updated_time" content="2015-10-27T17:02:32.000Z">
+<meta property="og:description" content="CURLcurl 是利用 URL 语法在命令行方式下工作的开源文件传输工具。
+它支持很多协议：DICT, FILE, FTP, FTPS,Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP。
+curl 同样支持证书: HTTP POST,">
+<meta property="og:updated_time" content="2015-11-20T15:50:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP 缓存技术">
-<meta name="twitter:description" content="1. 数据缓存主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。
-2. 内存缓存Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。
-它">
+<meta name="twitter:title" content="curl 和 libcurl 简介">
+<meta name="twitter:description" content="CURLcurl 是利用 URL 语法在命令行方式下工作的开源文件传输工具。
+它支持很多协议：DICT, FILE, FTP, FTPS,Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP。
+curl 同样支持证书: HTTP POST,">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +64,7 @@
   };
 </script>
 
-  <title> PHP 缓存技术 | WooLong's Notes </title>
+  <title> curl 和 libcurl 简介 | WooLong's Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -210,7 +210,7 @@
           
           
             
-              PHP 缓存技术
+              curl 和 libcurl 简介
             
           
         </h1>
@@ -219,8 +219,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-09-22T17:23:35+08:00" content="2015-09-22">
-            2015-09-22
+          <time itemprop="dateCreated" datetime="2015-11-17T02:43:36+08:00" content="2015-11-17">
+            2015-11-17
           </time>
         </span>
 
@@ -245,8 +245,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/09/22/PHP-缓存技术/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/22/PHP-缓存技术/" itemprop="commentsCount"></span>
+              <a href="/2015/11/17/curl-和-libcurl-简介/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/17/curl-和-libcurl-简介/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -260,18 +260,53 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="1-_数据缓存">1. 数据缓存</h3><p>主要是指数据库查询结果的缓存，每次访问页面的时候先检测响应的缓存数据是否存在，如果不存在，就连接数据库查询数据，并把查询结果保存到文件中，以后同样的查询结果就直接从缓存中获取。用空间（硬盘）换速度是关键点。</p>
-<h3 id="2-_内存缓存">2. 内存缓存</h3><p>Memcached是高性能的分布式内存缓存服务器。一般的使用目的是通过缓存数据库查询结果，减少数据库的访问次数，以提高动态 WEB 的访问速度、减少数据库负载。</p>
-<p>它是将需要缓存的信息，缓存到系统内存中，需要获取信息中，直接到内存中取，比较常用的方式是 key-&gt;value 方式。</p>
-<h3 id="3-_页面缓存">3. 页面缓存</h3><p>访问 WEB 页面时，先检测相应的缓存页面文件是否存在，如果不存在，则连接数据库，查询数据，显示页面并同时生成缓存页面文件，下次访问的时候缓存的页面文件就发挥作用了。页面缓存有一下几种方式。</p>
-<h6 id="时间触发缓存">时间触发缓存</h6><p>检查文件是否存在并且缓存时间是否过期,如果文件修改的时间没有过期时间，那么就用缓存，否则更新缓存。</p>
-<h6 id="内容出发缓存">内容出发缓存</h6><p>当页面数据有更新时，更改数据库的同时也强制更新缓存。</p>
-<h6 id="页面部分缓存">页面部分缓存</h6><p>将一个页面中不经常变的部分进行静态缓存，而经常变化的块不缓存，最后组装在一起显示；可以使用类似于 ob_get_contents 的方式实现，也可以利用类似 ESI 之类的页面片段缓存策略，使其用来做动态页面中相对静态的片段部分的缓存。该种方式可以用于如商城中的商品页；</p>
-<h6 id="全页面静态化缓存">全页面静态化缓存</h6><p>直接生成 HTML 或 XML 等文本文件，有更新的时候重生成一次，而不会去走php服务器解析的流程，适合于不太变化的页面。</p>
-<h3 id="4-_PHP_的OPCode（缓冲器、加速器）缓存">4. PHP 的OPCode（缓冲器、加速器）缓存</h3><p>有eAccelerator， APC， PHPA，XCache，这个没有太深的研究，暂不多说。</p>
-<h3 id="5-_Apache_缓存模块">5.  Apache 缓存模块</h3><p>Apache 安装完以后，是不允许被 cache 的。如果外接了cache 或 squid 服务器要求进行 web 加速的话，就需要在 htttpd.conf 里进行设置，当然前提是在安装 Apache 的时候要激活 mod_cache 的模块。<br>安装 Apache 时：./configure –enable-cache –enable-disk-cache –enable-mem-cache</p>
-<h3 id="6-_基于反向代理的_WEB_缓存">6.  基于反向代理的 WEB 缓存</h3><p>如 Nginx ，SQUID ，mod_proxy ( apache2 以上又分为 mod_proxy 和 mod_cache )</p>
-<h3 id="7-_DNS_轮询">7. DNS 轮询</h3><p>大多域名注册商都支持多条A记录的解析，其实这就是DNS轮询，DNS服务器将解析请求按照A记录的顺序，逐一分配到不同的IP上，这样就完成了简单的负载均衡。更深层次的暂未研究。</p>
+        <span itemprop="articleBody"><h2 id="CURL">CURL</h2><p>curl 是<b>利用 URL 语法在命令行方式下</b>工作的开源文件传输工具。</p>
+<p>它支持很多协议：DICT, FILE, FTP, FTPS,Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP。</p>
+<p>curl 同样支持证书: HTTP POST, HTTP PUT, FTP上传，基于表单的 HTTP 上传，代理（proxies）、cookies、用户名／密码认证（Basic，Digest，NTLM等）、下载文件断点续传，上载文件断点续传（file transfer resume），http 代理服务器管道（proxy tunneling）以及其他特性。</p>
+<p>curl 是瑞典 curl 组织开发的，官网是 <a href="http://curl.haxx.se" target="_blank" rel="external">http://curl.haxx.se</a>，可以从官网获取他的源代码和相关说明。</p>
+<h2 id="LibCURL">LibCURL</h2><p>libcurl 为一个免费开源的，客户端 url 传输库，支持 DICT, FILE, FTP, FTPS, Gopher, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S, RTMP, SCP, SFTP, SMTP, SMTPS, Telnet and TFTP 等协议。</p>
+<p>同 curl 一样，libcurl 也支持 SSL 证书，HTTP POST, HTTP PUT, FTP 上传，基于表单的 HTTP 上传，代理（proxies）、cookies、用户名／密码认证（Basic，Digest，NTLM等）、下载文件断点续传、上载文件断点续传（file transfer resume）、http 代理服务器管道（proxy tunneling）等。</p>
+<p>libcurl 是高度可移植的，可以工作在不同的平台上，支持 Windows、Unix、Linux 等。</p>
+<p>libcurl 是免费的、线程安全的、IPV6 兼容的，同时它还有很多其他非常丰富的特性。libcurl 已经被很多知名的大企业以及应用程序所采用。</p>
+<p>可以在<a href="http://curl.haxx.se/libcurl/" target="_blank" rel="external">这里</a>获取 libcurl 的源码及相关文档。</p>
+<h2 id="CURL_和_libCURL_的区别">CURL 和 libCURL 的区别</h2><h3 id="相同点">相同点</h3><p>curl 和 libcurl 都可以利用多种多样的协议来传输文件，包括 HTTP, HTTPS, FTP, FTPS, GOHPER, LDAP, DICT, TELNET ADN FILE 等。</p>
+<h3 id="不同点">不同点</h3><p>curl 是命令行工具，可以通过 shell 或脚本来运行 curl。curl 底层所使用的库是 libcurl。<br>libcurl 是一个库，通常与别的程序绑定在一起使用，如命令工具 curl 就是封装了 libcurl 库。所以我们也可以在你自己的程序或项目中使用 libcurl 以获得类似 CURL 的强大功能。接下来将要介绍的 PHP 扩展就是对 curl 的一个封装。</p>
+<h2 id="几个名词">几个名词</h2><h3 id="“curl”的不同意思">“curl”的不同意思</h3><ul>
+<li>命令行工具，可以从 shell 或者脚本中或者批处理文件中运行 curl。curl 创建于 1988 年，并且提供了 100 多个选项去控制它。</li>
+<li>cURL 是一个软件项目的名字。该软件项目包含了上面所说的 curl 和 libcurl ，并且都是开源的。</li>
+<li>CURL 通常用作 PHP 中 libcurl 扩展的名字。这个扩展确保了 PHP 程序猿在程序中可以访问 libcurl 库所提供的功能。</li>
+</ul>
+<h3 id="curl_–_命令行工具">curl – 命令行工具</h3><ul>
+<li>命令行工具，可以从 shell 或者脚本中运行该工具。</li>
+<li>提供了 130 多种不同的 “flags”。</li>
+<li>通常被用来模拟浏览器的行为。</li>
+<li>跨平台。</li>
+</ul>
+<h3 id="libcurl_–_库">libcurl – 库</h3><ul>
+<li>用作其他程序的开发库。</li>
+<li>可以与许多语言相结合，如：PHP、C++</li>
+<li>跨平台。</li>
+<li>提供了多种不同的使用它的APIs。</li>
+</ul>
+<h2 id="PHP_中使用_curl_和_libcurl">PHP 中使用 curl 和 libcurl</h2><h3 id="PHP中使用_curl">PHP中使用 curl</h3><p>在 PHP 中使用 curl 非常简单，只要调用 PHP 中几个执行系统命令的相关函数即可。</p>
+<p>代码示例：</p>
+<pre><code><span class="variable">$baidu</span> = shell_exec(<span class="string">"/usr/bin/curl -L http://www.baidu.com"</span>);
+var_dump(<span class="variable">$baidu</span>);
+</code></pre><h3 id="PHP_中使用_libcurl">PHP 中使用 libcurl</h3><p>在 PHP 中使用 libcurl ，也就是我们通常所说的 PHP 中的 “curl”。这部分的内容会在以后的文章中给出，这里只写出一个示例代码：</p>
+<pre><code>// FTP this script <span class="keyword">to</span> a server
+<span class="variable">$fp</span> = fopen(__FILE_<span class="number">_</span>, <span class="string">"r"</span>);
+<span class="variable">$url</span> = <span class="string">"ftp://username:password@mydomain.com:21/path/to/newfile.php"</span>;
+<span class="variable">$ch</span> = curl_init();
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_URL, <span class="variable">$url</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_UPLOAD, <span class="number">1</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_INFILE, <span class="variable">$fp</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_FTPASCII, <span class="number">1</span>);
+curl_setopt(<span class="variable">$ch</span>, CURLOPT_INFILESIZE, filesize(__FILE_<span class="number">_</span>));
+<span class="variable">$result</span> = curl_exec(<span class="variable">$ch</span>);
+curl_close(<span class="variable">$ch</span>);
+</code></pre><h3 id="使用_curl_还是_libcurl_？">使用 curl 还是 libcurl ？</h3><p>使用 curl 还是 libcurl 这个需要根据具体的情况而定。例如，当有一个定时脚本在远程服务器的文件改变时发送邮件或者当前 PHP 环境不支持 libcurl 时，我们应该使用 curl。否则，我们使用 libcurl 即可。</p>
+<h2 id="引用">引用</h2><p><a href="http://www.php101.cn" target="_blank" rel="external">php101.cn</a></p>
 </span>
       
     </div>
@@ -280,9 +315,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/php/" rel="tag">#php</a>
+            <a href="/tags/curl/" rel="tag">#curl</a>
           
-            <a href="/tags/缓存/" rel="tag">#缓存</a>
+            <a href="/tags/libcurl/" rel="tag">#libcurl</a>
+          
+            <a href="/tags/php/" rel="tag">#php</a>
           
         </div>
       
@@ -291,13 +328,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/09/25/Git-创建分支/" rel="prev">Git 创建分支</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/21/PHP的运行模式/" rel="next">PHP的运行模式（理论）</a>
+              <a href="/2015/11/03/Web-Vulnerabilities-Explained/" rel="next">Web Vulnerabilities Explained</a>
             
           </div>
         </div>
@@ -322,8 +357,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/09/22/PHP-缓存技术/"
-                   data-title="PHP 缓存技术" data-url="http://yoursite.com/2015/09/22/PHP-缓存技术/">
+              <div class="ds-thread" data-thread-key="2015/11/17/curl-和-libcurl-简介/"
+                   data-title="curl 和 libcurl 简介" data-url="http://yoursite.com/2015/11/17/curl-和-libcurl-简介/">
               </div>
             
           </div>
@@ -437,7 +472,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-_数据缓存"><span class="nav-number">1.</span> <span class="nav-text">1. 数据缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-_内存缓存"><span class="nav-number">2.</span> <span class="nav-text">2. 内存缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-_页面缓存"><span class="nav-number">3.</span> <span class="nav-text">3. 页面缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#时间触发缓存"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">时间触发缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内容出发缓存"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">内容出发缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#页面部分缓存"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">页面部分缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#全页面静态化缓存"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">全页面静态化缓存</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-_PHP_的OPCode（缓冲器、加速器）缓存"><span class="nav-number">4.</span> <span class="nav-text">4. PHP 的OPCode（缓冲器、加速器）缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-_Apache_缓存模块"><span class="nav-number">5.</span> <span class="nav-text">5.  Apache 缓存模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-_基于反向代理的_WEB_缓存"><span class="nav-number">6.</span> <span class="nav-text">6.  基于反向代理的 WEB 缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-_DNS_轮询"><span class="nav-number">7.</span> <span class="nav-text">7. DNS 轮询</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CURL"><span class="nav-number">1.</span> <span class="nav-text">CURL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LibCURL"><span class="nav-number">2.</span> <span class="nav-text">LibCURL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CURL_和_libCURL_的区别"><span class="nav-number">3.</span> <span class="nav-text">CURL 和 libCURL 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相同点"><span class="nav-number">3.1.</span> <span class="nav-text">相同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-number">3.2.</span> <span class="nav-text">不同点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几个名词"><span class="nav-number">4.</span> <span class="nav-text">几个名词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“curl”的不同意思"><span class="nav-number">4.1.</span> <span class="nav-text">“curl”的不同意思</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#curl_–_命令行工具"><span class="nav-number">4.2.</span> <span class="nav-text">curl – 命令行工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#libcurl_–_库"><span class="nav-number">4.3.</span> <span class="nav-text">libcurl – 库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP_中使用_curl_和_libcurl"><span class="nav-number">5.</span> <span class="nav-text">PHP 中使用 curl 和 libcurl</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP中使用_curl"><span class="nav-number">5.1.</span> <span class="nav-text">PHP中使用 curl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP_中使用_libcurl"><span class="nav-number">5.2.</span> <span class="nav-text">PHP 中使用 libcurl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用_curl_还是_libcurl_？"><span class="nav-number">5.3.</span> <span class="nav-text">使用 curl 还是 libcurl ？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">6.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
