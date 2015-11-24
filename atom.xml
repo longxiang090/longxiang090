@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-11-20T15:50:15.000Z</updated>
+  <updated>2015-11-24T09:16:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[HTTP 请求大小]]></title>
+    <link href="http://yoursite.com/2015/11/24/HTTP-%E8%AF%B7%E6%B1%82%E5%A4%A7%E5%B0%8F/"/>
+    <id>http://yoursite.com/2015/11/24/HTTP-请求大小/</id>
+    <published>2015-11-24T06:37:57.000Z</published>
+    <updated>2015-11-24T09:16:34.000Z</updated>
+    <content type="html"><![CDATA[<p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收HTML页面的方法。HTTP 分为 URI，HEADER，Body 三个部分。每个部分都可以包含请求信息，那么每个部分是否都有请求大小限制呢？</p>
+<h2 id="URI">URI</h2><p>首先是URI（uniform resource identifier 统一资源标识符，用来唯一的标识一个资源），我们知道，在 GET 请求中，请求参数是放在 URL 进行传递的，所以，HTTP GET 的请求最关心的一个问题：能有多长？我能放多少参数？从 HTTP 1.1 协议中开始找：（ RFC 2616 ）</p>
+<pre><code>The HTTP protocol <span class="keyword">does</span> <span class="keyword">not</span> place any a priori limit <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> <span class="property">length</span> <span class="keyword">of</span> a URI
+</code></pre><p>所以明确一点的是 HTTP 协议是没有显式限制 URI 的长度的。理论上来说你在 URI 中传递多少参数都是可以的。</p>
+<p>但是实际情况却有所不同</p>
+<h3 id="浏览器限制">浏览器限制</h3><p>所有主流浏览器都会对 URI 的长度进行限制。如果你在浏览器中输入过长的 URI，那么浏览器会自动进行截断。各个浏览器对 URI 长度的限制各不相同，甚至不同版本也不一样。大约一个概念，2000 字符以内的 URI 都能符合所有主流浏览器的要求。</p>
+<h3 id="服务端限制">服务端限制</h3><p>即使客户端同意发送无限长度的 URI，但是服务器一方一般都是有长度限制的。一般服务是没有专门针对 URI 的参数限制的，但是由于 URI 是会包含在 request header 中的，所以对 header 的大小限制是会对 URI 起作用的，比如 nginx 的（ large_client_header_buffers ）这个属性，它默认是 4k。<br><em>ps:这里的“ URI 是包含在 request header 中的” 这句话其实是有问题的。URI 在 HTTP 协议中是叫做request-Line 的，如果具体看协议，是会发现 request-Line 和 request-header 是两个不一样的，就是说 request 的请求其实该分为 request-line , request-header , request-body 三个部分的（具体可以看 <a href="http://www.ietf.org/rfc/rfc2616.txt" target="_blank" rel="external">http://www.ietf.org/rfc/rfc2616.txt</a> 第4和5章）。但是好像使用的时候都默认将header中理解为包含了 request-line（比如这篇文章 <a href="http://trafficserver.apache.org/docs/v2/sdk/HTTPHeaders.html" target="_blank" rel="external">http://trafficserver.apache.org/docs/v2/sdk/HTTPHeaders.html</a> ）。这里估计是概念和使用的时候导致问题，不必深究了，所以我们不妨将 request-line 理解为包含在 header 中就好。</em></p>
+<p>综上所述，这里的 URI 不论是客户端还是服务端，基本上被默认限制住的。</p>
+<h2 id="HEADER">HEADER</h2><p>header 中存放的信息非常多，比如 request-line，cookie，还有各种 key-value 的特定 header 字段和值。有时候，我们也会往 header 中添加一些自定义的属性。header 的长度和 URI 的情况是一样的。协议中并没有显示限制 header 的大小。理论上在 header 中放多少属性都是可以的。</p>
+<p>但是</p>
+<h3 id="浏览器限制-1">浏览器限制</h3><p>各个主流浏览器限制几十 k ～ 几百 M 不等的限制。基本上能满足平时的需求了。但是如果这个长度对你业务有很大影响的话，建议还是亲自测试下。</p>
+<h3 id="服务端限制-1">服务端限制</h3><p>比如 nginx 的large_client_header_buffers 就限制了 header 的长度。你也可以自己设置。</p>
+<p>可能会影响 header 的参数还有：</p>
+<p><strong>client_header_buffer_size</strong></p>
+<p><strong>client_header_timeout</strong></p>
+<p>各参数可以参考：<a href="http://wiki.nginx.org/HttpCoreModule" target="_blank" rel="external">http://wiki.nginx.org/HttpCoreModule</a></p>
+<h2 id="Body">Body</h2><p>body 和 URI，header 非常不一样，不一样的地方原因在于文件上传。HTTP 是支持 request 中带文件的，那么文件的二进制数据不会放在 URI 或者 header 里面，它是放在 body 里面的。那么这个 body 的大小就一定不能默认限制太小，尤其是客户端。</p>
+<p>首先理论上，协议是没有对 body 大小做任何限制的。</p>
+<p>其次，浏览器也没有对 body 做任何大小限制，因为如果浏览器做了大小限制就意味着它直接影响了你的服务功能。</p>
+<p>所以对 body 的限制的任务就放在了服务器上了。来看下 nginx + php-fpm 有哪些地方可以对 body 进行限制 ：</p>
+<h3 id="nginx_有一些设置会对_body_大小产生影响">nginx 有一些设置会对 body 大小产生影响</h3><p><strong>client_max_body_size</strong>，这个参数可以限制 body 的大小，默认是 1M</p>
+<p><strong>client_body_timeout</strong>，当 body 太大，或者网络太差的时候，这个也有可能会影响请求的成功率的。</p>
+<h3 id="php-ini_也有一些设置会对上传的_body_数据产生影响">php.ini 也有一些设置会对上传的 body 数据产生影响</h3><p><strong>upload_max_filesize</strong>，限制最大上传文件大小</p>
+<p><strong>post_max_size</strong>，限制 post 的大小</p>
+<p><strong>memory_limit</strong>，限制内存使用大小</p>
+<p><strong>max_execution_time</strong>，这个是 php 最大执行时间，也有可能影响请求成功率的。</p>
+<h2 id="HTTP_请求大小的影响">HTTP 请求大小的影响</h2><h3 id="安全因素考虑">安全因素考虑</h3><p>如果一个网站的服务器不限制 body 大小，那么黑客就可以利用这个地方进行攻击。黑客利用这一点向 HTTP POST 的 body 中传递非常大（比如几 M甚至更大）的请求。那么比如像 nginx + php-fpm 这样的，就会长时间占用服务器一个 php 进程专门用于处理这个请求，导致你对外提供的服务进程减少，如果黑客同时发起n个请求，你的服务器就瘫痪了，这就是 DDOS 攻击。</p>
+<h3 id="文件上传服务考虑">文件上传服务考虑</h3><p>文件上传有两种情况：</p>
+<p>你可能经常遇到为什么文件上传失败？那么大多是上文说的几个设置没有设置对。</p>
+<p>其次，文件上传大小是不是设置越大越好？答案必须是否定的，理由也是安全考虑。满足需求的大小限制就够了。</p>
+<p>这里可以解释为什么大部分网站会把文件上传和业务接口分开来提供了。如果你的文件上传服务和业务接口是同一个机器的话，那么就说明你的业务接口可以允许的 body 大小一定是很大的。换句话说，在这种情境下，你的业务中的所有 POST 请求都是不安全的！！只要进行 DDOS 攻击，业务就会瘫痪。</p>
+<h2 id="参考">参考</h2><p><a href="http://www.cnblogs.com/yjf512/archive/2013/03/29/2988296.html" target="_blank" rel="external">http://www.cnblogs.com/yjf512/archive/2013/03/29/2988296.html</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计 HTTP 最初的目的是为了提供一种发布和接收HTML页面的方法。HTTP 分为 URI，HEADER，Body ]]>
+    </summary>
+    
+      <category term="get" scheme="http://yoursite.com/tags/get/"/>
+    
+      <category term="http" scheme="http://yoursite.com/tags/http/"/>
+    
+      <category term="post" scheme="http://yoursite.com/tags/post/"/>
+    
+      <category term="其他" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[curl 和 libcurl 简介]]></title>
