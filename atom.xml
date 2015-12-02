@@ -4,7 +4,7 @@
   <subtitle><![CDATA[生命不息，奋斗不止]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-12-02T17:51:18.000Z</updated>
+  <updated>2015-12-02T17:53:51.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,9 +19,9 @@
     <link href="http://yoursite.com/2015/12/01/PHP-%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F/"/>
     <id>http://yoursite.com/2015/12/01/PHP-中字符串的定义方式/</id>
     <published>2015-12-01T10:50:07.000Z</published>
-    <updated>2015-12-02T17:51:18.000Z</updated>
+    <updated>2015-12-02T17:53:51.000Z</updated>
     <content type="html"><![CDATA[<p>一个字符串 String 就是由一系列的字符组成，其中每个字符等同于一个字节。这就意味着 PHP 只能支持 256 的字符集，因此不支持 Unicode。最大可以达到 2GB。</p>
-<h1 id="字符串的定义方式">字符串的定义方式</h1><h2 id="单引号">单引号</h2><p>定义一个字符串的最简单的方法是用单引号把它包围起来（字符’）。</p>
+<h2 id="单引号">单引号</h2><p>定义一个字符串的最简单的方法是用单引号把它包围起来（字符’）。</p>
 <pre><code>要表达一个单引号自身，需在它的前面加个反斜线（<span class="command">\）</span>来转义。要表达一个反斜线自身，则用两个反斜线（<span class="command">\\</span>）。其它任何方式的反斜线都会被当成反斜线本身：也就是说如果想使用其它转义序列例如 <span class="command">\r</span> 或者 <span class="command">\n</span>，并不代表任何特殊含义，就单纯是这两个字符本身。
 </code></pre><h2 id="双引号">双引号</h2><p>如果字符串是包围在双引号（””）中，PHP 将对一些特殊的字符进行解析。</p>
 <table>
@@ -119,7 +119,7 @@ PHP 的字符串在内部是字节组成的数组。因此用花括号访问或�
 ]]></content>
     <summary type="html">
     <![CDATA[<p>一个字符串 String 就是由一系列的字符组成，其中每个字符等同于一个字节。这就意味着 PHP 只能支持 256 的字符集，因此不支持 Unicode。最大可以达到 2GB。</p>
-<h1 id="字符串的定义方式">字符串的定义方式</h1><h2 id="单引号">]]>
+<h2 id="单引号">单引号</h2><p>定义一个字符串的最简单的方法是用单引号把]]>
     </summary>
     
       <category term="php" scheme="http://yoursite.com/tags/php/"/>
