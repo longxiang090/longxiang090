@@ -1,0 +1,1110 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+
+
+  <meta name="keywords" content="php,string," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WooLong's Notes" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="字符串语法PHP 中字符串的定义方式有哪些？
+单引号
+双引号
+heredoc 语法结构
+nowdoc 语法结构（自 PHP 5.3.0 起）    
+
+双引号中的字符串除了解析变量意外还解析哪些字符？
+
+
+序列
+含义
+
+
+
+
+\n
+换行（ASII 字符集中的 LF 或 0x0A(10)）
+
+
+\r
+回车（ASCII 字符集中的 CR 或 0x0D (13)）
+
+
+ \t
+水平制表符（ASCII 字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP系列问答学习之String">
+<meta property="og:url" content="http://yoursite.com/2015/12/08/PHP系列问答学习之String/index.html">
+<meta property="og:site_name" content="WooLong's Notes">
+<meta property="og:description" content="字符串语法PHP 中字符串的定义方式有哪些？
+单引号
+双引号
+heredoc 语法结构
+nowdoc 语法结构（自 PHP 5.3.0 起）    
+
+双引号中的字符串除了解析变量意外还解析哪些字符？
+
+
+序列
+含义
+
+
+
+
+\n
+换行（ASII 字符集中的 LF 或 0x0A(10)）
+
+
+\r
+回车（ASCII 字符集中的 CR 或 0x0D (13)）
+
+
+ \t
+水平制表符（ASCII 字">
+<meta property="og:updated_time" content="2015-12-23T18:10:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP系列问答学习之String">
+<meta name="twitter:description" content="字符串语法PHP 中字符串的定义方式有哪些？
+单引号
+双引号
+heredoc 语法结构
+nowdoc 语法结构（自 PHP 5.3.0 起）    
+
+双引号中的字符串除了解析变量意外还解析哪些字符？
+
+
+序列
+含义
+
+
+
+
+\n
+换行（ASII 字符集中的 LF 或 0x0A(10)）
+
+
+\r
+回车（ASCII 字符集中的 CR 或 0x0D (13)）
+
+
+ \t
+水平制表符（ASCII 字">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> PHP系列问答学习之String | WooLong's Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?cb6711aa9bb7ea8122d5f52e37486f37";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">WooLong's Notes</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '7gL1sz78h5rpimSPJwdw','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              PHP系列问答学习之String
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-12-08T00:22:19+08:00" content="2015-12-08">
+            2015-12-08
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/PHP/" itemprop="url" rel="index">
+                  <span itemprop="name">PHP</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/08/PHP系列问答学习之String/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/08/PHP系列问答学习之String/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h2 id="字符串语法">字符串语法</h2><h3 id="PHP_中字符串的定义方式有哪些？">PHP 中字符串的定义方式有哪些？</h3><ul>
+<li>单引号</li>
+<li>双引号</li>
+<li>heredoc 语法结构</li>
+<li>nowdoc 语法结构（自 PHP 5.3.0 起）    </li>
+</ul>
+<h3 id="双引号中的字符串除了解析变量意外还解析哪些字符？">双引号中的字符串除了解析变量意外还解析哪些字符？</h3><table>
+<thead>
+<tr>
+<th>序列</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\n</td>
+<td>换行（ASII 字符集中的 LF 或 0x0A(10)）</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车（ASCII 字符集中的 CR 或 0x0D (13)）</td>
+</tr>
+<tr>
+<td> \t</td>
+<td>水平制表符（ASCII 字符集中的 HT 或 0x09(9)）</td>
+</tr>
+<tr>
+<td> \v</td>
+<td>垂直制表符（ASCII 字符集中的 VT 或 0x0B(11)）（自 PHP 5.2.5 起）</td>
+</tr>
+<tr>
+<td> \e</td>
+<td>Escape（ASCII 字符集中的 ESC 或 0x1B(27)）（自 PHP 5.4.0 起）</td>
+</tr>
+<tr>
+<td> \f</td>
+<td>换页（ASCII 字符集中的 FF 或 0x0C(12)）（自 PHP 5.2.5 起）</td>
+</tr>
+<tr>
+<td> \</td>
+<td>反斜线</td>
+</tr>
+<tr>
+<td> \$</td>
+<td>美元标记</td>
+</tr>
+<tr>
+<td> \”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td> [0-7]{1,3}</td>
+<td>符合该正则表达式序列的是一个以八进制方式来表达的字符</td>
+</tr>
+<tr>
+<td> \x[0-9A-Fa-f]{1,2}</td>
+<td>符合该正则表达式序列的是一个以十六进制方式来表达的字符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串与其他类型是如何转换的？">字符串与其他类型是如何转换的？</h3><h4 id="转换成字符串">转换成字符串</h4><p>一个值可以通过在其前面加上 (string) 或用 strval() 函数来转变成字符串。</p>
+<pre><code><span class="variable">$a</span> = <span class="number">1</span>;
+<span class="variable">$b</span> = (sting)<span class="variable">$a</span>;
+<span class="variable">$c</span> = strval(<span class="variable">$a</span>);
+<span class="variable">$d</span> = <span class="string">"$a"</span>; // 这样也可以转成字符串
+var_dump(<span class="variable">$a</span>, <span class="variable">$b</span>, <span class="variable">$c</span>, <span class="variable">$d</span>);
+</code></pre><p>在一个需要字符串的表达式中，会自动转换为 string。比如在使用函数 echo 或 print 时，或在一个变量和一个 string 进行比较时，就会发生这种转换。类型和类型转换可以更好的解释下面的事情。</p>
+<ul>
+<li>一个布尔值 boolean 的 TRUE 被转换成 string 的 “1”。Boolean 的 FALSE 被转换成 “”（空字符串）。这种转换可以在 boolean 和 string 之间相互进行。</li>
+</ul>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$a</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable">$b</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$c</span> = strval(<span class="variable">$a</span>);</span><br><span class="line"><span class="variable">$d</span> = strval(<span class="variable">$b</span>);</span><br><span class="line">var_dump(<span class="variable">$a</span>, <span class="variable">$b</span>, <span class="variable">$c</span>, <span class="variable">$d</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>一个整数 integer 或浮点数 float 被转换为数字的字面样式的 string（包括 float 中的指数部分）。使用指数计数法的浮点数（4.1E+6）也可转换。</p>
+</li>
+<li><p>数组 array 总是转换成字符串 “Array”，因此，echo 和 print 无法显示出该数组的内容。要显示某个单元，可以用 echo $arr[‘foo’] 这种结构。要显示整个数组内容见下文。</p>
+</li>
+<li><p>在 PHP 4 中对象 object 总是被转换成字符串 “Object”，如果为了调试原因需要打印出对象的值，请继续阅读下文。为了得到对象的类的名称，可以用 get_class() 函数。自 PHP 5 起，适当时可以用 __toString 方法。</p>
+</li>
+<li><p>资源 resource 总会被转变成 “Resource id #1” 这种结构的字符串，其中的 1 是 PHP 在运行时分配给该 resource 的唯一值。不要依赖此结构，可能会有变更。要得到一个 resource 的类型，可以用函数 get_resource_type()。</p>
+</li>
+<li><p>NULL 总是被转变成空字符串。</p>
+</li>
+</ul>
+<p>如上面所说的，直接把 array，object 或 resource 转换成 string 不会得到除了其类型之外的任何有用信息。可以使用函数 print_r() 和 var_dump() 列出这些类型的内容。</p>
+<h4 id="设置变量的类型_–_settype">设置变量的类型 – settype</h4><figure class="highlight"><figcaption><span>settype(mixed &$var, string $type);``` 将变量 var 的类型设置成 type。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#21442;&#25968;&#10;&#10;var&#65306;&#35201;&#36716;&#25442;&#30340;&#21464;&#37327;&#10;&#10;type&#65306;&#21487;&#33021;&#30340;&#21462;&#20540;&#10;&#10;* boolean&#65288;&#25110;&#20026; bool&#65292;&#20174; PHP 4.2.0 &#36215;&#65289;&#10;* integer&#65288;&#25110;&#20026; int&#65292;&#20174; PHP 4.2.0 &#36215;&#65289;&#10;* float&#65288;&#21482;&#22312; PHP 4.2.0 &#20043;&#21518;&#21487;&#20197;&#20351;&#29992;&#65292;&#23545;&#20110;&#26087;&#29256;&#26412;&#20013;&#20351;&#29992;&#30340; double &#29616;&#24050;&#20572;&#29992;&#65289;&#10;* string&#10;* array&#10;* object&#10;* null&#65288;&#20174; PHP 4.2.0 &#36215;&#65289;&#10;&#10;&#36820;&#22238;&#20540;&#10;&#10;&#25104;&#21151;&#26102;&#36820;&#22238; TRUE , &#25110;&#32773;&#22833;&#36133;&#26102;&#36820;&#22238; FALSE &#12290;&#10;&#10;### &#20160;&#20040;&#26159;&#8220;&#20018;&#34892;&#21270;&#8221;&#65311;&#23454;&#29616;&#8220;&#20018;&#34892;&#21270;&#8221;&#26377;&#21738;&#20123;&#24120;&#29992;&#26041;&#27861;&#65311;&#10;&#10;&#22823;&#37096;&#20998;&#30340; PHP &#20540;&#21487;&#20197;&#36716;&#21464;&#25104; string &#26469;&#27704;&#20037;&#20445;&#23384;&#65292;&#36825;&#34987;&#31216;&#20316;&#20018;&#34892;&#21270;&#12290;&#24120;&#29992;&#30340;&#20989;&#25968;&#26159; serialize() == unserialize()&#65339;&#24674;&#22797;&#21040;&#21407;&#20808;&#21464;&#37327;&#65341; &#12290; &#22914;&#26524; PHP &#24341;&#25806;&#35774;&#23450;&#25903;&#25345; WDDX&#65292;PHP &#20540;&#20063;&#21487;&#34987;&#20018;&#34892;&#21270;&#20026;&#26684;&#24335;&#33391;&#22909;&#30340; XML &#31283;&#27493;&#12290;&#21478;&#22806;&#36824;&#26377;&#20854;&#20182;&#20989;&#25968;&#22914;__sleep() &#20018;&#34892;&#21270;&#26576;&#23545;&#35937;&#30340;&#37096;&#20998;&#23646;&#24615;&#12289;__wakeup()&#21453;&#20018;&#34892;&#21270;&#26102;&#65292;&#21021;&#22987;&#21270;&#65288;&#20854;&#23454;&#26159;&#20462;&#25913;&#65289;&#23545;&#35937;&#20869;&#23481;&#10;&#10;### &#22914;&#20309;&#33719;&#21462;&#21644;&#20462;&#25913;&#23383;&#31526;&#20018;&#20013;&#30340;&#23383;&#31526;&#65311;&#10;&#10;string &#20013;&#30340;&#23383;&#31526;&#21487;&#20197;&#36890;&#36807;&#19968;&#20010;&#20174; 0 &#24320;&#22987;&#30340;&#19979;&#26631;&#65292;&#29992;&#31867;&#20284; array &#32467;&#26500;&#20013;&#30340;&#26041;&#25324;&#21495;&#21253;&#21547;&#23545;&#24212;&#30340;&#25968;&#23383;&#26469;&#35775;&#38382;&#21644;&#20462;&#25913;&#65292;&#27604;&#22914; $str[42] &#25110; $str&#123;42&#125;&#12290;&#21487;&#20197;&#25226; string &#24403;&#25104;&#23383;&#31526;&#32452;&#25104;&#30340; array&#12290;&#20989;&#25968; substr() &#21644; substr_replace() &#21487;&#29992;&#20110;&#25805;&#20316;&#22810;&#20110;&#19968;&#20010;&#23383;&#31526;&#30340;&#24773;&#20917;&#12290;&#10;&#10;**Warning**&#65306;&#10;&#10;&#9;&#29992;&#36229;&#20986;&#23383;&#31526;&#20018;&#38271;&#24230;&#30340;&#19979;&#26631;&#20889;&#20837;&#23558;&#20250;&#25289;&#38271;&#35813;&#23383;&#31526;&#20018;&#24182;&#20197;&#31354;&#26684;&#22635;&#20805;&#12290;&#38750;&#25972;&#25968;&#31867;&#22411;&#19979;&#26631;&#20250;&#34987;&#36716;&#25442;&#25104;&#25972;&#25968;&#12290;&#38750;&#27861;&#19979;&#26631;&#31867;&#22411;&#20250;&#20135;&#29983;&#19968;&#20010; E_NOTICE &#32423;&#21035;&#38169;&#35823;&#12290;&#29992;&#36127;&#25968;&#19979;&#26631;&#20889;&#20837;&#23383;&#31526;&#20018;&#26102;&#20250;&#20135;&#29983;&#19968;&#20010; E_NOTICE &#32423;&#21035;&#38169;&#35823;&#65292;&#29992;&#36127;&#25968;&#19979;&#26631;&#35835;&#21462;&#23383;&#31526;&#20018;&#26102;&#36820;&#22238;&#31354;&#23383;&#31526;&#20018;&#12290;&#20889;&#20837;&#26102;&#21482;&#29992;&#21040;&#20102;&#36171;&#20540;&#23383;&#31526;&#20018;&#30340;&#31532;&#19968;&#20010;&#23383;&#31526;&#12290;&#29992;&#31354;&#23383;&#31526;&#20018;&#36171;&#20540;&#21017;&#36171;&#32473;&#30340;&#20540;&#26159; NULL &#23383;&#31526;&#12290;&#10;&#10;&#9;PHP &#30340;&#23383;&#31526;&#20018;&#22312;&#20869;&#37096;&#26159;&#23383;&#33410;&#32452;&#25104;&#30340;&#25968;&#32452;&#12290;&#22240;&#27492;&#29992;&#33457;&#25324;&#21495;&#35775;&#38382;&#25110;&#20462;&#25913;&#23383;&#31526;&#20018;&#23545;&#22810;&#23383;&#33410;&#23383;&#31526;&#38598;&#24456;&#19981;&#23433;&#20840;&#12290;&#20165;&#24212;&#23545;&#21333;&#23383;&#33410;&#32534;&#30721;&#20363;&#22914; ISO-8859-1 &#30340;&#23383;&#31526;&#20018;&#36827;&#34892;&#27492;&#31867;&#25805;&#20316;&#12290;&#10;&#10;&#33258; PHP 5.4 &#36215;&#23383;&#31526;&#20018;&#19979;&#26631;&#24517;&#39035;&#20026;&#25972;&#25968;&#25110;&#21487;&#36716;&#25442;&#20026;&#25972;&#25968;&#30340;&#23383;&#31526;&#20018;&#65292;&#21542;&#21017;&#20250;&#21457;&#20986;&#35686;&#21578;&#12290;&#10;&#10;## &#23383;&#31526;&#20018;&#30340;&#21407;&#29702;&#10;&#10;### &#23383;&#31526;&#20018;&#22312;&#24213;&#23618;&#26159;&#22914;&#20309;&#23384;&#20648;&#30340;&#65292;&#20160;&#20040;&#20915;&#23450;&#30528;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#65311;&#10;&#10;PHP&#20013;&#21464;&#37327;&#26159;&#29992;Zval&#65288;PHP&#20869;&#26680;&#25506;&#32034;&#20043;&#21464;&#37327;&#65288;1&#65289;Zval&#65289;&#36825;&#26679;&#19968;&#20010;&#32467;&#26500;&#20307;&#26469;&#23384;&#20648;&#30340;&#12290;Zval&#30340;&#32467;&#26500;&#26159;&#65306;&#10;&#10;&#9;struct _zval_struct &#123;&#10;&#9;&#9;zvalue_value value;&#9;&#9;&#9;/* value */&#10;&#9;&#9;zend_uint_refcount__gc;&#9;&#9;/* variable ref count */&#10;&#9;&#9;zend_uchar_type;&#9;&#9;&#9;/* active type */&#10;&#9;&#9;zend_uchar_is_ref__gc;&#9;&#9;/* if it is a ref variable */&#10;&#9;&#125;;&#10;&#10;&#32780;&#21464;&#37327;&#30340;&#20540;&#26102; zvalue_value &#36825;&#26679;&#30340;&#19968;&#20010;&#20849;&#29992;&#20307;&#65306;&#10;&#10;&#9;typedef union _zvalue_value &#123;&#10;&#9;&#9;long lval;&#10;&#9;&#9;double dval;&#10;&#9;&#9;sturct &#123;&#9;&#9;&#9;/* string */&#10;&#9;&#9;&#9;char *val;&#10;&#9;&#9;&#9;int len;&#10;&#9;&#9;&#125; str;&#10;&#9;&#9;HashTable *ht;&#10;&#9;&#9;zend_object_value_obj;&#10;&#9;&#125; zvalue_value;&#10;&#10;&#25105;&#20204;&#20174;&#20013;&#25277;&#21462;&#20986;&#23383;&#31526;&#20018;&#30340;&#32467;&#26500;&#65306;&#10;&#10;&#9;struct &#123;&#10;&#9;&#9;char *val;&#10;&#9;&#9;int len;&#10;&#9;&#125; str;&#10;&#10;&#29616;&#22312;&#27604;&#36739;&#28165;&#26970;&#20102;&#65292;PHP &#20013;&#23383;&#31526;&#20018;&#22312;&#24213;&#23618;&#23454;&#38469;&#19978;&#26159;&#19968;&#20010;&#32467;&#26500;&#20307;&#65292;&#35813;&#32467;&#26500;&#21253;&#21547;&#20102;&#25351;&#21521;&#23383;&#31526;&#20018;&#30340;&#25351;&#38024;&#21644;&#35813;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#12290;C &#20013;&#23383;&#31526;&#20018;&#26159;&#20197; \o &#32467;&#23614;&#30340;&#23383;&#31526;&#25968;&#32452;&#65292;&#36825;&#37324;&#22810;&#23384;&#20648;&#20102;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#30340;&#26102;&#38388;&#22797;&#26434;&#24230;&#26159;O(n)&#65292;&#32780;&#23383;&#31526;&#20018;&#30340;&#25805;&#20316;&#22312; PHP &#20013;&#26159;&#38750;&#24120;&#39057;&#32321;&#30340;&#65292;&#36825;&#26679;&#33021;&#36991;&#20813;&#37325;&#22797;&#35745;&#31639;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#65292;&#36825;&#33021;&#33410;&#30465;&#22823;&#37327;&#30340;&#26102;&#38388;&#65292;&#26159;&#31354;&#38388;&#25442;&#26102;&#38388;&#30340;&#20570;&#27861;&#12290;&#36825;&#20040;&#30475;&#22312; PHP &#20013; strlen() &#20989;&#25968;&#21487;&#20197;&#22312;&#24120;&#25968;&#26102;&#38388;&#20869;&#33719;&#21462;&#21040;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#12290;&#35745;&#31639;&#26426;&#35821;&#35328;&#20013;&#23383;&#31526;&#20018;&#30340;&#25805;&#20316;&#37117;&#38750;&#24120;&#20043;&#22810;&#65292;&#25152;&#20197;&#22823;&#37096;&#20998;&#39640;&#32423;&#35821;&#35328;&#20013;&#37117;&#20250;&#23384;&#20648;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#12290;&#10;&#10;&#30001;&#27492;&#21487;&#30693;&#65292;String &#38271;&#24230;&#30001;&#24213;&#23618;&#34920;&#31034;&#23383;&#31526;&#20018;&#30340;&#38271;&#24230;&#20301;&#20915;&#23450;&#21363; int &#22411;&#65292;&#25925;c&#35821;&#35328;&#20013; int &#22411;&#30340;&#26368;&#22823;&#20540;&#65292;&#23601;&#26159; php &#20013;&#30340;&#23383;&#31526;&#20018;&#26368;&#22823;&#38271;&#24230;&#30340;&#38480;&#21046;&#20043;&#19968;&#65292;&#21478;&#19968;&#20010;&#38480;&#21046;&#26159; php.ini &#20013;&#20869;&#23384;&#30340;&#38480;&#21046;&#65292;&#23383;&#31526;&#20018;&#26368;&#38271;&#19981;&#33021;&#36229;&#36807;&#36825;&#20010;&#12290;&#10;&#10;### PHP &#24182;&#19981;&#29305;&#21035;&#25351;&#26126;&#23383;&#31526;&#20018;&#30340;&#32534;&#30721;&#65292;&#37027;&#23383;&#31526;&#20018;&#21040;&#24213;&#26159;&#24590;&#26679;&#32534;&#30721;&#30340;&#21602;&#65311;&#10;&#10;&#30001;&#20110; PHP &#24182;&#19981;&#29305;&#21035;&#25351;&#26126;&#23383;&#31526;&#20018;&#30340;&#32534;&#30721;&#65292;&#37027;&#23383;&#31526;&#20018;&#21040;&#24213;&#26159;&#24590;&#26679;&#32534;&#30721;&#30340;&#21602;&#65311;&#20363;&#22914;&#23383;&#31526;&#20018; &#34;&#225;&#34; &#21040;&#24213;&#26159;&#31561;&#20110; &#34;\xE1&#34;&#65288;ISO-8859-1&#65289;&#65292;&#34;\xC3\xA1&#34;&#65288;UTF-8&#65292;C form&#65289;&#65292;&#34;\x61\xCC\x81&#34;&#65288;UTF-8&#65292;D form&#65289;&#36824;&#26159;&#20219;&#20309;&#20854;&#23427;&#21487;&#33021;&#30340;&#34920;&#36798;&#21602;&#65311;&#31572;&#26696;&#26159;```&#23383;&#31526;&#20018;&#20250;&#34987;&#25353;&#29031;&#35813;&#33050;&#26412;&#25991;&#20214;&#30456;&#21516;&#30340;&#32534;&#30721;&#26041;&#24335;&#26469;&#32534;&#30721;&#12290;``` &#22240;&#27492;&#22914;&#26524;&#19968;&#20010;&#33050;&#26412;&#30340;&#32534;&#30721;&#26159; ISO-8859-1&#65292;&#21017;&#20854;&#20013;&#30340;&#23383;&#31526;&#20018;&#20063;&#20250;&#34987;&#32534;&#30721;&#20026; ISO-8859-1&#65292;&#20197;&#27492;&#31867;&#25512;&#12290;&#19981;&#36807;&#36825;&#24182;&#19981;&#36866;&#29992;&#20110;&#28608;&#27963;&#20102; Zend Multibyte &#26102;&#65307;&#27492;&#26102;&#33050;&#26412;&#21487;&#20197;&#26159;&#20197;&#20219;&#20309;&#26041;&#24335;&#32534;&#30721;&#30340;&#65288;&#26126;&#30830;&#25351;&#23450;&#25110;&#34987;&#33258;&#21160;&#26816;&#27979;&#65289;&#28982;&#21518;&#34987;&#36716;&#25442;&#20026;&#26576;&#31181;&#20869;&#37096;&#32534;&#30721;&#65292;&#28982;&#21518;&#23383;&#31526;&#20018;&#23558;&#34987;&#29992;&#27492;&#26041;&#24335;&#32534;&#30721;&#12290;&#27880;&#24847;&#33050;&#26412;&#30340;&#32534;&#30721;&#26377;&#19968;&#20123;&#32422;&#26463;&#65288;&#22914;&#26524;&#28608;&#27963;&#20102; Zend Multibyte &#21017;&#26159;&#20854;&#20869;&#37096;&#32534;&#30721;&#65289;- &#36825;&#24847;&#21619;&#30528;&#27492;&#32534;&#30721;&#24212;&#35813;&#26159; ASCII &#30340;&#20860;&#23481;&#36229;&#38598;&#65292;&#20363;&#22914; UTF-8 &#25110; ISO-8859-1&#12290;&#19981;&#36807;&#35201;&#27880;&#24847;&#65292;&#20381;&#36182;&#29366;&#24577;&#30340;&#32534;&#30721;&#20854;&#20013;&#30456;&#21516;&#30340;&#23383;&#33410;&#20540;&#21487;&#20197;&#29992;&#20110;&#39318;&#23383;&#27597;&#21644;&#38750;&#39318;&#23383;&#27597;&#32780;&#36716;&#25442;&#29366;&#24577;&#65292;&#36825;&#21487;&#33021;&#20250;&#36896;&#25104;&#38382;&#39064;&#12290;&#10;&#10;### &#8220;&#20108;&#36827;&#21046;&#23433;&#20840;&#8221;&#26159;&#20160;&#20040;&#24847;&#24605;&#65311;&#10;&#10;php &#30340;&#20869;&#37096;&#20989;&#25968;&#22312;&#25805;&#20316;&#20108;&#36827;&#21046;&#25968;&#25454;&#26102;&#33021;&#20445;&#35777;&#36798;&#21040;&#39044;&#26399;&#30340;&#32467;&#26524;&#65292;&#20363;&#22914;str_replace&#12289;stristr&#12289;strcmp&#31561;&#20989;&#25968;&#65292;&#25105;&#20204;&#23601;&#35828;&#36825;&#20123;&#20989;&#25968;&#26159;&#20108;&#36827;&#21046;&#23433;&#20840;&#30340;&#12290;&#10;&#10;&#60;b&#62;&#20030;&#20010;&#20363;&#23376;&#60;/b&#62;&#10;&#10;```C&#20195;&#30721;&#22914;&#19979;</span><br></pre></td></tr></table></figure>
+<pre><code>main(){
+    <span class="keyword">char</span> ab[] = <span class="string">"aa\0b"</span>;
+    cahr ac[] = <span class="string">"aa\0c"</span>;
+    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">strcmp</span>(ab, ac));
+    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, <span class="built_in">strlen</span>(ab));
+}
+</code></pre><p>结果：</p>
+<pre><code><span class="number">0</span>
+
+<span class="number">2</span>
+</code></pre><p>解读：</p>
+<p>C语言认为 ab 和 ac 这两个字符串是相等的，而且 ab 的长度为 2.</p>
+<p><code>php 代码如下</code></p>
+<pre><code>&lt;?php
+    <span class="variable">$ab</span> = <span class="string">"aa\0b"</span>;
+    <span class="variable">$ac</span> = <span class="string">"aa\0c"</span>;
+    var_dump(strcmp(<span class="variable">$ab</span>, <span class="variable">$ac</span>));
+    var_dump(strlen(<span class="variable">$ab</span>));
+?&gt;
+</code></pre><p>结果：</p>
+<pre><code><span class="function"><span class="title">int</span><span class="params">(-<span class="number">1</span>)</span></span>
+
+<span class="function"><span class="title">int</span><span class="params">(<span class="number">4</span>)</span></span>
+</code></pre><p>解读：</p>
+<p>也就是 php 语言认为 ab 和 ac 这两个字符串是不相等的， ab 的长度是 4.</p>
+<p>为什么会这样呢？</p>
+<p>对于 c 语言 ‘\0’ 是字符串的结束符，所以在 C 语言中对于字符串”aa\0b”，它读到’\0’就会默认字符读取已经结束，而抛掉后面的字符串’b’。</p>
+<p>既然这样，php 都是 C 来开发的，为什么 php 做到了二进制安全呢？</p>
+<p>由上面 php 的 Zval 结构知：</p>
+<p>php 会根据 type 的值来决定访问 value 的哪个成员，为字符串时，我们会访问str结构，这便是底层字符串的存储结构，它有两个值，一个是指向字符串的指针 val，另一个是记录字符串长度的len值，就是因为有 len 这个值，导致了 php 是二进制安全的：因为它不需要像 C 一样通过是否遇到’\0’结尾符来判断整个字符串是否读取完毕，而是通过 len 这个值指定的长度进行读取。</p>
+<h2 id="字符编码方式">字符编码方式</h2><h3 id="什么是位？什么是字节？">什么是位？什么是字节？</h3><p>位：”位(bit)”是电子计算机中最小的数据单位。每一位的状态只能是 0 或 1。</p>
+<p>字节： 8 个二进制位构成 1 个“字节(Byte)”，它是存储空间的基本计量单位。</p>
+<h3 id="什么是_ASCII_编码，如何编码？">什么是 ASCII 编码，如何编码？</h3><p>ASCII（American Standard Code for Information Interchange，美国标准信息交换代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。它是现今最通用的单字节编码系统，并等同于国际标准ISO/IEC 646。</p>
+<p>PHP 并不特别指明字符串的编码，字符串只是按照该脚本文件相同的编码方式来编码。</p>
+<h3 id="什么是_Unicode_编码？">什么是 Unicode 编码？</h3><p>Unicode码扩展自ASCII字元集。在严格的ASCII中，每个字元用7位元表示，或者电脑上普遍使用的每字元有8位元宽；而Unicode使用全16位元字元集。这使得Unicode能够表示世界上所有的书写语言中可能用於电脑通讯的字元、象形文字和其他符号。Unicode最初打算作为ASCII的补充，可能的话，最终将代替它。考虑到ASCII是电脑中最具支配地位的标准，所以这的确是一个很高的目标。</p>
+<h3 id="如何在_XML_中用_Unicode_表示汉字？">如何在 XML 中用 Unicode 表示汉字？</h3><p>Xml中若要用unicode码来表示字符，格式应如：&#xXXXX;</p>
+<h2 id="UTF-8_和_GBK_编码原理">UTF-8 和 GBK 编码原理</h2><h3 id="什么是_UTF-8_编码？">什么是 UTF-8 编码？</h3><p>UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，又称万国码。由Ken Thompson于1992年创建。现在已经标准化为RFC 3629。UTF-8用1到6个字节编码UNICODE字符。用在网页上可以同一页面显示中文简体繁体及其它语言（如英文，日文，韩文）。</p>
+<h3 id="UTF-8_中_BOM（签名）_和不带_BOM（签名）_有什么区别？">UTF-8 中 BOM（签名） 和不带 BOM（签名） 有什么区别？</h3><p>BOM (Byte Order Mark)，就是字节序标记。对于 UTF-8 没有什么区别。</p>
+<p>UTF-8 不需要 BOM，尽管 Unicode 标准允许在 UTF-8 中使用 BOM。所以不含 BOM 的 UTF-8 才是标准形式，在 UTF-8 文件中放置 BOM 主要是微软的习惯（把带有 BOM 的小端序 UTF-16 称作「Unicode」而又不详细说明，这也是微软的习惯）。BOM（byte order mark）是为 UTF-16 和 UTF-32 准备的，用于标记字节序（byte order）。微软在 UTF-8 中使用 BOM 是因为这样可以把 UTF-8 和 ASCII 等编码明确区分开，但这样的文件在 Windows 之外的操作系统里会带来问题。「UTF-8」和「带 BOM 的 UTF-8」的区别就是有没有 BOM。即文件开头有没有 U+FEFF。UTF-8 的网页代码不应使用 BOM，否则常常会出错。</p>
+<h3 id="UTF-8_中汉字占几个字节？">UTF-8 中汉字占几个字节？</h3><p>首先我们要知道 UTF-8 是变长编码,不固定，1-6个字节。但是一般来说是占3、4个字节的居多。</p>
+<h3 id="Unicode_和_UTF-8_编码如何相互转换？">Unicode 和 UTF-8 编码如何相互转换？</h3><h4 id="区别">区别</h4><p>Unicode是一个字符集，而UTF-8是Unicode的其中一种，Unicode是定长的都为双字节，而UTF-8是可变的，对于汉字来说Unicode占有的字节比UTF-8占用的字节少1个字节。Unicode为双字节，而UTF-8中汉字占三个字节。<br>UTF-8编码字符理论上可以最多到6个字节长,然而16位BMP（Basic Multilingual Plane）字符最多只用到3字节长。下面看一下UTF-8编码表：</p>
+<pre><code>U-<span class="number">00000000</span> - U-<span class="number">0000007F</span>: <span class="number">0</span>xxxxxxx
+U-<span class="number">00000080</span> - U-<span class="number">000007F</span>F: <span class="number">110</span>xxxxx <span class="number">10</span>xxxxxx
+U-<span class="number">00000800</span> - U-<span class="number">0000F</span>FFF: <span class="number">1110</span>xxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx
+U-<span class="number">00010000</span> - U-<span class="number">001F</span>FFFF: <span class="number">11110</span>xxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx
+U-<span class="number">00200000</span> - U-<span class="number">03F</span>FFFFF: <span class="number">111110</span>xx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx
+U-<span class="number">04000000</span> - U-<span class="number">7F</span>FFFFFF: <span class="number">1111110</span>x <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx <span class="number">10</span>xxxxxx
+</code></pre><p>xxx 的位置由字符编码数的二进制表示的位填入， 越靠右的 x 具有越少的特殊意义，只用最短的那个足够表达一个字符编码数的多字节串。 注意在多字节串中, 第一个字节的开头”1”的数目就是整个串中字节的数目。而第一行中以0开头，是为了兼容ASCII编码，为一个字节，第二行就为双字节字符串，第三行为3字节，如汉字就属于这种，以此类推。(个人认为：其实我们可以简单的把前面的1的个数看成字节数)</p>
+<h4 id="Unicode_转换成_Utf-8">Unicode 转换成 Utf-8</h4><p>为了要将 Unicode 转化为 UTF-8，当然要知道他们的区别到底在什么地方。下面来看一下，在 Unicode 中的编码是怎样转换成 UTF-8 的，在 UTF-8 中，如果一个字符的字节小于 0x80（128）则为 ASCII 字符，占一个字节，可以不用转换，因为 UTF-8 兼容 ASCII 编码。假如在 Unicode 中汉字“你”的编码为“u4F60”，把它转换为二进制为 100111101100000 ，然后按照 UTF-8 的方法进行转换。可以将 Unicode 二进制从低位往高位取出二进制数字，每次取 6 位，如上述的二进制就可以分别取出为如下所示的格式，前面按格式填补，不足 8 位用 0 填补。</p>
+<pre><code><span class="attribute">unicode</span>: <span class="string">100111101100000                   4F60</span>
+
+<span class="cpp">utf-<span class="number">8</span>:    <span class="number">11100100</span>,<span class="number">10111101</span>,<span class="number">10100000</span>       E4BDA0</span>
+</code></pre><p>从上面就可以很直观的看出 Unicode 到 UTF-8 之间的转换，当然知道了 UTF-8 的格式后，就可以进行逆转运算，就是按照格式把它在二进制中的相应位置上取出，然后在转换就是所得到的 Unicode 字符了（这个运算可以通过“位移”来完成）。如上述的“你”的转换，由于其值大于 0x800 小于 0x10000，因此可以判断为三字节存储，则最高位需要向右移“12”位再根据三字节格式的最高位为11100000（0xE0）求或（|）就可以得到最高位的值了。同理第二位则是右移“6”位，则还剩下最高位和第二位的二进制值，可以通过与111111（0x3F）求按位于（&amp;）操作，再和11000000（0x80）求或（|）。第三位就不用移位了，只要直接取最后六位（与111111（ox3F）取&amp;），在与11000000(0x80)求或（|）。</p>
+<h4 id="Utf-8_逆转回_Unicode">Utf-8 逆转回 Unicode</h4><p>当然在 UTF-8 到 Unicode 的转换也是通过移位等来完成的，就是把 UTF-8 那些格式相应的位置的二进制数给揪出来。在上述例子中“你”为三个字节，因此要每个字节进行处理，有高位到低位进行处理。在UTF-8中“你” 11100100,10111101,10100000。从高位起即第一个字节11100100就是把其中的”0100”给取出来，这个很简单只要和 11111（0x1F）取与（&amp;），由三字节可以得知最高位肯定位于12位之前，因为每次取六位。所以还要将得到的结果左移12位，最高位也就这样完成了0100,000000,000000。而第二位则是要把“111101”给取出来，则只需将第二字节10111101和111111(0x3F)取与（&amp;）。在将所得到的结果左移6位与最高字节所得的结果取或（|），第二位就这样完成了，得到的结果为 0100,111101,000000。以此类推最后一位直接与111111（0x3F）取与（&amp;），再与前面所得的结果取或（|）即可得到结果0100,111101,100000。</p>
+<h4 id="PHP_代码实现">PHP 代码实现</h4><pre><code>/**
+ * utf8字符转换成Unicode字符
+ * @param  [type] <span class="variable">$utf8</span>_str Utf-<span class="number">8</span> 字符
+ * @<span class="keyword">return</span> [type]           Unicode 字符
+ */
+<span class="keyword">function</span> utf8_to_unicode(<span class="variable">$utf8</span>_str) {
+    <span class="variable">$unicode</span> = <span class="number">0</span>;
+    <span class="variable">$unicode</span> = (ord(<span class="variable">$utf8</span>_str[<span class="number">0</span>]) &amp; <span class="number">0x1F</span>) &lt;&lt; <span class="number">12</span>;
+    <span class="variable">$unicode</span> |= (ord(<span class="variable">$utf8</span>_str[<span class="number">1</span>]) &amp; <span class="number">0x3F</span>) &lt;&lt; <span class="number">6</span>;
+    <span class="variable">$unicode</span> |= (ord(<span class="variable">$utf8</span>_str[<span class="number">2</span>]) &amp; <span class="number">0x3F</span>);
+    return dechex(<span class="variable">$unicode</span>);
+}
+
+/**
+ * Unicode字符转换成utf8字符
+ * @param  [type] <span class="variable">$unicode</span>_str Unicode字符
+ *  @<span class="keyword">return</span> [type]              Utf-<span class="number">8</span>字符
+ */
+<span class="keyword">function</span> unicode_to_utf8 (<span class="variable">$unicode</span>_str) {
+    <span class="variable">$utf8</span>_str = <span class="string">''</span>;
+    <span class="variable">$code</span> = intval(hexdec(<span class="variable">$unicode</span>_str));
+    <span class="variable">$ord</span>_1 = decbin(<span class="number">0xe0</span> | (<span class="variable">$code</span> &gt;&gt; <span class="number">12</span>));
+    <span class="variable">$ord</span>_2 = decbin(<span class="number">0x80</span> | ((<span class="variable">$code</span> &gt;&gt; <span class="number">6</span>) &amp; <span class="number">0x3f</span>));
+    <span class="variable">$ord</span>_3 = decbin(<span class="number">0x80</span> | (<span class="variable">$code</span> &amp; <span class="number">0x3f</span>));
+    <span class="variable">$utf8</span>_str = chr(bindec(<span class="variable">$ord</span>_1)).chr(bindec(<span class="variable">$ord</span>_2)).chr(bindec(<span class="variable">$ord</span>_3));
+    return <span class="variable">$utf8</span>_str;
+}
+</code></pre><p>这两个函数只是简单的实现了一下，只支持单个字符【一个完整的utf8字符或是一个完整的Unicode字符】互相转换，明白了原理就可以尽情去扩展了。</p>
+<h3 id="GB2312_和_GBK_编码是怎么来的？">GB2312 和 GBK 编码是怎么来的？</h3><p>《信息交换用汉字编码字符集》是由中国国家标准总局 1980 年发布，1981 年 5 月 1 日开始实施的一套国家标准，标准号是GB 2312—1980。</p>
+<p>GB2312 编码适用于汉字处理、汉字通信等系统之间的信息交换，通行于中国大陆；新加坡等地也采用此编码。中国大陆几乎所有的中文系统和国际化的软件都支持 GB 2312</p>
+<p>GBK 向下与 GB 2312 编码兼容，向上支持 ISO 10646.1 国际标准，是前者向后者过渡过程中的一个承上启下的产物。ISO 10646 是国际标准化组织 ISO 公布的一个编码标准，即 Universal Multilpe-Octet Coded Character Set（简称UCS），大陆译为《通用多八位编码字符集》，台湾译为《广用多八位元编码字元集》，它与 Unicode 组织的 Unicode 编码完全兼容。ISO 10646.1 是该标准的第一部分《体系结构与基本多文种平面》。我国 1993 年以 GB 13000.1 国家标准的形式予以认可（即 GB 13000.1 等同于 ISO 10646.1）。</p>
+<p>GBK 编码，是在 GB2312-80 标准基础上的内码扩展规范，使用了双字节编码方案，其编码范围从 8140 至 FEFE（剔除xx7F），共 23940 个码位，共收录了 21003 个汉字，完全兼容 GB2312-80 标准，支持国际标准 ISO/IEC10646-1 和国家标准 GB13000-1 中的全部中日韩汉字，并包含了 BIG5 编码中的所有汉字。GBK 编码方案于 1995 年 10 月制定， 1995 年 12 月正式发布，目前中文版的 WIN95、WIN98、WINDOWS NT 以及 WINDOWS 2000、WINDOWS XP、WIN 7 等都支持 GBK 编码方案。</p>
+<h3 id="如何判断一个汉字是否是_UTF-8_编码？">如何判断一个汉字是否是 UTF-8 编码？</h3><p> mb_detect_encoding() 函数</p>
+<h3 id="多字节转码函数_mbstring_和_iconv_有什么区别，如何选择？">多字节转码函数 mbstring 和 iconv 有什么区别，如何选择？</h3><p>iconv — Convert string to requested character encoding(PHP 4 &gt;= 4.0.5, PHP 5)</p>
+<p>mb_convert_encoding — Convert character encoding(PHP 4 &gt;= 4.0.6, PHP 5) </p>
+<h4 id="用法">用法</h4><p>string mb_convert_encoding ( string str, string to_encoding [, mixed from_encoding] ) </p>
+<p>需要先启用 mbstring 扩展库</p>
+<p>string iconv ( string in_charset, string out_charset, string str ) </p>
+<p>注意：</p>
+<pre><code>第二个参数，除了可以指定要转化到的编码以外，还可以增加两个后缀：<span class="comment">//TRANSLIT 和 //IGNORE，其中： </span>
+
+<span class="comment">//TRANSLIT 会自动将不能直接转化的字符变成一个或多个近似的字符， </span>
+
+<span class="comment">//IGNORE 会忽略掉不能转化的字符，而默认效果是从第一个非法字符截断。 </span>
+</code></pre><p>Returns the converted string or FALSE on failure.</p>
+<h4 id="使用">使用</h4><p>iconv 在转换字符”-“到 gb2312 时会出错，如果没有 ignore 参数，所有该字符后面的字符串都无法被保存。不管怎么样，这个”-“都无法转换成功，无法输出。另外 mb_convert_encoding 没有这个 bug。</p>
+<p>mb_convert_encoding 可以指定多种输入编码，它会根据内容自动识别,但是执行效率比iconv差太多；如：$str = mb_convert_encoding($str,”euc-jp”,”ASCII,JIS,EUC-JP,SJIS,UTF- 8”);“ASCII,JIS,EUC-JP,SJIS,UTF-8”的顺序不同效果也有差异。</p>
+<p>一般情况下用 iconv，只有当遇到无法确定原编码是何种编码，或者iconv转化后无法正常显示时才用mb_convert_encoding 函数。</p>
+<h2 id="字符串常见算法和原理">字符串常见算法和原理</h2><h3 id="字符串常见算法－如何随机生成字符串？">字符串常见算法－如何随机生成字符串？</h3><pre><code><span class="keyword">function</span> random_str (<span class="variable">$lenght</span>) {
+    <span class="variable">$base</span>_str = <span class="string">'123456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'</span>;
+    <span class="variable">$str</span>_len = strlen(<span class="variable">$base</span>_str);
+    <span class="variable">$result</span> = <span class="string">''</span>;
+    for (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span>&lt;<span class="variable">$length</span>; <span class="variable">$i</span>++) {
+        <span class="variable">$result</span> .= <span class="variable">$base</span>_str{mt_rand(<span class="number">0</span>, <span class="variable">$str</span>_len - <span class="number">1</span>)};
+    }
+    return <span class="variable">$result</span>;
+}
+</code></pre><h3 id="字符串常见算法－如何实现字符串反转？">字符串常见算法－如何实现字符串反转？</h3><p>自带函数 strrev() 对汉字反转会乱码。</p>
+<pre><code>/** 该方法支持中文反转 **/
+<span class="keyword">function</span> str_rev_gb (<span class="variable">$str</span>) {
+    // 判断输入的是否utf-<span class="number">8</span>类型的字符，不是退出
+    if (!is_string(<span class="variable">$str</span>) || !mb_check_encoding(<span class="variable">$str</span>,<span class="string">'UTF-8'</span>)) {
+        exit(<span class="string">'输入的类型不是 UTF8 类型的字符串'</span>);
+    }
+    // 将字符串存入数组
+    <span class="variable">$str</span>_len = mb_strlen(<span class="variable">$str</span>, <span class="string">'UTF-8'</span>);
+    <span class="variable">$tmp</span>_array = array();
+    for (<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$str</span>_len; <span class="variable">$i</span>++) {
+        <span class="variable">$tmp</span>_array[] = mb_substr(<span class="variable">$str</span>, <span class="variable">$i</span>, <span class="number">1</span>, <span class="string">'UTF-8'</span>);
+    }
+    // 反转数组
+    <span class="variable">$krsort</span>(<span class="variable">$tmp</span>_array);
+    <span class="variable">$return</span>_str = implode(<span class="variable">$array</span>);
+    return <span class="variable">$return</span>_str;
+}
+</code></pre><h3 id="字符串常见算法－如何实现字符串加密解密？">字符串常见算法－如何实现字符串加密解密？</h3><pre><code>/**
+ * Discuz经典加密解密方法
+ * @ <span class="variable">$string</span> 字符串，明文或密文
+ * @ param <span class="variable">$operation</span>[ ENCODE DECODE ]
+ * @ param <span class="variable">$key</span> 密钥
+ * @ param <span class="variable">$expiry</span> 密文有效期
+ */
+<span class="keyword">function</span> authcode(<span class="variable">$string</span>, <span class="variable">$operation</span> = <span class="string">'DECODE'</span>, <span class="variable">$key</span> = <span class="string">''</span>, <span class="variable">$expiry</span> = <span class="number">0</span>) {
+    <span class="variable">$GLOBALS</span>[<span class="string">'auth_key'</span>] = empty(<span class="variable">$GLOBALS</span>[<span class="string">'auth_key'</span>]) ? md5(<span class="string">'authkey'</span>) : <span class="variable">$GLOBALS</span>[<span class="string">'auth_key'</span>];
+    <span class="variable">$ckey</span>_length = <span class="number">4</span>; // 动态密匙长度，相同的明文会生成不同密文就是依靠动态密匙
+    <span class="variable">$key</span> = md5(<span class="variable">$key</span> ? <span class="variable">$key</span> : <span class="variable">$GLOBALS</span>[<span class="string">'discuz_auth_key'</span>]); // 密匙
+    <span class="variable">$keya</span> = md5(substr(<span class="variable">$key</span>, <span class="number">0</span>, <span class="number">16</span>)); // 密匙a会参与加解密
+    <span class="variable">$keyb</span> = md5(substr(<span class="variable">$key</span>, <span class="number">16</span>, <span class="number">16</span>)); // 密匙b会用来做数据完整性验证
+    <span class="variable">$keyc</span> = <span class="variable">$ckey</span>_length ? (<span class="variable">$operation</span> == <span class="string">'DECODE'</span> ? substr(<span class="variable">$string</span>, <span class="number">0</span>, <span class="variable">$ckey</span>_length): substr(md5(microtime()), -<span class="variable">$ckey</span>_length)) : <span class="string">''</span>; // 密匙c用于变化生成的密文
+    <span class="variable">$cryptkey</span> = <span class="variable">$keya</span>.md5(<span class="variable">$keya</span>.<span class="variable">$keyc</span>); // 参与运算的密匙
+    <span class="variable">$key</span>_length = strlen(<span class="variable">$cryptkey</span>);
+    // 明文，前<span class="number">10</span>位用来保存时间戳，解密时验证数据有效性，<span class="number">10</span>到<span class="number">26</span>位用来保存<span class="variable">$keyb</span>(密匙b)，
+    // 解密时会通过这个密匙验证数据完整性
+    // 如果是解码的话，会从第<span class="variable">$ckey</span>_length位开始，因为密文前<span class="variable">$ckey</span>_length位保存 动态密匙，以保证解密正确
+    <span class="variable">$string</span> = <span class="variable">$operation</span> == <span class="string">'DECODE'</span> ? base64_decode(substr(<span class="variable">$string</span>, <span class="variable">$ckey</span>_length)) :  sprintf(<span class="string">'%010d'</span>, <span class="variable">$expiry</span> ? <span class="variable">$expiry</span> + time() : <span class="number">0</span>).substr(md5(<span class="variable">$string</span>.<span class="variable">$keyb</span>), <span class="number">0</span>, <span class="number">16</span>).<span class="variable">$string</span>;
+    <span class="variable">$string</span>_length = strlen(<span class="variable">$string</span>);
+    <span class="variable">$result</span> = <span class="string">''</span>;
+    <span class="variable">$box</span> = range(<span class="number">0</span>, <span class="number">255</span>);
+    <span class="variable">$rndkey</span> = array();
+    // 产生密匙簿
+    for(<span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt;= <span class="number">255</span>; <span class="variable">$i</span>++) {
+        <span class="variable">$rndkey</span>[<span class="variable">$i</span>] = ord(<span class="variable">$cryptkey</span>[<span class="variable">$i</span> % <span class="variable">$key</span>_length]);
+    }
+    // 用固定的算法，打乱密匙簿，增加随机性，好像很复杂，实际上对并不会增加密文的强度
+    for(<span class="variable">$j</span> = <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">256</span>; <span class="variable">$i</span>++) {
+        <span class="variable">$j</span> = (<span class="variable">$j</span> + <span class="variable">$box</span>[<span class="variable">$i</span>] + <span class="variable">$rndkey</span>[<span class="variable">$i</span>]) % <span class="number">256</span>;
+        <span class="variable">$tmp</span> = <span class="variable">$box</span>[<span class="variable">$i</span>];
+        <span class="variable">$box</span>[<span class="variable">$i</span>] = <span class="variable">$box</span>[<span class="variable">$j</span>];
+        <span class="variable">$box</span>[<span class="variable">$j</span>] = <span class="variable">$tmp</span>;
+    }
+    // 核心加解密部分   
+    for(<span class="variable">$a</span> = <span class="variable">$j</span> = <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$string</span>_length; <span class="variable">$i</span>++) {
+        <span class="variable">$a</span> = (<span class="variable">$a</span> + <span class="number">1</span>) % <span class="number">256</span>;
+        <span class="variable">$j</span> = (<span class="variable">$j</span> + <span class="variable">$box</span>[<span class="variable">$a</span>]) % <span class="number">256</span>;
+        <span class="variable">$tmp</span> = <span class="variable">$box</span>[<span class="variable">$a</span>];
+        <span class="variable">$box</span>[<span class="variable">$a</span>] = <span class="variable">$box</span>[<span class="variable">$j</span>];
+        <span class="variable">$box</span>[<span class="variable">$j</span>] = <span class="variable">$tmp</span>;
+        <span class="variable">$result</span> .= chr(ord(<span class="variable">$string</span>[<span class="variable">$i</span>]) ^ (<span class="variable">$box</span>[(<span class="variable">$box</span>[<span class="variable">$a</span>] + <span class="variable">$box</span>[<span class="variable">$j</span>]) % <span class="number">256</span>])); // 从密匙簿得出密匙进行异或，再转成字符
+    }
+    if(<span class="variable">$operation</span> == <span class="string">'DECODE'</span>) {
+        // 验证数据有效性，请看未加密明文的格式
+        if((substr(<span class="variable">$result</span>, <span class="number">0</span>, <span class="number">10</span>) == <span class="number">0</span> || substr(<span class="variable">$result</span>, <span class="number">0</span>, <span class="number">10</span>) - time() &gt; <span class="number">0</span>) &amp;&amp;  substr(<span class="variable">$result</span>, <span class="number">10</span>, <span class="number">16</span>) == substr(md5(substr(<span class="variable">$result</span>, <span class="number">26</span>).<span class="variable">$keyb</span>), <span class="number">0</span>, <span class="number">16</span>)) {
+            return substr(<span class="variable">$result</span>, <span class="number">26</span>);
+        } else {
+            return <span class="string">''</span>;
+        }
+    } else {
+        // 把动态密匙保存在密文里，这也是为什么同样的明文，生产不同密文后能解密的原因
+        // 因为加密后的密文可能是一些特殊字符，复制过程可能会丢失，所以用base64编码
+        return <span class="variable">$keyc</span>.str_replace(<span class="string">'='</span>, <span class="string">''</span>, base64_encode(<span class="variable">$result</span>));
+    }
+}
+
+/**
+ * @ param <span class="variable">$string</span> 字符串，明文或密码
+ * @ param <span class="variable">$operation</span> E加密，D解密
+ * @ param <span class="variable">$key</span> 密钥
+ */
+<span class="keyword">function</span> encrypt(<span class="variable">$string</span>, <span class="variable">$operation</span>, <span class="variable">$key</span>=<span class="string">''</span>) {
+    <span class="variable">$key</span> = md5(<span class="variable">$key</span>);
+    <span class="variable">$key</span>_length = strlen(<span class="variable">$key</span>);
+    <span class="variable">$string</span> = <span class="variable">$operation</span> == <span class="string">'D'</span> ? base64_decode(<span class="variable">$string</span>) : substr(md5(<span class="variable">$string</span>.<span class="variable">$key</span>), <span class="number">0</span>, <span class="number">8</span>).<span class="variable">$string</span>;
+    <span class="variable">$string</span>_length = strlen(<span class="variable">$string</span>);
+    <span class="variable">$rndkey</span> = <span class="variable">$box</span> = array();
+    <span class="variable">$result</span> = <span class="string">''</span>;
+    for (<span class="variable">$i</span>=<span class="number">0</span>; <span class="variable">$i</span>&lt;=<span class="number">255</span>; <span class="variable">$i</span>++) {
+        <span class="variable">$rndkey</span>[<span class="variable">$i</span>] = ord(<span class="variable">$key</span>[<span class="variable">$i</span> % <span class="variable">$key</span>_length]);
+        <span class="variable">$box</span>[<span class="variable">$i</span>] = <span class="variable">$i</span>;
+    }
+    for (<span class="variable">$j</span> = <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="number">256</span>; <span class="variable">$i</span>++) {
+        <span class="variable">$j</span> = (<span class="variable">$j</span> + <span class="variable">$box</span>[<span class="variable">$i</span>] + <span class="variable">$rndkey</span>[<span class="variable">$i</span>]) % <span class="number">256</span>;
+        <span class="variable">$tmp</span> = <span class="variable">$box</span>[<span class="variable">$i</span>];
+        <span class="variable">$box</span>[<span class="variable">$i</span>] = <span class="variable">$box</span>[<span class="variable">$j</span>];
+        <span class="variable">$box</span>[<span class="variable">$j</span>] = <span class="variable">$tmp</span>;
+    }
+    for (<span class="variable">$a</span> = <span class="variable">$j</span> = <span class="variable">$i</span> = <span class="number">0</span>; <span class="variable">$i</span> &lt; <span class="variable">$string</span>_length; <span class="variable">$i</span>++) {
+        <span class="variable">$a</span> = (<span class="variable">$a</span> + <span class="number">1</span>) % <span class="number">256</span>;
+        <span class="variable">$j</span> = (<span class="variable">$j</span> + <span class="variable">$box</span>[<span class="variable">$a</span>]) % <span class="number">256</span>;
+        <span class="variable">$tmp</span> = <span class="variable">$box</span>[<span class="variable">$a</span>];
+        <span class="variable">$box</span>[<span class="variable">$a</span>] = <span class="variable">$box</span>[<span class="variable">$j</span>];
+        <span class="variable">$box</span>[<span class="variable">$j</span>] = <span class="variable">$tmp</span>;
+        <span class="variable">$result</span> .= chr(ord(<span class="variable">$string</span>[<span class="variable">$i</span>]) ^ (<span class="variable">$box</span>[(<span class="variable">$box</span>[<span class="variable">$a</span>] + <span class="variable">$box</span>[<span class="variable">$j</span>]) % <span class="number">256</span>]));
+    }
+    if (<span class="variable">$operation</span> == <span class="string">'D'</span>) {
+        if (substr(<span class="variable">$result</span>, <span class="number">0</span>, <span class="number">8</span>) == substr(md5(substr(<span class="variable">$result</span>, <span class="number">8</span>).<span class="variable">$key</span>), <span class="number">0</span>, <span class="number">8</span>)) {
+            return substr(<span class="variable">$result</span>, <span class="number">8</span>);
+        } else {
+            return<span class="string">''</span>;
+        }
+    } else {
+        return str_replace(<span class="string">'='</span>, <span class="string">''</span>, base64_encode(<span class="variable">$result</span>));
+    }
+}
+</code></pre><h3 id="字符串常用算法－如何对字符串安全处理？">字符串常用算法－如何对字符串安全处理？</h3><pre><code><span class="keyword">function</span> get_val(<span class="variable">$val</span>, <span class="variable">$gpc</span>=<span class="string">"get"</span>, <span class="variable">$type</span>=<span class="number">0</span>) {
+    switch (<span class="variable">$gpc</span>) {
+        case <span class="string">'post'</span> :
+            <span class="variable">$value</span> = $_POST[<span class="variable">$val</span>];
+            break;
+        case <span class="string">'get'</span> :
+            <span class="variable">$value</span> = $_GET[<span class="string">'val'</span>];
+            break;
+        default:
+            <span class="variable">$value</span> = $_REQUEST[<span class="string">'val'</span>];
+            break;
+    }
+
+    switch (<span class="variable">$type</span>) {
+        case <span class="number">0</span>:
+            <span class="variable">$value</span> = addslashes(htmlspecialchars(<span class="variable">$value</span>, ENT_QUOTES));
+            break;
+        case <span class="number">1</span>:
+            <span class="variable">$value</span> = intval(<span class="variable">$value</span>);
+            break;
+        case <span class="number">2</span>:
+            <span class="variable">$value</span> = <span class="variable">$value</span>;
+            break;
+        default:
+            <span class="variable">$value</span> = addslashes(htmlspecialchars(<span class="variable">$value</span>, ENT_QUOTES));
+            break;
+    }
+
+    return <span class="variable">$value</span>;
+}
+</code></pre></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag">#php</a>
+          
+            <a href="/tags/string/" rel="tag">#string</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/01/PHP-中字符串的定义方式/" rel="next">PHP 中字符串的定义方式</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2015/12/08/PHP系列问答学习之String/"
+                   data-title="PHP系列问答学习之String" data-url="http://yoursite.com/2015/12/08/PHP系列问答学习之String/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/avatar.jpg" alt="WooLong" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">WooLong</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/longxiang090" target="_blank">weibo</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.php101.cn" target="_blank">php101</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.phptherightway.com" target="_blank">php之道</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://www.allitebooks.com" target="_blank">All IT eBooks</a>
+              </span>
+            
+              <span class="links-of-author-item">
+              <a href="http://hungichao.me" target="_blank">hungichao</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串语法"><span class="nav-number">1.</span> <span class="nav-text">字符串语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP_中字符串的定义方式有哪些？"><span class="nav-number">1.1.</span> <span class="nav-text">PHP 中字符串的定义方式有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双引号中的字符串除了解析变量意外还解析哪些字符？"><span class="nav-number">1.2.</span> <span class="nav-text">双引号中的字符串除了解析变量意外还解析哪些字符？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串与其他类型是如何转换的？"><span class="nav-number">1.3.</span> <span class="nav-text">字符串与其他类型是如何转换的？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转换成字符串"><span class="nav-number">1.3.1.</span> <span class="nav-text">转换成字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置变量的类型_–_settype"><span class="nav-number">1.3.2.</span> <span class="nav-text">设置变量的类型 – settype</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符编码方式"><span class="nav-number">2.</span> <span class="nav-text">字符编码方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是位？什么是字节？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是位？什么是字节？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是_ASCII_编码，如何编码？"><span class="nav-number">2.2.</span> <span class="nav-text">什么是 ASCII 编码，如何编码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是_Unicode_编码？"><span class="nav-number">2.3.</span> <span class="nav-text">什么是 Unicode 编码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在_XML_中用_Unicode_表示汉字？"><span class="nav-number">2.4.</span> <span class="nav-text">如何在 XML 中用 Unicode 表示汉字？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-8_和_GBK_编码原理"><span class="nav-number">3.</span> <span class="nav-text">UTF-8 和 GBK 编码原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是_UTF-8_编码？"><span class="nav-number">3.1.</span> <span class="nav-text">什么是 UTF-8 编码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8_中_BOM（签名）_和不带_BOM（签名）_有什么区别？"><span class="nav-number">3.2.</span> <span class="nav-text">UTF-8 中 BOM（签名） 和不带 BOM（签名） 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8_中汉字占几个字节？"><span class="nav-number">3.3.</span> <span class="nav-text">UTF-8 中汉字占几个字节？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unicode_和_UTF-8_编码如何相互转换？"><span class="nav-number">3.4.</span> <span class="nav-text">Unicode 和 UTF-8 编码如何相互转换？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区别"><span class="nav-number">3.4.1.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unicode_转换成_Utf-8"><span class="nav-number">3.4.2.</span> <span class="nav-text">Unicode 转换成 Utf-8</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Utf-8_逆转回_Unicode"><span class="nav-number">3.4.3.</span> <span class="nav-text">Utf-8 逆转回 Unicode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHP_代码实现"><span class="nav-number">3.4.4.</span> <span class="nav-text">PHP 代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GB2312_和_GBK_编码是怎么来的？"><span class="nav-number">3.5.</span> <span class="nav-text">GB2312 和 GBK 编码是怎么来的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何判断一个汉字是否是_UTF-8_编码？"><span class="nav-number">3.6.</span> <span class="nav-text">如何判断一个汉字是否是 UTF-8 编码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多字节转码函数_mbstring_和_iconv_有什么区别，如何选择？"><span class="nav-number">3.7.</span> <span class="nav-text">多字节转码函数 mbstring 和 iconv 有什么区别，如何选择？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用法"><span class="nav-number">3.7.1.</span> <span class="nav-text">用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">3.7.2.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串常见算法和原理"><span class="nav-number">4.</span> <span class="nav-text">字符串常见算法和原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串常见算法－如何随机生成字符串？"><span class="nav-number">4.1.</span> <span class="nav-text">字符串常见算法－如何随机生成字符串？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串常见算法－如何实现字符串反转？"><span class="nav-number">4.2.</span> <span class="nav-text">字符串常见算法－如何实现字符串反转？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串常见算法－如何实现字符串加密解密？"><span class="nav-number">4.3.</span> <span class="nav-text">字符串常见算法－如何实现字符串加密解密？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串常用算法－如何对字符串安全处理？"><span class="nav-number">4.4.</span> <span class="nav-text">字符串常用算法－如何对字符串安全处理？</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WooLong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"longxiang090"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
